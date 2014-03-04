@@ -1,5 +1,5 @@
 language: objective-c
 script:
   - xctool -project Source/OCGoogleDirectionsAPI.xcodeproj -scheme OCGoogleDirectionsAPI build 
-  - xctool test -project Source/OCGoogleDirectionsAPI.xcodeproj -scheme OCGoogleDirectionsAPITests -sdk iphonesimulator
+  - xctool test -project Source/OCGoogleDirectionsAPI.xcodeproj -scheme OCGoogleDirectionsAPITests -sdk iphonesimulator7.0
 
