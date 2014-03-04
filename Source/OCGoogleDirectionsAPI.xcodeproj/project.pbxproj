@@ -24,9 +24,9 @@
 		27C6EB9C18C65A590035B80F /* OCDirectionsWaypoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E92C18C65A580035B80F /* OCDirectionsWaypoint.m */; };
 		27C6EB9E18C65A590035B80F /* OCDirectionsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E92E18C65A580035B80F /* OCDirectionsResponse.m */; };
 		27C6EBA018C65A590035B80F /* CLLocation+CoortindateFromDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E93418C65A580035B80F /* CLLocation+CoortindateFromDictionary.m */; };
-		27C6ECBE18C65D7E0035B80F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C6ECBD18C65D7E0035B80F /* XCTest.framework */; };
 		27C6ECBF18C65DDC0035B80F /* OCGoogleDirectionsAPITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E8D118C6578B0035B80F /* OCGoogleDirectionsAPITests.m */; };
 		27C6ECC118C65FDC0035B80F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27C6E8CE18C6578B0035B80F /* InfoPlist.strings */; };
+		27C6ECCD18C67ACC0035B80F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C6E8C318C6578B0035B80F /* XCTest.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,10 +99,9 @@
 		27C6E93118C65A580035B80F /* OCAssertParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCAssertParameter.h; sourceTree = "<group>"; };
 		27C6E93318C65A580035B80F /* CLLocation+CoortindateFromDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLLocation+CoortindateFromDictionary.h"; sourceTree = "<group>"; };
 		27C6E93418C65A580035B80F /* CLLocation+CoortindateFromDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLLocation+CoortindateFromDictionary.m"; sourceTree = "<group>"; };
-		27C6ECBD18C65D7E0035B80F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		27C6ECC318C6608E0035B80F /* OCGoogleDirectionsAPI-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OCGoogleDirectionsAPI-Info.plist"; sourceTree = "<group>"; };
-		27C6ECC518C665D80035B80F /* libOCGoogleDirectionsAPI.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libOCGoogleDirectionsAPI.a; path = "/Users/maiw/Appliwings/github/OCGoogleDirectionsAPI/Source/build/Debug-iphoneos/libOCGoogleDirectionsAPI.a"; sourceTree = "<absolute>"; };
-		27C6ECC618C665D80035B80F /* OCGoogleDirectionsAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = OCGoogleDirectionsAPITests.xctest; path = "/Users/maiw/Appliwings/github/OCGoogleDirectionsAPI/Source/build/Debug-iphoneos/OCGoogleDirectionsAPITests.xctest"; sourceTree = "<absolute>"; };
+		27C6ECCB18C67A910035B80F /* libOCGoogleDirectionsAPI.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOCGoogleDirectionsAPI.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		27C6ECCC18C67A910035B80F /* OCGoogleDirectionsAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OCGoogleDirectionsAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27C6ECBE18C65D7E0035B80F /* XCTest.framework in Frameworks */,
+				27C6ECCD18C67ACC0035B80F /* XCTest.framework in Frameworks */,
 				27C6E8C518C6578B0035B80F /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -132,6 +131,8 @@
 				27C6E8B718C6578B0035B80F /* OCGoogleDirectionsAPI */,
 				27C6E8CB18C6578B0035B80F /* OCGoogleDirectionsAPITests */,
 				27C6E8B418C6578B0035B80F /* Frameworks */,
+				27C6ECCB18C67A910035B80F /* libOCGoogleDirectionsAPI.a */,
+				27C6ECCC18C67A910035B80F /* OCGoogleDirectionsAPITests.xctest */,
 			);
 			sourceTree = "<group>";
 			usesTabs = 1;
@@ -139,7 +140,6 @@
 		27C6E8B418C6578B0035B80F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				27C6ECBD18C65D7E0035B80F /* XCTest.framework */,
 				27C6E8B518C6578B0035B80F /* Foundation.framework */,
 				27C6E8C318C6578B0035B80F /* XCTest.framework */,
 				27C6E8C618C6578B0035B80F /* UIKit.framework */,
@@ -327,7 +327,7 @@
 			);
 			name = OCGoogleDirectionsAPI;
 			productName = OCGoogleDirectionsAPI;
-			productReference = 27C6ECC518C665D80035B80F /* libOCGoogleDirectionsAPI.a */;
+			productReference = 27C6ECCB18C67A910035B80F /* libOCGoogleDirectionsAPI.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		27C6E8C118C6578B0035B80F /* OCGoogleDirectionsAPITests */ = {
@@ -345,7 +345,7 @@
 			);
 			name = OCGoogleDirectionsAPITests;
 			productName = OCGoogleDirectionsAPITests;
-			productReference = 27C6ECC618C665D80035B80F /* OCGoogleDirectionsAPITests.xctest */;
+			productReference = 27C6ECCC18C67A910035B80F /* OCGoogleDirectionsAPITests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -546,7 +546,6 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/OCGoogleDirectionsFramework.framework/Versions/A/OCGoogleDirectionsFramework";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -596,7 +595,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/OCGoogleDirectionsFramework.framework/Versions/A/OCGoogleDirectionsFramework";
+				BUNDLE_LOADER = "";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
