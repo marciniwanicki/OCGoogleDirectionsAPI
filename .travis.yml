@@ -1,3 +1,5 @@
 language: objective-c
-xcode_project: Source/OCGoogleDirectionsAPI.xcodeproj
-xcode_scheme: OCGoogleDirectionsAPITests
+script:
+  - xctool -project Source/OCGoogleDirectionsAPI.xcodeproj -scheme OCGoogleDirectionsAPI build 
+  - xctool test -project Source/OCGoogleDirectionsAPI.xcodeproj -scheme OCGoogleDirectionsAPITests -sdk iphonesimulator
+
