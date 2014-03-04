@@ -447,6 +447,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = "OCGoogleDirectionsAPI/OCGoogleDirectionsAPI-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = OCGoogleDirectionsAPI;
 			};
 			name = Debug;
@@ -455,6 +456,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = "OCGoogleDirectionsAPI/OCGoogleDirectionsAPI-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = OCGoogleDirectionsAPI;
 			};
 			name = Release;
