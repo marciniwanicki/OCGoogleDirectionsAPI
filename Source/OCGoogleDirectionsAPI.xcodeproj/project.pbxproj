@@ -52,6 +52,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		27AC589B18C7F14800AC11A8 /* OCGoogleDirectionsAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCGoogleDirectionsAPI.h; sourceTree = "<group>"; };
 		27C6E8B518C6578B0035B80F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		27C6E8B918C6578B0035B80F /* OCGoogleDirectionsAPI-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OCGoogleDirectionsAPI-Prefix.pch"; sourceTree = "<group>"; };
 		27C6E8C318C6578B0035B80F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -158,6 +159,7 @@
 				27C6E91B18C65A580035B80F /* Response */,
 				27C6E92F18C65A580035B80F /* Shared Classes */,
 				27C6E8B818C6578B0035B80F /* Supporting Files */,
+				27AC589B18C7F14800AC11A8 /* OCGoogleDirectionsAPI.h */,
 			);
 			path = OCGoogleDirectionsAPI;
 			sourceTree = "<group>";
