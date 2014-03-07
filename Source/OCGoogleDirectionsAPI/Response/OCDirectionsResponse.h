@@ -23,7 +23,7 @@ typedef NS_ENUM(NSUInteger, OCDirectionsResponseStatus) {
 
 @interface OCDirectionsResponse : NSObject
 
-@property (nonatomic, strong) NSDictionary *dictionary;
+@property (nonatomic, strong, readonly) NSDictionary *dictionary;
 
 /**
  "status" contains metadata on the request. See Status Codes above.
