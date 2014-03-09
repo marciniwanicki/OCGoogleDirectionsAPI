@@ -1,8 +1,8 @@
 pod "OCGoogleDirectionsAPI", :path => "../OCGoogleDirectionsAPI.podspec"
 platform :ios
 
-target "Demo" do
+target "OCGoogleDirectionsAPI" do
 end
 
-target "DemoTests" do
+target "OCGoogleDirectionsAPITests" do
 end
