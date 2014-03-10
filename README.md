@@ -31,7 +31,7 @@ pod "OCGoogleDirectionsAPI", "~> 0.1.0"
 
 It's really simple. To get directions you need to do <b>4 easy steps</b>.
 
-1. Importing headers. From now all `OCDirections*` general class will be accessible for you.
+1. Importing headers. From now all `OCDirections*` general classes will be accessible for you.
 
     ```objc
     #import <OCGoogleDirectionsAPI/OCGoogleDirectionsAPI.h>
