@@ -28,4 +28,6 @@ typedef void (^OCDirectionsRequestCallback)(OCDirectionsResponse *response, NSEr
 
 - (void)directions:(OCDirectionsRequest *)request response:(OCDirectionsRequestCallback)callback;
 
+- (NSURL *)urlFromRequest:(OCDirectionsRequest *)request;
+
 @end

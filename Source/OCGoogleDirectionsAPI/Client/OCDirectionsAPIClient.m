@@ -50,7 +50,7 @@ static NSString *_defaultKey;
 
 - (void)directions:(OCDirectionsRequest *)request response:(OCDirectionsRequestCallback)callback
 {
-    NSURL *url = [self.requestURLCreator urlFromRequest:request useHttps:self.useHttps andKey:self.key];
+    NSURL *url = [self urlFromRequest:request];
     
     NSURLSession *session = [NSURLSession sharedSession];
     [[session dataTaskWithURL:url
@@ -76,6 +76,12 @@ static NSString *_defaultKey;
                 return;
                 
             }] resume];
+}
+
+- (NSURL *)urlFromRequest:(OCDirectionsRequest *)request
+{
+	NSURL *url = [self.requestURLCreator urlFromRequest:request useHttps:self.useHttps andKey:self.key];
+	return url;
 }
 
 - (id<OCDirectionsRequestURLCreator>)requestURLCreator
