@@ -54,8 +54,16 @@ It's really simple. To get directions you need to do <b>4 easy steps</b>.
    ```objc
    OCDirectionsAPIClient *client = [OCDirectionsAPIClient new];
    [client directions:request response:^(OCDirectionsResponse *response, NSError *error) {
-   
-        // your implementation
+ 
+        // e.g.
+        if (error) {
+            return;
+        }
+        if (response.status != OCDirectionsResponseStatusOK) {
+            return
+        }
+        
+        // some code 
    }];
    ```
 
@@ -149,6 +157,7 @@ CLLocation *secondLocation = [[CLLocation alloc] initWithLatitude:51.1314 longit
 
 Classes:
 * [OCDirectionsResponse](#OCDirectionsResponse)
+* [OCDirectionsResponseStatus](#OCDirectionsResponseStatus)
 * [OCDirectionsRoute](#OCDirectionsRoute)
 * [OCDirectionsLeg](#OCDirectionsLeg)
 * [OCDirectionsPolyline](#OCDirectionsPolyline)
@@ -164,19 +173,33 @@ Classes:
 Properties:
 * dictionary `NSDictionary*`
 * status `OCDirectionsResponseStatus`
-* routes `NSArray*` (`NSArray` of `OCDirectionsRoute*`)
+* routes `NSArray*` (array of `OCDirectionsRoute*`)
 * errorMessage `NSString*`
 * route `NSDirectionsRoute*`
+
+
+### OCDirectionsResponseStatus 
+
+Enum:
+* `OCDirectionsResponseStatusNotInitialized`
+* `OCDirectionsResponseStatusOK`
+* `OCDirectionsResponseStatusNotFound`
+* `OCDirectionsResponseStatusZeroResults`
+* `OCDirectionsResponseStatusMaxWaypointsExceeded`
+* `OCDirectionsResponseStatusInvalidRequest`
+* `OCDirectionsResponseStatusOverQueryLimit`
+* `OCDirectionsResponseStatusRequestDenied`
+* `OCDirectionsResponseStatusUnknownError`
 
 
 ### OCDirectionsRoute
 
 Properties:
 * dictionary `NSDictionary*`
-* legs `NSArray*` (`NSArray` of `OCDirectionsLeg*`)
+* legs `NSArray*` (array of `OCDirectionsLeg*`)
 * copyrights `NSString*`
-* warnings `NSArray*` (`NSArray` of `NSString*`)
-* waypointOrder `NSArray*` (`NSArray` of `NSNumber*`)
+* warnings `NSArray*` (array of `NSString*`)
+* waypointOrder `NSArray*` (array of `NSNumber*`)
 * overviewPolyline `OCDirectionsPolyline*`
 * bounds `OCDirectionsBounds*`
 * summary `NSString*`
@@ -192,8 +215,8 @@ Properties:
 * endLocation `OCLocationCoordinate2D`
 * startAddress `NSString*`
 * startLocation `OCLocationCoordinate2D`
-* steps `NSArray*` (`NSArray` of `OCDirectionsStep*`)
-* viaWaypoint `NSArray*` (`NSArray` of `OCDirectionsWaypoint*`)
+* steps `NSArray*` (array of `OCDirectionsStep*`)
+* viaWaypoint `NSArray*` (array of `OCDirectionsWaypoint*`)
 
 
 ### OCDirectionsPolyline
