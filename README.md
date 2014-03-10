@@ -43,16 +43,24 @@ It's really simple. To get directions you need to do <b>4 easy steps</b>.
    [OCDirectionsAPIClient provideAPIKey:@"<YOUR KEY>"];
    ```
 
-3. Prepare `OCDirectionsRequest` object to specify all data you want to retrieve from the service.
+3. Prepare a `OCDirectionsRequest` object to specify route(s) you want to retrieve from the service.
 
    ```objc
    OCDirectionsRequest *request = [OCDirectionsRequest requestWithOriginString:@"<ORIGIN>" andDestinationString:@"<DESTINATION>" sensor:NO];
    ```
 
-4. Call `directions` method to retrieve required data (`OCDirectionsResponse`) asynchronously.
+4. Create an instance of `OCDirectionsAPIClient` and call `directions:response:` method to retrieve required data (`OCDirectionsResponse`) asynchronously.
+
+   ```objc
+   OCDirectionsAPIClient *client = [OCDirectionsAPIClient new];
+   [client directions:request response:^(OCDirectionsResponse *response, NSError *error) {
+   
+        // your implementation
+   }];
+   ```
 
 
-That's all! It's quite easy, isn't it? If you like to specify more and more your queries please read the next section [OCDirectionsRequest](#ocdirectionsrequest).
+That's all! It's quite easy, isn't it? If you like to know a bit more about requests please read the next section [OCDirectionsRequest](#ocdirectionsrequest).
 
 ## OCDirectionsRequest
 
@@ -86,12 +94,11 @@ To read more about available attributes please see the [Request parameters](http
 
 #### Restrictions
 
-There are 3 restrictions:
-```objc
-OCDirectionsRequestRestrictionAvoidTolls,
-OCDirectionsRequestRestrictionAvoidHighways,
-OCDirectionsRequestRestrictionAviodFerries
-```
+There are 3 different restrictions:
+* `OCDirectionsRequestRestrictionAvoidTolls`
+* `OCDirectionsRequestRestrictionAvoidHighways`
+* `OCDirectionsRequestRestrictionAviodFerries`
+
 
 You can ask to avoid one or even all of them by calling the `setRestrictions:` method.
 ```objc
@@ -101,36 +108,30 @@ You can ask to avoid one or even all of them by calling the `setRestrictions:` m
 
 #### Travel mode
 
-The API allows to choose one of the following travel modes
-```objc
-OCDirectionsRequestTravelModeDriving,
-OCDirectionsRequestTravelModeWalking,
-OCDirectionsRequestTravelModeBicycling,
-OCDirectionsRequestTravelModeTransit
-```
+The API allows to choose one of the following travel modes:
+* `OCDirectionsRequestTravelModeDriving`
+* `OCDirectionsRequestTravelModeWalking`
+* `OCDirectionsRequestTravelModeBicycling`
+* `OCDirectionsRequestTravelModeTransit`
 
-and setter
 ```objc
 [request setTravelMode:@(OCDirectionsRequestTravelModeBicycling)];
 ```
 
 ### Unit
 
-Available units
-```objc
-OCDirectionsRequestUnitDefault,
-OCDirectionsRequestUnitMetric,
-OCDirectionsRequestUnitImperial
-```
+Available units:
+* `OCDirectionsRequestUnitDefault`
+* `OCDirectionsRequestUnitMetric`
+* `OCDirectionsRequestUnitImperia`
 
-and setter
 ```objc
 [request setUnit:@(OCDirectionsRequestUnitMetric)];
 ```
 
 ### Waypoints
 
-You need to set `NSArray` of `NSString` and `CLLocation` objects
+You need to set `NSArray` of `NSString` and `CLLocation` objects.
 ```objc
 CLLocation *firstLocation = [[CLLocation alloc] initWithLatitude:51.2314 longitude:21.3243];
 CLLocation *secondLocation = [[CLLocation alloc] initWithLatitude:51.1314 longitude:21.1321];
@@ -150,22 +151,27 @@ Classes:
 * [OCDirectionsResponse](#OCDirectionsResponse)
 * [OCDirectionsRoute](#OCDirectionsRoute)
 * [OCDirectionsLeg](#OCDirectionsLeg)
+* [OCDirectionsPolyline](#OCDirectionsPolyline)
+* [OCDirectionsBounds](#OCDirectionsBounds)
+* [OCDirectionsDistance](#OCDirectionsDistance)
+* [OCDirectionsDuration](#OCDirectionsDuration)
+* [OCDirectionsStep](#OCDirectionsStep)
+* [OCDirectionsWaypoint](#OCDirectionsWaypoint)
 
 
 ### OCDirectionsResponse
 
-Properties
-
+Properties:
 * dictionary `NSDictionary*`
 * status `OCDirectionsResponseStatus`
 * routes `NSArray*` (`NSArray` of `OCDirectionsRoute*`)
 * errorMessage `NSString*`
 * route `NSDirectionsRoute*`
 
+
 ### OCDirectionsRoute
 
-Properties
-
+Properties:
 * dictionary `NSDictionary*`
 * legs `NSArray*` (`NSArray` of `OCDirectionsLeg*`)
 * copyrights `NSString*`
@@ -175,14 +181,83 @@ Properties
 * bounds `OCDirectionsBounds*`
 * summary `NSString*`
 
+
 ### OCDirectionsLeg
 
-Properties
+Properties:
+* dictionary `NSDictionary*`
+* distance `OCDirectionsDistance*`
+* duration `OCDirectionsDuration*`
+* endAddress `NSString*`
+* endLocation `OCLocationCoordinate2D`
+* startAddress `NSString*`
+* startLocation `OCLocationCoordinate2D`
+* steps `NSArray*` (`NSArray` of `OCDirectionsStep*`)
+* viaWaypoint `NSArray*` (`NSArray` of `OCDirectionsWaypoint*`)
+
+
+### OCDirectionsPolyline
+
+Properties:
+* dictionary `NSDictionary*`
+* points `NSString*`
+
+
+### OCDirectionsBounds
+
+Properties:
+* dictionary `NSDictionary*`
+* southwest `CLLocationCoordinate2D`
+* northeast `CLLocationCoordinate2D`
+
+
+### OCDirectionsDistance
+
+Properties:
+* dictionary `NSDictionary*`
+* text `NSString*`
+* value `NSNumber*`
+
+
+### OCDirectionsDuration
+
+Properties:
+* dictionary `NSDictionary*`
+* text `NSString*`
+* value `NSNumber*` 
+
+
+### OCDirectionsStep
+
+Properties:
+* dictionary `NSDictionary*`
+* distance `OCDirectionsDistance*`
+* duration `OCDirectionsDuration*`
+* endLocation `CLLocationCoordinate2D`
+* htmlInstructions `NSString*`
+* maneuver `NSString*`
+* polyline `OCDirectionsPolyline*`
+* startLocation `CLLocationCoordinate2D`
+* travelMode `OCDirectionsRequestTravelMode`
+
+
+### OCDirectionsWaypoint
+
+Properties:
+* dictionary `NSDictionary*`
+* location `CLLocationCoordinate2D`
+* stepIndex `NSNumber*` 
+* stepInterpolation `NSNumber*` 
+
+
+## How to debug
+
+<i>TODO</i>
 
 
 ## Contact
 
-Did you find a bug? Do you have great ideas how to make the library better? or you just want to say hello... please do not hesitate to mail me at marcin.iwanicki [at] live.com.
+Did you find a bug? Do you have great ideas how to make the library better? or you just want to say hello:) ... please do not hesitate to contact me via mail marcin.iwanicki[at]live.com or twitter @marciniwanicki.
 
 ## To Do
 
