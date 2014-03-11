@@ -1,9 +1,3 @@
----
-
-<b>Not finished yet!</b>
-
----
-
 # OCGoogleDirectionsAPI
 [![Build Status](https://travis-ci.org/marciniwanicki/OCGoogleDirectionsAPI.png?branch=master)](https://travis-ci.org/marciniwanicki/OCGoogleDirectionsAPI) 
 
@@ -274,11 +268,6 @@ Properties:
 * location `CLLocationCoordinate2D`
 * stepIndex `NSNumber*` 
 * stepInterpolation `NSNumber*` 
-
-
-## How to debug
-
-<i>TODO</i>
 
 
 ## Contact
