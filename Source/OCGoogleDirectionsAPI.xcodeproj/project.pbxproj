@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		27A8A2E718CF8B9900C24A6A /* OCDIrestionsRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A8A2E618CF8B9900C24A6A /* OCDIrestionsRequestTests.m */; };
+		27A8A2E718CF8B9900C24A6A /* OCDirectionsRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A8A2E618CF8B9900C24A6A /* OCDirectionsRequestTests.m */; };
 		27A8A2E818CF8E8900C24A6A /* OCDirectionsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E91718C65A580035B80F /* OCDirectionsRequest.m */; };
 		27A8A2E918CF8ED000C24A6A /* OCDirectionsCommonTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E91018C65A580035B80F /* OCDirectionsCommonTypes.m */; };
 		27A8A2EA18CF8EDA00C24A6A /* OCDirectionsAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E90918C65A580035B80F /* OCDirectionsAPIClient.m */; };
@@ -67,7 +67,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		27A8A2E618CF8B9900C24A6A /* OCDIrestionsRequestTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDIrestionsRequestTests.m; sourceTree = "<group>"; };
+		27A8A2E618CF8B9900C24A6A /* OCDirectionsRequestTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDirectionsRequestTests.m; sourceTree = "<group>"; };
 		27AC589B18C7F14800AC11A8 /* OCGoogleDirectionsAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCGoogleDirectionsAPI.h; sourceTree = "<group>"; };
 		27C6E8B518C6578B0035B80F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		27C6E8B918C6578B0035B80F /* OCGoogleDirectionsAPI-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OCGoogleDirectionsAPI-Prefix.pch"; sourceTree = "<group>"; };
@@ -144,7 +144,7 @@
 		27A8A2E118CF8B7600C24A6A /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				27A8A2E618CF8B9900C24A6A /* OCDIrestionsRequestTests.m */,
+				27A8A2E618CF8B9900C24A6A /* OCDirectionsRequestTests.m */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -475,7 +475,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				27A8A2EB18CF8EE000C24A6A /* OCDirectionsRequestURLCreatorJSON.m in Sources */,
-				27A8A2E718CF8B9900C24A6A /* OCDIrestionsRequestTests.m in Sources */,
+				27A8A2E718CF8B9900C24A6A /* OCDirectionsRequestTests.m in Sources */,
 				27A8A2EE18CF8EEC00C24A6A /* OCDirectionsDistance.m in Sources */,
 				27A8A2EF18CF8EEE00C24A6A /* OCDirectionsDuration.m in Sources */,
 				27A8A2EC18CF8EE500C24A6A /* OCDirectionsRequestValidator.m in Sources */,
