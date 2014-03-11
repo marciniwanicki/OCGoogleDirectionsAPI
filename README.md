@@ -156,16 +156,16 @@ CLLocation *secondLocation = [[CLLocation alloc] initWithLatitude:51.1314 longit
 ## Response
 
 Classes:
-* [OCDirectionsResponse](#OCDirectionsResponse)
-* [OCDirectionsResponseStatus](#OCDirectionsResponseStatus)
-* [OCDirectionsRoute](#OCDirectionsRoute)
-* [OCDirectionsLeg](#OCDirectionsLeg)
-* [OCDirectionsPolyline](#OCDirectionsPolyline)
-* [OCDirectionsBounds](#OCDirectionsBounds)
-* [OCDirectionsDistance](#OCDirectionsDistance)
-* [OCDirectionsDuration](#OCDirectionsDuration)
-* [OCDirectionsStep](#OCDirectionsStep)
-* [OCDirectionsWaypoint](#OCDirectionsWaypoint)
+* [OCDirectionsResponse](#ocdirectionsresponse)
+* [OCDirectionsResponseStatus](#ocdirectionsresponsestatus)
+* [OCDirectionsRoute](#ocdirectionsroute)
+* [OCDirectionsLeg](#ocdirectionsleg)
+* [OCDirectionsPolyline](#ocdirectionspolyline)
+* [OCDirectionsBounds](#ocdirectionsbounds)
+* [OCDirectionsDistance](#ocdirectionsdistance)
+* [OCDirectionsDuration](#ocdirectionsduration)
+* [OCDirectionsStep](#ocdirectionsstep)
+* [OCDirectionsWaypoint](#ocdirectionswaypoint)
 
 
 ### OCDirectionsResponse
