@@ -37,6 +37,26 @@
 	XCTAssertTrue([location isMemberOfClass:[CLLocation class]]);
 }
 
+- (void)testPrepareFirstStringHelper
+{
+	// when
+	NSString *string = [self prepareFirstString];
+	
+	// then
+	XCTAssertNotNil(string);
+	XCTAssertEqual(@"London", string);
+}
+
+- (void)testPreapreSecondStringHelper
+{
+	// when
+	NSString *string = [self prepareSecondString];
+	
+	// then
+	XCTAssertNotNil(string);
+	XCTAssertEqual(@"Reading", string);
+}
+
 #pragma mark - Test requestWithOriginLocation:andDestinationLocation:sensor:
 - (void)testRequestWithOriginLocationAndDestinationLocationWhenOriginIsNil
 {
@@ -133,6 +153,104 @@
 	[self verifyPropertiesWithDefaultValuesOfRequest:request];
 }
 
+#pragma mark - Test requestWithOriginString:andDestinationLocation:sensor:
+- (void)testRequestWithOriginStringAndDestinationLocationWhenOriginIsNil
+{
+	// given
+	NSString *originString = nil;
+	CLLocation *destinationLocation = [self prepareSecondLocation];
+	
+    // then
+	[self verifyIfNSInvalidArgumentExceptionHasBeenThrown:^{
+		
+		// when
+		[OCDirectionsRequest requestWithOriginString:originString
+							  andDestinationLocation:destinationLocation
+											  sensor:NO];
+		
+	}];
+}
+
+- (void)testRequestWithOriginStringAndDestinationLocationWhenDestinationIsNil
+{
+	// given
+	NSString *originString = [self prepareFirstString];
+	CLLocation *destinationLocation = nil;
+	
+    // then
+	[self verifyIfNSInvalidArgumentExceptionHasBeenThrown:^{
+		
+		// when
+		[OCDirectionsRequest requestWithOriginString:originString
+							  andDestinationLocation:destinationLocation
+											  sensor:NO];
+		
+	}];
+}
+
+- (void)testRequestWithOriginStringAndDestinationLocationWhenOriginAndDestinationAreNil
+{
+	// given
+	NSString *originString = nil;
+	CLLocation *destinationLocation = nil;
+	
+    // then
+	[self verifyIfNSInvalidArgumentExceptionHasBeenThrown:^{
+		
+		// when
+		[OCDirectionsRequest requestWithOriginString:originString
+							  andDestinationLocation:destinationLocation
+											  sensor:NO];
+		
+	}];
+}
+
+- (void)testRequestWithOriginStringAndDestinationLocationWhenOriginAndDestinationAreNotNil
+{
+	// given
+	NSString *originString = [self prepareFirstString];
+	CLLocation *destinationLocation = [self prepareSecondLocation];
+	
+	// when
+	OCDirectionsRequest *request = [OCDirectionsRequest requestWithOriginString:originString
+														 andDestinationLocation:destinationLocation
+																		 sensor:NO];
+	
+	// then
+	XCTAssertNotNil(request);
+	XCTAssertTrue([request isMemberOfClass:[OCDirectionsRequest class]]);
+	XCTAssertEqual(originString, request.originString);
+	XCTAssertNil(request.originLocation);
+	XCTAssertEqual(destinationLocation, request.destinationLocation);
+	XCTAssertNil(request.destinationString);
+	XCTAssertFalse(request.sensor);
+	
+	[self verifyPropertiesWithDefaultValuesOfRequest:request];
+}
+
+- (void)testRequestWithOriginStringAndDestinationLocationWhenOriginAndDestinationAreNotNilAndSensorIsTrue
+{
+	// given
+	NSString *originString = [self prepareFirstString];
+	CLLocation *destinationLocation = [self prepareSecondLocation];
+	
+	// when
+	OCDirectionsRequest *request = [OCDirectionsRequest requestWithOriginString:originString
+														 andDestinationLocation:destinationLocation
+																		 sensor:YES];
+	
+	// then
+	XCTAssertNotNil(request);
+	XCTAssertTrue([request isMemberOfClass:[OCDirectionsRequest class]]);
+	XCTAssertEqual(originString, request.originString);
+	XCTAssertNil(request.originLocation);
+	XCTAssertEqual(destinationLocation, request.destinationLocation);
+	XCTAssertNil(request.destinationString);
+	XCTAssertTrue(request.sensor);
+	
+	[self verifyPropertiesWithDefaultValuesOfRequest:request];
+}
+
 #pragma mark - Custom verifiers
 - (void)verifyPropertiesWithDefaultValuesOfRequest:(OCDirectionsRequest *)request
 {
@@ -173,6 +291,18 @@
 {
 	CLLocation *location = [[CLLocation alloc] initWithLatitude:30.0 longitude:40.0];
 	return location;
+}
+
+- (NSString *)prepareFirstString
+{
+	NSString *string = @"London";
+	return string;
+}
+
+- (NSString *)prepareSecondString
+{
+	NSString *string = @"Reading";
+	return string;
 }
 
 @end
