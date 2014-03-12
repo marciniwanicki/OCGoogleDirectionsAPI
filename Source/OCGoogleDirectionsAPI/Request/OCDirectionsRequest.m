@@ -63,7 +63,7 @@
     self = [super init];
     if (self) {
         _originLocation = origin;
-        _originString = destination;
+        _destinationString = destination;
         _sensor = sensor;
     }
     return self;
