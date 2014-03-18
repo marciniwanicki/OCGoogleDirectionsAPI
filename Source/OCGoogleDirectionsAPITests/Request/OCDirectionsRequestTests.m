@@ -349,6 +349,104 @@
 	[self verifyPropertiesWithDefaultValuesOfRequest:request];
 }
 
+#pragma mark - Test requestWithOriginString:andDestinationString:sensor:
+- (void)testRequestWithOriginStringAndDestinationStringWhenOriginIsNil
+{
+	// given
+	NSString *originString = nil;
+	NSString *destinationString = [self prepareSecondString];
+	
+    // then
+	[self verifyIfNSInvalidArgumentExceptionHasBeenThrown:^{
+		
+		// when
+		[OCDirectionsRequest requestWithOriginString:originString
+								andDestinationString:destinationString
+											  sensor:NO];
+		
+	}];
+}
+
+- (void)testRequestWithOriginStringAndDestinationStringWhenDestinationIsNil
+{
+	// given
+	NSString *originString = [self prepareFirstString];
+	NSString *destinationString = nil;
+	
+    // then
+	[self verifyIfNSInvalidArgumentExceptionHasBeenThrown:^{
+		
+		// when
+		[OCDirectionsRequest requestWithOriginString:originString
+								andDestinationString:destinationString
+											  sensor:NO];
+		
+	}];
+}
+
+- (void)testRequestWithOriginStringAndDestinationStringWhenOriginAndDestinationAreNil
+{
+	// given
+	NSString *originString = nil;
+	NSString *destinationString = nil;
+	
+    // then
+	[self verifyIfNSInvalidArgumentExceptionHasBeenThrown:^{
+		
+		// when
+		[OCDirectionsRequest requestWithOriginString:originString
+								andDestinationString:destinationString
+											  sensor:NO];
+		
+	}];
+}
+
+- (void)testRequestWithOriginStringAndDestinationStringWhenOriginAndDestinationAreNotNil
+{
+	// given
+	NSString *originString = [self prepareFirstString];
+	NSString *destinationString = [self prepareSecondString];
+	
+	// when
+	OCDirectionsRequest *request = [OCDirectionsRequest requestWithOriginString:originString
+														   andDestinationString:destinationString
+																		 sensor:NO];
+	
+	// then
+	XCTAssertNotNil(request);
+	XCTAssertTrue([request isMemberOfClass:[OCDirectionsRequest class]]);
+	XCTAssertEqual(originString, request.originString);
+	XCTAssertNil(request.originLocation);
+	XCTAssertEqual(destinationString, request.destinationString);
+	XCTAssertNil(request.destinationLocation);
+	XCTAssertFalse(request.sensor);
+	
+	[self verifyPropertiesWithDefaultValuesOfRequest:request];
+}
+
+- (void)testRequestWithOriginStringAndDestinationStringWhenOriginAndDestinationAreNotNilAndSensorIsTrue
+{
+	// given
+	NSString *originString = [self prepareFirstString];
+	NSString *destinationString = [self prepareSecondString];
+	
+	// when
+	OCDirectionsRequest *request = [OCDirectionsRequest requestWithOriginString:originString
+														   andDestinationString:destinationString
+																		 sensor:YES];
+	
+	// then
+	XCTAssertNotNil(request);
+	XCTAssertTrue([request isMemberOfClass:[OCDirectionsRequest class]]);
+	XCTAssertEqual(originString, request.originString);
+	XCTAssertNil(request.originLocation);
+	XCTAssertEqual(destinationString, request.destinationString);
+	XCTAssertNil(request.destinationLocation);
+	XCTAssertTrue(request.sensor);
+	
+	[self verifyPropertiesWithDefaultValuesOfRequest:request];
+}
+
 #pragma mark - Custom verifiers
 - (void)verifyPropertiesWithDefaultValuesOfRequest:(OCDirectionsRequest *)request
 {
