@@ -64,15 +64,10 @@
 	CLLocation *originLocation = nil;
 	CLLocation *destinationLocation = [self prepareSecondLocation];
 	
-    // then
-	[self verifyIfNSInvalidArgumentExceptionHasBeenThrown:^{
-		
-		// when
-		[OCDirectionsRequest requestWithOriginLocation:originLocation
-								andDestinationLocation:destinationLocation
-												sensor:NO];
-		
-	}];
+	// then
+	XCTAssertThrowsSpecificNamed([OCDirectionsRequest requestWithOriginLocation:originLocation
+														 andDestinationLocation:destinationLocation
+																		 sensor:NO], NSException, NSInvalidArgumentException);
 }
 
 - (void)testRequestWithOriginLocationAndDestinationLocationWhenDestinationIsNil
@@ -82,14 +77,9 @@
 	CLLocation *destinationLocation = nil;
 	
     // then
-	[self verifyIfNSInvalidArgumentExceptionHasBeenThrown:^{
-		
-		// when
-		[OCDirectionsRequest requestWithOriginLocation:originLocation
-								andDestinationLocation:destinationLocation
-												sensor:NO];
-		
-	}];
+	XCTAssertThrowsSpecificNamed([OCDirectionsRequest requestWithOriginLocation:originLocation
+														 andDestinationLocation:destinationLocation
+																		 sensor:NO], NSException, NSInvalidArgumentException);
 }
 
 - (void)testRequestWithOriginLocationAndDestinationLocationWhenOriginAndDestinationAreNil
@@ -99,14 +89,9 @@
 	CLLocation *destinationLocation = nil;
 	
     // then
-	[self verifyIfNSInvalidArgumentExceptionHasBeenThrown:^{
-		
-		// when
-		[OCDirectionsRequest requestWithOriginLocation:originLocation
-								andDestinationLocation:destinationLocation
-												sensor:NO];
-		
-	}];
+	XCTAssertThrowsSpecificNamed([OCDirectionsRequest requestWithOriginLocation:originLocation
+														 andDestinationLocation:destinationLocation
+																		 sensor:NO], NSException, NSInvalidArgumentException);
 }
 
 - (void)testRequestWithOriginLocationAndDestinationLocationWhenOriginAndDestinationAreNotNil
@@ -161,14 +146,9 @@
 	CLLocation *destinationLocation = [self prepareSecondLocation];
 	
     // then
-	[self verifyIfNSInvalidArgumentExceptionHasBeenThrown:^{
-		
-		// when
-		[OCDirectionsRequest requestWithOriginString:originString
-							  andDestinationLocation:destinationLocation
-											  sensor:NO];
-		
-	}];
+	XCTAssertThrowsSpecificNamed([OCDirectionsRequest requestWithOriginString:originString
+													   andDestinationLocation:destinationLocation
+																	   sensor:NO], NSException, NSInvalidArgumentException);
 }
 
 - (void)testRequestWithOriginStringAndDestinationLocationWhenDestinationIsNil
@@ -178,14 +158,9 @@
 	CLLocation *destinationLocation = nil;
 	
     // then
-	[self verifyIfNSInvalidArgumentExceptionHasBeenThrown:^{
-		
-		// when
-		[OCDirectionsRequest requestWithOriginString:originString
-							  andDestinationLocation:destinationLocation
-											  sensor:NO];
-		
-	}];
+	XCTAssertThrowsSpecificNamed([OCDirectionsRequest requestWithOriginString:originString
+													   andDestinationLocation:destinationLocation
+																	   sensor:NO], NSException, NSInvalidArgumentException);
 }
 
 - (void)testRequestWithOriginStringAndDestinationLocationWhenOriginAndDestinationAreNil
@@ -195,14 +170,9 @@
 	CLLocation *destinationLocation = nil;
 	
     // then
-	[self verifyIfNSInvalidArgumentExceptionHasBeenThrown:^{
-		
-		// when
-		[OCDirectionsRequest requestWithOriginString:originString
-							  andDestinationLocation:destinationLocation
-											  sensor:NO];
-		
-	}];
+	XCTAssertThrowsSpecificNamed([OCDirectionsRequest requestWithOriginString:originString
+													   andDestinationLocation:destinationLocation
+																	   sensor:NO], NSException, NSInvalidArgumentException);
 }
 
 - (void)testRequestWithOriginStringAndDestinationLocationWhenOriginAndDestinationAreNotNil
@@ -259,14 +229,9 @@
 	NSString *destinationString = [self prepareSecondString];
 	
     // then
-	[self verifyIfNSInvalidArgumentExceptionHasBeenThrown:^{
-		
-		// when
-		[OCDirectionsRequest requestWithOriginLocation:originLocation
-								  andDestinationString:destinationString
-												sensor:NO];
-		
-	}];
+	XCTAssertThrowsSpecificNamed([OCDirectionsRequest requestWithOriginLocation:originLocation
+														   andDestinationString:destinationString
+																		 sensor:NO], NSException, NSInvalidArgumentException);
 }
 
 - (void)testRequestWithOriginLocationAndDestinationStringWhenDestinationIsNil
@@ -276,14 +241,9 @@
 	NSString *destinationString = nil;
 	
     // then
-	[self verifyIfNSInvalidArgumentExceptionHasBeenThrown:^{
-		
-		// when
-		[OCDirectionsRequest requestWithOriginLocation:originLocation
-								  andDestinationString:destinationString
-												sensor:NO];
-		
-	}];
+	XCTAssertThrowsSpecificNamed([OCDirectionsRequest requestWithOriginLocation:originLocation
+														   andDestinationString:destinationString
+																		 sensor:NO], NSException, NSInvalidArgumentException);
 }
 
 - (void)testRequestWithOriginLocationAndDestinationStringWhenOriginAndDestinationAreNil
@@ -293,14 +253,9 @@
 	NSString *destinationString = nil;
 	
     // then
-	[self verifyIfNSInvalidArgumentExceptionHasBeenThrown:^{
-		
-		// when
-		[OCDirectionsRequest requestWithOriginLocation:originLocation
-								  andDestinationString:destinationString
-												sensor:NO];
-		
-	}];
+	XCTAssertThrowsSpecificNamed([OCDirectionsRequest requestWithOriginLocation:originLocation
+														   andDestinationString:destinationString
+																		 sensor:NO], NSException, NSInvalidArgumentException);
 }
 
 - (void)testRequestWithOriginLocationAndDestinationStringWhenOriginAndDestinationAreNotNil
@@ -357,14 +312,9 @@
 	NSString *destinationString = [self prepareSecondString];
 	
     // then
-	[self verifyIfNSInvalidArgumentExceptionHasBeenThrown:^{
-		
-		// when
-		[OCDirectionsRequest requestWithOriginString:originString
-								andDestinationString:destinationString
-											  sensor:NO];
-		
-	}];
+	XCTAssertThrowsSpecificNamed([OCDirectionsRequest requestWithOriginString:originString
+														 andDestinationString:destinationString
+																	   sensor:NO], NSException, NSInvalidArgumentException);
 }
 
 - (void)testRequestWithOriginStringAndDestinationStringWhenDestinationIsNil
@@ -374,14 +324,9 @@
 	NSString *destinationString = nil;
 	
     // then
-	[self verifyIfNSInvalidArgumentExceptionHasBeenThrown:^{
-		
-		// when
-		[OCDirectionsRequest requestWithOriginString:originString
-								andDestinationString:destinationString
-											  sensor:NO];
-		
-	}];
+	XCTAssertThrowsSpecificNamed([OCDirectionsRequest requestWithOriginString:originString
+														 andDestinationString:destinationString
+																	   sensor:NO], NSException, NSInvalidArgumentException);
 }
 
 - (void)testRequestWithOriginStringAndDestinationStringWhenOriginAndDestinationAreNil
@@ -391,14 +336,9 @@
 	NSString *destinationString = nil;
 	
     // then
-	[self verifyIfNSInvalidArgumentExceptionHasBeenThrown:^{
-		
-		// when
-		[OCDirectionsRequest requestWithOriginString:originString
-								andDestinationString:destinationString
-											  sensor:NO];
-		
-	}];
+	XCTAssertThrowsSpecificNamed([OCDirectionsRequest requestWithOriginString:originString
+														 andDestinationString:destinationString
+																	   sensor:NO], NSException, NSInvalidArgumentException);
 }
 
 - (void)testRequestWithOriginStringAndDestinationStringWhenOriginAndDestinationAreNotNil
@@ -456,24 +396,6 @@
 	XCTAssertEqual(OCDirectionsRequestUnitDefault, request.unit);
 	XCTAssertNil(request.waypoints);
 	XCTAssertFalse(request.waypointsOptimise);
-}
-
-- (void)verifyIfNSInvalidArgumentExceptionHasBeenThrown:(void(^)())block
-{
-	BOOL exceptionOccured = NO;
-	
-	@try {
-		block();
-		
-		XCTFail(@"An exception should be thrown.");
-	}
-	@catch (NSException *exception) {
-		if ([exception.name isEqualToString:NSInvalidArgumentException]) {
-			exceptionOccured = YES;
-		}
-	}
-	
-	XCTAssertTrue(exceptionOccured, @"NSInvalidArgumentException should be thrown.");
 }
 
 #pragma mark - Helpers
