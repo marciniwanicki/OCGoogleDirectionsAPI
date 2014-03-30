@@ -7,6 +7,7 @@
 //
 
 #import "OCDirectionsRequestURLCreatorJSON.h"
+#import "OCAssertParameter.h"
 
 static NSString *const kOCGoogleDirectionsAPIHTTP = @"http://";
 static NSString *const kOCGoogleDirectionsAPIHTTPS = @"https://";
@@ -31,6 +32,9 @@ static NSString *const kOCGoogleDirectionsRequestAttributeSeparator = @"|";
 #pragma mark - Public methods
 - (NSString *)stringFromRequest:(OCDirectionsRequest *)request useHttps:(BOOL)useHttps andKey:(NSString *)key
 {
+	OCAssertParameterNotNil(request, @"Request is nil.");
+    OCAssertParameterNotNil(key, @"Key is nil.");
+	
     NSMutableString *string = [self baseStringWithHttps:useHttps];
     
     [self appendOrigin:request toString:string];
@@ -49,6 +53,9 @@ static NSString *const kOCGoogleDirectionsRequestAttributeSeparator = @"|";
 
 - (NSURL *)urlFromRequest:(OCDirectionsRequest *)request useHttps:(BOOL)useHttps andKey:(NSString *)key
 {
+	OCAssertParameterNotNil(request, @"Request is nil.");
+    OCAssertParameterNotNil(key, @"Key is nil.");
+	
     NSString *requestString = [self stringFromRequest:request useHttps:useHttps andKey:key];
     NSURL *url = [[NSURL alloc] initWithString:requestString];
     return url;
