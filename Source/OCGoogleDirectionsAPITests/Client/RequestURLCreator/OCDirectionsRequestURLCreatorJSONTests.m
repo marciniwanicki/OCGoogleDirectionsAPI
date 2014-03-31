@@ -10,8 +10,9 @@
 #import "OCDirectionsRequestURLCreator.h"
 #import "OCDirectionsRequestURLCreatorJSON.h"
 #import "OCDirectionsRequest.h"
+#import "OCDirectionsResponse.h"
 
-static NSString *const kTestKey = @"0123456789abcde";
+static NSString *const kTestKey = @"0123456789abcdef";
 
 @interface OCDirectionsRequestURLCreatorJSONTests : XCTestCase
 
@@ -40,8 +41,8 @@ static NSString *const kTestKey = @"0123456789abcde";
     XCTAssertTrue([self.urlCreator conformsToProtocol:@protocol(OCDirectionsRequestURLCreator)]);
 }
 
-#pragma mark - Test when arguments are invalid
-- (void)testWhenRequestIsNil
+#pragma mark - Test stringFromRequest:useHttps:andKey: when arguments are invalid
+- (void)testStringFromRequestWhenRequestIsNil
 {
 	// given
 	OCDirectionsRequest *request = nil;
@@ -51,7 +52,7 @@ static NSString *const kTestKey = @"0123456789abcde";
 	XCTAssertThrowsSpecificNamed([self.urlCreator stringFromRequest:request useHttps:YES andKey:key], NSException, NSInvalidArgumentException);
 }
 
-- (void)testWhenKeyIsNil
+- (void)testStringFromRequestWhenKeyIsNil
 {
 	// given
 	OCDirectionsRequest *request = [self prepareRequest];
@@ -61,7 +62,7 @@ static NSString *const kTestKey = @"0123456789abcde";
 	XCTAssertThrowsSpecificNamed([self.urlCreator stringFromRequest:request useHttps:YES andKey:key], NSException, NSInvalidArgumentException);
 }
 
-- (void)testWhenRequestAndKeyAreNil
+- (void)testStringFromRequestWhenRequestAndKeyAreNil
 {
 	// given
 	OCDirectionsRequest *request = nil;
@@ -69,6 +70,99 @@ static NSString *const kTestKey = @"0123456789abcde";
 	
 	// then
 	XCTAssertThrowsSpecificNamed([self.urlCreator stringFromRequest:request useHttps:YES andKey:key], NSException, NSInvalidArgumentException);
+}
+
+#pragma mark - Test stringFromRequest:useHttps:andKey: when arguments are valid
+- (void)testStringFromRequestWhenAllArgumentsAreValid
+{
+	// given
+	OCDirectionsRequest *request = [self prepareRequest];
+	NSString *key = [self prepareTestKey];
+	
+	// when
+	NSString *response = [self.urlCreator stringFromRequest:request useHttps:YES andKey:key];
+	
+	// then
+	XCTAssertNotNil(response);
+	XCTAssertEqualObjects(@"https://maps.googleapis.com/maps/api/directions/json?origin=London&destination=Lodz&sensor=false&key=0123456789abcdef", response);
+}
+
+- (void)testStringFromRequestWhenSensorIsTrue
+{
+	// given
+	OCDirectionsRequest *request = [self prepareRequestWithSensor];
+	NSString *key = [self prepareTestKey];
+	
+	// when
+	NSString *response = [self.urlCreator stringFromRequest:request useHttps:YES andKey:key];
+	
+	// then
+	XCTAssertNotNil(response);
+	XCTAssertEqualObjects(@"https://maps.googleapis.com/maps/api/directions/json?origin=London&destination=Lodz&sensor=true&key=0123456789abcdef", response);
+}
+
+- (void)testStringFromRequestWhenTravelModeIsDriving
+{
+	// given
+	OCDirectionsRequest *request = [self prepareRequest];
+	request.travelMode = OCDirectionsRequestTravelModeDriving;
+	
+	NSString *key = [self prepareTestKey];
+	
+	// when
+	NSString *response = [self.urlCreator stringFromRequest:request useHttps:YES andKey:key];
+	
+	// then
+	XCTAssertNotNil(response);
+	XCTAssertEqualObjects(@"https://maps.googleapis.com/maps/api/directions/json?origin=London&destination=Lodz&sensor=false&key=0123456789abcdef", response); // no mode parameter, it is default mode
+}
+
+- (void)testStringFromRequestWhenTravelModeIsWalking
+{
+	// given
+	OCDirectionsRequest *request = [self prepareRequest];
+	request.travelMode = OCDirectionsRequestTravelModeWalking;
+	
+	NSString *key = [self prepareTestKey];
+	
+	// when
+	NSString *response = [self.urlCreator stringFromRequest:request useHttps:YES andKey:key];
+	
+	// then
+	XCTAssertNotNil(response);
+	XCTAssertEqualObjects(@"https://maps.googleapis.com/maps/api/directions/json?origin=London&destination=Lodz&sensor=false&mode=walking&key=0123456789abcdef", response);
+}
+
+- (void)testStringFromRequestWhenTravelModeIsBicycling
+{
+	// given
+	OCDirectionsRequest *request = [self prepareRequest];
+	request.travelMode = OCDirectionsRequestTravelModeBicycling;
+	
+	NSString *key = [self prepareTestKey];
+	
+	// when
+	NSString *response = [self.urlCreator stringFromRequest:request useHttps:YES andKey:key];
+	
+	// then
+	XCTAssertNotNil(response);
+	XCTAssertEqualObjects(@"https://maps.googleapis.com/maps/api/directions/json?origin=London&destination=Lodz&sensor=false&mode=bicycling&key=0123456789abcdef", response);
+}
+
+- (void)testStringFromRequestWhenTravelModeIsTransit
+{
+	// given
+	OCDirectionsRequest *request = [self prepareRequest];
+	request.travelMode = OCDirectionsRequestTravelModeTransit;
+	
+	NSString *key = [self prepareTestKey];
+	
+	// when
+	NSString *response = [self.urlCreator stringFromRequest:request useHttps:YES andKey:key];
+	
+	// then
+	XCTAssertNotNil(response);
+	XCTAssertEqualObjects(@"https://maps.googleapis.com/maps/api/directions/json?origin=London&destination=Lodz&sensor=false&mode=transit&key=0123456789abcdef", response);
 }
 
 #pragma mark - Helpers
@@ -80,6 +174,12 @@ static NSString *const kTestKey = @"0123456789abcde";
 - (OCDirectionsRequest *)prepareRequest
 {
 	OCDirectionsRequest *request = [OCDirectionsRequest requestWithOriginString:@"London" andDestinationString:@"Lodz" sensor:NO];
+	return request;
+}
+									
+- (OCDirectionsRequest *)prepareRequestWithSensor
+{
+	OCDirectionsRequest *request = [OCDirectionsRequest requestWithOriginString:@"London" andDestinationString:@"Lodz" sensor:YES];
 	return request;
 }
 
