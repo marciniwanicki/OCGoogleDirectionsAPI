@@ -120,7 +120,7 @@ The API allows to choose one of the following travel modes:
 * `OCDirectionsRequestTravelModeTransit`
 
 ```objc
-[request setTravelMode:@(OCDirectionsRequestTravelModeBicycling)];
+[request setTravelMode:OCDirectionsRequestTravelModeBicycling];
 ```
 
 ### Unit
@@ -131,7 +131,7 @@ Available units:
 * `OCDirectionsRequestUnitImperia`
 
 ```objc
-[request setUnit:@(OCDirectionsRequestUnitMetric)];
+[request setUnit:OCDirectionsRequestUnitMetric];
 ```
 
 ### Waypoints
