@@ -387,6 +387,44 @@
 	[self verifyPropertiesWithDefaultValuesOfRequest:request];
 }
 
+#pragma mark - isValid
+- (void)testIsValidWhenParametersAreFine
+{
+	// given
+	NSString *originString = [self prepareFirstString];
+	CLLocation *originLocation = [self prepareFirstLocation];
+	NSString *destinationString = [self prepareSecondString];
+	CLLocation *destinationLocation = [self prepareSecondLocation];
+	
+	OCDirectionsRequest *requestLL = [OCDirectionsRequest requestWithOriginLocation:originLocation
+															 andDestinationLocation:destinationLocation
+																			 sensor:YES];
+	
+	OCDirectionsRequest *requestLS = [OCDirectionsRequest requestWithOriginLocation:originLocation
+															   andDestinationString:destinationString
+																			 sensor:YES];
+	
+	OCDirectionsRequest *requestSL = [OCDirectionsRequest requestWithOriginString:originString
+														   andDestinationLocation:destinationLocation
+																		   sensor:YES];
+
+	OCDirectionsRequest *requestSS = [OCDirectionsRequest requestWithOriginString:originString
+															 andDestinationString:destinationString
+																		   sensor:YES];
+	
+	// when
+	BOOL requestLLIsValid = [requestLL isValid];
+	BOOL requestLSIsValid = [requestLS isValid];
+	BOOL requestSLIsValid = [requestSL isValid];
+	BOOL requestSSIsValid = [requestSS isValid];
+	
+	//then
+	XCTAssertTrue(requestLLIsValid);
+	XCTAssertTrue(requestLSIsValid);
+	XCTAssertTrue(requestSLIsValid);
+	XCTAssertTrue(requestSSIsValid);
+}
+
 #pragma mark - Custom verifiers
 - (void)verifyPropertiesWithDefaultValuesOfRequest:(OCDirectionsRequest *)request
 {
