@@ -1,4 +1,4 @@
 language: objective-c
 script:
   - xctool -project Source/OCGoogleDirectionsAPI.xcodeproj -scheme OCGoogleDirectionsAPI build
-  - xcodebuild test -project Source/OCGoogleDirectionsAPI.xcodeproj -scheme OCGoogleDirectionsAPITests -sdk iphonesimulator7.0 ONLY_ACTIVE_ARCH=NO
+  - xcodebuild test -project Source/OCGoogleDirectionsAPI.xcodeproj -scheme OCGoogleDirectionsAPITests -sdk iphonesimulator7.1 ONLY_ACTIVE_ARCH=NO
