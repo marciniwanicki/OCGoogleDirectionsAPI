@@ -46,6 +46,7 @@ static NSString *const kCGGoogleDirectionsResponseAttributeRouteWarnings = @"war
     [self loadWaypointOrder];
     [self loadOverviewPolyline];
     [self loadBounds];
+	[self loadSummary];
 }
 
 - (void)loadLegs
@@ -95,6 +96,12 @@ static NSString *const kCGGoogleDirectionsResponseAttributeRouteWarnings = @"war
     OCDirectionsBounds *bounds = [OCDirectionsBounds boundsFromDictionary:boundsDictionary];
     
     _bounds = bounds;
+}
+
+- (void)loadSummary
+{
+    NSString *summary = [_dictionary objectForKey:kCGGoogleDirectionsResponseAttributeRouteSummary];
+    _summary = summary;
 }
 
 @end
