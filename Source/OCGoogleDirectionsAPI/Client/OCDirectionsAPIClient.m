@@ -21,10 +21,6 @@ static NSString *_defaultKey;
 
 - (instancetype)init
 {
-    if (_defaultKey == nil) {
-        [NSException raise:NSInternalInconsistencyException format:@"The Directions API key has not been provided."];
-    }
-    
     return [self initWithKey:_defaultKey];
 }
 
