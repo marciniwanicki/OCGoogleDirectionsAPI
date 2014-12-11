@@ -82,6 +82,14 @@
     return self;
 }
 
+- (OCDirectionsRequestValidator *)requestValidator
+{
+    if (_requestValidator == nil) {
+        self.requestValidator = [OCDirectionsRequestValidator new];
+    }
+    return _requestValidator;
+}
+
 @end
 
 @implementation OCDirectionsRequest (Creation)
@@ -147,14 +155,6 @@
 {
     BOOL isValid = [self.requestValidator isValid:self];
     return isValid;
-}
-
-- (OCDirectionsRequestValidator *)requestValidator
-{
-    if (_requestValidator == nil) {
-        self.requestValidator = [OCDirectionsRequestValidator new];
-    }
-    return _requestValidator;
 }
 
 @end
