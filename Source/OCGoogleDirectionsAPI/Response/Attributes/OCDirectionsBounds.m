@@ -49,7 +49,7 @@ static NSString *const kCGGoogleDirectionsResponseAttributeBoundsNortheast = @"n
 
 - (void)loadNortheast
 {
-    NSDictionary *northeastDictionary = [_dictionary objectForKey:kCGGoogleDirectionsResponseAttributeBoundsSouthwest];
+    NSDictionary *northeastDictionary = [_dictionary objectForKey:kCGGoogleDirectionsResponseAttributeBoundsNortheast];
     CLLocationCoordinate2D coordinate = [CLLocation coordinateFromDictionary:northeastDictionary];
     
     _northeast = coordinate;
