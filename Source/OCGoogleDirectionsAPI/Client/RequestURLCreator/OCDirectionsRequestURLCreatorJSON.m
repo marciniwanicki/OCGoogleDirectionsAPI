@@ -33,8 +33,7 @@ static NSString *const kOCGoogleDirectionsRequestAttributeSeparator = @"|";
 - (NSString *)stringFromRequest:(OCDirectionsRequest *)request useHttps:(BOOL)useHttps andKey:(NSString *)key
 {
 	OCAssertParameterNotNil(request, @"Request is nil.");
-    OCAssertParameterNotNil(key, @"Key is nil.");
-	
+
     NSMutableString *string = [self baseStringWithHttps:useHttps];
     
     [self appendOrigin:request toString:string];
@@ -45,8 +44,10 @@ static NSString *const kOCGoogleDirectionsRequestAttributeSeparator = @"|";
     [self appendRestrictions:request toString:string];
     [self appendRegion:request toString:string];
     [self appendAlternatives:request toString:string];
-    [self appendKey:key toString:string];
-    
+    if(key != nil) {
+        [self appendKey:key toString:string];
+    }
+
     NSString *stringEncoded = [string stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     return stringEncoded;
 }
@@ -54,8 +55,7 @@ static NSString *const kOCGoogleDirectionsRequestAttributeSeparator = @"|";
 - (NSURL *)urlFromRequest:(OCDirectionsRequest *)request useHttps:(BOOL)useHttps andKey:(NSString *)key
 {
 	OCAssertParameterNotNil(request, @"Request is nil.");
-    OCAssertParameterNotNil(key, @"Key is nil.");
-	
+
     NSString *requestString = [self stringFromRequest:request useHttps:useHttps andKey:key];
     NSURL *url = [[NSURL alloc] initWithString:requestString];
     return url;
