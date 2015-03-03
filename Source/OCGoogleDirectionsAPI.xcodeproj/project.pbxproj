@@ -13,7 +13,6 @@
 		27A8A2E918CF8ED000C24A6A /* OCDirectionsCommonTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E91018C65A580035B80F /* OCDirectionsCommonTypes.m */; };
 		27A8A2EA18CF8EDA00C24A6A /* OCDirectionsAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E90918C65A580035B80F /* OCDirectionsAPIClient.m */; };
 		27A8A2EB18CF8EE000C24A6A /* OCDirectionsRequestURLCreatorJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E90D18C65A580035B80F /* OCDirectionsRequestURLCreatorJSON.m */; };
-		27A8A2EC18CF8EE500C24A6A /* OCDirectionsRequestValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E91A18C65A580035B80F /* OCDirectionsRequestValidator.m */; };
 		27A8A2ED18CF8EE900C24A6A /* OCDirectionsBounds.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E91E18C65A580035B80F /* OCDirectionsBounds.m */; };
 		27A8A2EE18CF8EEC00C24A6A /* OCDirectionsDistance.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E92018C65A580035B80F /* OCDirectionsDistance.m */; };
 		27A8A2EF18CF8EEE00C24A6A /* OCDirectionsDuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E92218C65A580035B80F /* OCDirectionsDuration.m */; };
@@ -30,7 +29,6 @@
 		27C6EB8618C65A590035B80F /* OCDirectionsRequestURLCreatorJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E90D18C65A580035B80F /* OCDirectionsRequestURLCreatorJSON.m */; };
 		27C6EB8818C65A590035B80F /* OCDirectionsCommonTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E91018C65A580035B80F /* OCDirectionsCommonTypes.m */; };
 		27C6EB8A18C65A590035B80F /* OCDirectionsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E91718C65A580035B80F /* OCDirectionsRequest.m */; };
-		27C6EB8C18C65A590035B80F /* OCDirectionsRequestValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E91A18C65A580035B80F /* OCDirectionsRequestValidator.m */; };
 		27C6EB8E18C65A590035B80F /* OCDirectionsBounds.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E91E18C65A580035B80F /* OCDirectionsBounds.m */; };
 		27C6EB9018C65A590035B80F /* OCDirectionsDistance.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E92018C65A580035B80F /* OCDirectionsDistance.m */; };
 		27C6EB9218C65A590035B80F /* OCDirectionsDuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E92218C65A580035B80F /* OCDirectionsDuration.m */; };
@@ -94,8 +92,6 @@
 		27C6E91418C65A580035B80F /* OCDirectionsResponseVehicleType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDirectionsResponseVehicleType.h; sourceTree = "<group>"; };
 		27C6E91618C65A580035B80F /* OCDirectionsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDirectionsRequest.h; sourceTree = "<group>"; };
 		27C6E91718C65A580035B80F /* OCDirectionsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDirectionsRequest.m; sourceTree = "<group>"; };
-		27C6E91918C65A580035B80F /* OCDirectionsRequestValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDirectionsRequestValidator.h; sourceTree = "<group>"; };
-		27C6E91A18C65A580035B80F /* OCDirectionsRequestValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDirectionsRequestValidator.m; sourceTree = "<group>"; };
 		27C6E91D18C65A580035B80F /* OCDirectionsBounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDirectionsBounds.h; sourceTree = "<group>"; };
 		27C6E91E18C65A580035B80F /* OCDirectionsBounds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDirectionsBounds.m; sourceTree = "<group>"; };
 		27C6E91F18C65A580035B80F /* OCDirectionsDistance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDirectionsDistance.h; sourceTree = "<group>"; };
@@ -305,18 +301,8 @@
 			children = (
 				27C6E91618C65A580035B80F /* OCDirectionsRequest.h */,
 				27C6E91718C65A580035B80F /* OCDirectionsRequest.m */,
-				27C6E91818C65A580035B80F /* Validator */,
 			);
 			path = Request;
-			sourceTree = "<group>";
-		};
-		27C6E91818C65A580035B80F /* Validator */ = {
-			isa = PBXGroup;
-			children = (
-				27C6E91918C65A580035B80F /* OCDirectionsRequestValidator.h */,
-				27C6E91A18C65A580035B80F /* OCDirectionsRequestValidator.m */,
-			);
-			path = Validator;
 			sourceTree = "<group>";
 		};
 		27C6E91B18C65A580035B80F /* Response */ = {
@@ -476,7 +462,6 @@
 				27C6EB9218C65A590035B80F /* OCDirectionsDuration.m in Sources */,
 				27C6EB9818C65A590035B80F /* OCDirectionsRoute.m in Sources */,
 				27C6EB8E18C65A590035B80F /* OCDirectionsBounds.m in Sources */,
-				27C6EB8C18C65A590035B80F /* OCDirectionsRequestValidator.m in Sources */,
 				27C6EB9A18C65A590035B80F /* OCDirectionsStep.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -489,7 +474,6 @@
 				27A8A2E718CF8B9900C24A6A /* OCDirectionsRequestTests.m in Sources */,
 				27A8A2EE18CF8EEC00C24A6A /* OCDirectionsDistance.m in Sources */,
 				27A8A2EF18CF8EEE00C24A6A /* OCDirectionsDuration.m in Sources */,
-				27A8A2EC18CF8EE500C24A6A /* OCDirectionsRequestValidator.m in Sources */,
 				27A8A2F518CF8F0000C24A6A /* OCDirectionsResponse.m in Sources */,
 				27A8A2ED18CF8EE900C24A6A /* OCDirectionsBounds.m in Sources */,
 				27A8A2F318CF8EFB00C24A6A /* OCDirectionsStep.m in Sources */,

@@ -102,6 +102,13 @@ static NSString *const kOCGoogleDirectionsRequestAttributeSeparator = @"|";
 
 - (void)appendSensor:(OCDirectionsRequest *)request toString:(NSMutableString *)string
 {
+	/*
+		Checks if sensor flag is set. If no, just skip it as it is no longer required. 
+	 */
+	if (!request.sensorFlagUsed) {
+		return;
+	}
+	
     [string appendString:kOCGoogleDirectionsRequestAttributeSensor];
     
     NSString *sensorString = [self stringFromBOOL:request.sensor];

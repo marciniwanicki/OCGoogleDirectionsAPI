@@ -16,6 +16,9 @@
 
 @implementation OCDIrestionsRequestTests
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+
 #pragma mark - Test helpers
 - (void)testPrepareFirstLocationHelper
 {
@@ -460,5 +463,7 @@
 	NSString *string = @"Reading";
 	return string;
 }
+
+#pragma clang diagnostic pop
 
 @end

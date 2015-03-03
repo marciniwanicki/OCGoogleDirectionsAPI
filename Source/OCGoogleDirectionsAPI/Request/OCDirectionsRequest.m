@@ -8,11 +8,17 @@
 
 #import "OCDirectionsRequest.h"
 #import "OCAssertParameter.h"
-#import "OCDirectionsRequestValidator.h"
 
 @interface OCDirectionsRequest ()
 
-@property (nonatomic, strong) OCDirectionsRequestValidator *requestValidator;
+@property (nonatomic) CLLocation *originLocation;
+@property (nonatomic, copy) NSString *originString;
+
+@property (nonatomic) CLLocation *destinationLocation;
+@property (nonatomic, copy) NSString *destinationString;
+
+@property (nonatomic) BOOL sensor;
+@property (nonatomic, getter=isSensorFlagUsed) BOOL sensorFlagUsed;
 
 @end
 
@@ -30,54 +36,95 @@
 
 #pragma mark - Private init
 - (instancetype)initWithOriginLocation:(CLLocation *)origin
+				andDestinationLocation:(CLLocation *)destination
+{
+	self = [super init];
+	if (self) {
+		self.originLocation = origin;
+		self.destinationLocation = destination;
+	}
+	
+	return self;
+}
+
+- (instancetype)initWithOriginLocation:(CLLocation *)origin
                 andDestinationLocation:(CLLocation *)destination
                                 sensor:(BOOL)sensor
 {
-    self = [super init];
+    self = [self initWithOriginLocation:origin andDestinationLocation:destination];
     if (self) {
-        _originLocation = origin;
-        _destinationLocation = destination;
-        _sensor = sensor;
+        self.sensor = sensor;
+		self.sensorFlagUsed = YES;
     }
     
     return self;
 }
 
 - (instancetype)initWithOriginString:(NSString *)origin
+			  andDestinationLocation:(CLLocation *)destination
+{
+	self = [super init];
+	if (self) {
+		self.originString = origin;
+		self.destinationLocation = destination;
+	}
+	return self;
+}
+
+- (instancetype)initWithOriginString:(NSString *)origin
               andDestinationLocation:(CLLocation *)destination
                               sensor:(BOOL)sensor
 {
-    self = [super init];
+    self = [self initWithOriginString:origin andDestinationLocation:destination];
     if (self) {
-        _originString = origin;
-        _destinationLocation = destination;
-        _sensor = sensor;
+        self.sensor = sensor;
+		self.sensorFlagUsed = YES;
     }
     return self;
+}
+
+- (instancetype)initWithOriginLocation:(CLLocation *)origin
+				  andDestinationString:(NSString *)destination
+{
+	self = [super init];
+	if (self) {
+		self.originLocation = origin;
+		self.destinationString = destination;
+	}
+	return self;
 }
 
 - (instancetype)initWithOriginLocation:(CLLocation *)origin
                   andDestinationString:(NSString *)destination
                                 sensor:(BOOL)sensor
 {
-    self = [super init];
+    self = [self initWithOriginLocation:origin andDestinationString:destination];
     if (self) {
-        _originLocation = origin;
-        _destinationString = destination;
-        _sensor = sensor;
+        self.sensor = sensor;
+		self.sensorFlagUsed = YES;
     }
     return self;
+}
+
+- (instancetype)initWithOriginString:(NSString *)origin
+				andDestinationString:(NSString *)destination
+{
+	self = [super init];
+	if (self) {
+		self.originString = origin;
+		self.destinationString = destination;
+	}
+	return self;
 }
 
 - (instancetype)initWithOriginString:(NSString *)origin
                 andDestinationString:(NSString *)destination
                               sensor:(BOOL)sensor
 {
-    self = [super init];
+    self = [self initWithOriginString:origin andDestinationString:destination];
     if (self) {
-        _originString = origin;
-        _destinationString = destination;
-        _sensor = sensor;
+        self.sensor = sensor;
+		self.sensorFlagUsed = YES;
     }
     return self;
 }
@@ -85,6 +132,19 @@
 @end
 
 @implementation OCDirectionsRequest (Creation)
+
++ (instancetype)requestWithOriginLocation:(CLLocation *)origin
+				   andDestinationLocation:(CLLocation *)destination
+{
+	OCAssertParameterNotNil(origin, @"Origin location is nil.");
+	OCAssertParameterNotNil(destination, @"Destination location is nil.");
+	
+	OCDirectionsRequest *request = [[OCDirectionsRequest alloc]
+									initWithOriginLocation:origin
+									andDestinationLocation:destination];
+	
+	return request;
+}
 
 + (instancetype)requestWithOriginLocation:(CLLocation *)origin
                    andDestinationLocation:(CLLocation *)destination
@@ -99,6 +159,18 @@
                                     sensor:sensor];
     
     return request;
+}
+
++ (instancetype)requestWithOriginString:(NSString *)origin
+				 andDestinationLocation:(CLLocation *)destination
+{
+	OCAssertParameterNotNil(origin, @"Origin string is nil.");
+	OCAssertParameterNotNil(destination, @"Destination location is nil.");
+	
+	OCDirectionsRequest *request = [[OCDirectionsRequest alloc]
+									initWithOriginString:origin
+									andDestinationLocation:destination];
+	return request;
 }
 
 + (instancetype)requestWithOriginString:(NSString *)origin
@@ -129,32 +201,55 @@
     return request;
 }
 
++ (instancetype)requestWithOriginLocation:(CLLocation *)origin
+					 andDestinationString:(NSString *)destination
+{
+	OCAssertParameterNotNil(origin, @"Origin location is nil.");
+	OCAssertParameterNotNil(destination, @"Destination string is nil.");
+	
+	OCDirectionsRequest *request = [[OCDirectionsRequest alloc]
+									initWithOriginLocation:origin
+									andDestinationString:destination];
+	return request;
+}
+
 + (instancetype)requestWithOriginString:(NSString *)origin
                    andDestinationString:(NSString *)destination
-                                 sensor:(BOOL)sensor
 {
     OCAssertParameterNotNil(origin, @"Origin string is nil.");
     OCAssertParameterNotNil(destination, @"Destination string is nil.");
     
     OCDirectionsRequest *request = [[OCDirectionsRequest alloc]
                                     initWithOriginString:origin
-                                    andDestinationString:destination
-                                    sensor:sensor];
+                                    andDestinationString:destination];
     return request;
+}
+
++ (instancetype)requestWithOriginString:(NSString *)origin
+				   andDestinationString:(NSString *)destination
+								 sensor:(BOOL)sensor
+{
+	OCAssertParameterNotNil(origin, @"Origin string is nil.");
+	OCAssertParameterNotNil(destination, @"Destination string is nil.");
+	
+	OCDirectionsRequest *request = [[OCDirectionsRequest alloc]
+									initWithOriginString:origin
+									andDestinationString:destination
+									sensor:sensor];
+	return request;
 }
 
 - (BOOL)isValid
 {
-    BOOL isValid = [self.requestValidator isValid:self];
-    return isValid;
-}
-
-- (OCDirectionsRequestValidator *)requestValidator
-{
-    if (_requestValidator == nil) {
-        self.requestValidator = [OCDirectionsRequestValidator new];
-    }
-    return _requestValidator;
+	if (self.originLocation == nil && self.originString == nil) {
+		return NO;
+	}
+	
+	if (self.destinationLocation == nil && self.destinationString == nil) {
+		return NO;
+	}
+	
+	return YES;
 }
 
 @end

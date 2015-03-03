@@ -23,6 +23,9 @@ static NSString *const kTestKey = @"0123456789abcdef";
 
 @implementation OCDirectionsRequestURLCreatorJSONTests
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+
 - (void)setUp
 {
     [super setUp];
@@ -88,6 +91,20 @@ static NSString *const kTestKey = @"0123456789abcdef";
 	XCTAssertEqualObjects(@"https://maps.googleapis.com/maps/api/directions/json?origin=London&destination=Lodz&sensor=false&key=0123456789abcdef", response);
 }
 
+- (void)testStringFromRequestWhenAllArgumentsAreValidButNoSensor
+{
+	// given
+	OCDirectionsRequest *request = [self prepareNoSensorRequest];
+	NSString *key = [self prepareTestKey];
+	
+	// when
+	NSString *response = [self.urlCreator stringFromRequest:request useHttps:YES andKey:key];
+	
+	// then
+	XCTAssertNotNil(response);
+	XCTAssertEqualObjects(@"https://maps.googleapis.com/maps/api/directions/json?origin=London&destination=Lodz&key=0123456789abcdef", response);
+}
+
 - (void)testStringFromRequestWhenSensorIsTrue
 {
 	// given
@@ -116,6 +133,21 @@ static NSString *const kTestKey = @"0123456789abcdef";
 	// then
 	XCTAssertNotNil(response);
 	XCTAssertEqualObjects(@"https://maps.googleapis.com/maps/api/directions/json?origin=20.100000,30.100000&destination=40.100000,50.100000&sensor=false&key=0123456789abcdef", response);
+}
+
+- (void)testStringFromRequestWhenOriginAndDestinationAreLocationsButNoSensor
+{
+	// given
+	OCDirectionsRequest *request = [OCDirectionsRequest requestWithOriginLocation:[self prepareFirstLocation]
+														   andDestinationLocation:[self prepareSecondLocation]];
+	NSString *key = [self prepareTestKey];
+	
+	// when
+	NSString *response = [self.urlCreator stringFromRequest:request useHttps:YES andKey:key];
+	
+	// then
+	XCTAssertNotNil(response);
+	XCTAssertEqualObjects(@"https://maps.googleapis.com/maps/api/directions/json?origin=20.100000,30.100000&destination=40.100000,50.100000&key=0123456789abcdef", response);
 }
 
 - (void)testStringFromRequestWhenOriginIsStringAndDestinationIsLocation
@@ -225,6 +257,12 @@ static NSString *const kTestKey = @"0123456789abcdef";
 	OCDirectionsRequest *request = [OCDirectionsRequest requestWithOriginString:@"London" andDestinationString:@"Lodz" sensor:NO];
 	return request;
 }
+
+- (OCDirectionsRequest *)prepareNoSensorRequest
+{
+	OCDirectionsRequest *request = [OCDirectionsRequest requestWithOriginString:@"London" andDestinationString:@"Lodz"];
+	return request;
+}
 									
 - (OCDirectionsRequest *)prepareRequestWithSensor
 {
@@ -243,5 +281,7 @@ static NSString *const kTestKey = @"0123456789abcdef";
 	CLLocation *location = [[CLLocation alloc] initWithLatitude:40.1 longitude:50.1];
 	return location;
 }
+
+#pragma clang diagnostic pop
 
 @end

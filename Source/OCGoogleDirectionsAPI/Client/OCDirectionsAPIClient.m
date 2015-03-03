@@ -10,8 +10,8 @@
 
 @interface OCDirectionsAPIClient ()
 
-@property (nonatomic, copy, readonly) NSString *key;
-@property (nonatomic, assign, readonly) BOOL useHttps;
+@property (nonatomic, copy) NSString *key;
+@property (nonatomic) BOOL useHttps;
 
 @end
 
@@ -37,8 +37,9 @@ static NSString *_defaultKey;
 {
     self = [super init];
     if (self) {
-        _key = key;
-        _useHttps = useHttps;
+        self.key = key;
+        self.useHttps = useHttps;
+		self.requestURLCreator = [OCDirectionsRequestURLCreatorJSON new];
     }
     return self;
 }
@@ -82,14 +83,6 @@ static NSString *_defaultKey;
 {
 	NSURL *url = [self.requestURLCreator urlFromRequest:request useHttps:self.useHttps andKey:self.key];
 	return url;
-}
-
-- (id<OCDirectionsRequestURLCreator>)requestURLCreator
-{
-    if (_requestURLCreator == nil) {
-        self.requestURLCreator = [OCDirectionsRequestURLCreatorJSON new];
-    }
-    return _requestURLCreator;
 }
 
 @end
