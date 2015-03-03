@@ -221,8 +221,13 @@ static NSString *const kOCGoogleDirectionsRequestAttributeSeparator = @"|";
 
 - (void)appendKey:(NSString *)key toString:(NSMutableString *)string
 {
-    [string appendString:kOCGoogleDirectionsRequestAttributeKey];
-    [string appendString:key];
+	/**
+	 API key is not requred. Empty string when key is not provided.
+	 */
+	if (key.length) {
+		[string appendString:kOCGoogleDirectionsRequestAttributeKey];
+		[string appendString:key];
+	}
 }
 
 #pragma mark - Helpers

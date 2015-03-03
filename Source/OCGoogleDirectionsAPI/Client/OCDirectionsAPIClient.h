@@ -12,6 +12,8 @@
 #import "OCDirectionsRequestURLCreator.h"
 #import "OCDirectionsRequestURLCreatorJSON.h"
 
+extern NSString *const kOCDirectionsAPIClientAPIKeyNotProvided;
+
 typedef void (^OCDirectionsRequestCallback)(OCDirectionsResponse *response, NSError *error);
 
 @interface OCDirectionsAPIClient : NSObject
@@ -21,6 +23,8 @@ typedef void (^OCDirectionsRequestCallback)(OCDirectionsResponse *response, NSEr
 - (instancetype)init;
 
 - (instancetype)initWithKey:(NSString *)key;
+
+- (instancetype)initWithNoKeyUseHttps:(BOOL)useHttps;
 
 - (instancetype)initWithKey:(NSString *)key useHttps:(BOOL)https NS_DESIGNATED_INITIALIZER;
 

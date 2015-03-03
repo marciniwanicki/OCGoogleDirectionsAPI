@@ -8,6 +8,8 @@
 
 #import "OCDirectionsAPIClient.h"
 
+NSString *const kOCDirectionsAPIClientAPIKeyNotProvided = @"";
+
 @interface OCDirectionsAPIClient ()
 
 @property (nonatomic, copy) NSString *key;
@@ -21,11 +23,17 @@ static NSString *_defaultKey;
 
 - (instancetype)init
 {
-    if (_defaultKey == nil) {
-        [NSException raise:NSInternalInconsistencyException format:@"The Directions API key has not been provided."];
-    }
-    
-    return [self initWithKey:_defaultKey];
+	return [self initWithKey:_defaultKey?:kOCDirectionsAPIClientAPIKeyNotProvided];
+}
+
+- (instancetype)initWithNoKey
+{
+	return [self initWithKey:kOCDirectionsAPIClientAPIKeyNotProvided];
+}
+
+- (instancetype)initWithNoKeyUseHttps:(BOOL)useHttps
+{
+	return [self initWithKey:kOCDirectionsAPIClientAPIKeyNotProvided useHttps:useHttps];
 }
 
 - (instancetype)initWithKey:(NSString *)key

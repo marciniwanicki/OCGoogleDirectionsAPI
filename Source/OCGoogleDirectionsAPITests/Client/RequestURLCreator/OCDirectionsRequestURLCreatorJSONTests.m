@@ -76,6 +76,20 @@ static NSString *const kTestKey = @"0123456789abcdef";
 	XCTAssertThrowsSpecificNamed([self.urlCreator stringFromRequest:request useHttps:YES andKey:key], NSException, NSInvalidArgumentException);
 }
 
+- (void)testStringFromRequestWhenKeyIsNotProvided
+{
+	// given
+	OCDirectionsRequest *request = [self prepareRequest];
+	NSString *key = @"";
+	
+	// when
+	NSString *response = [self.urlCreator stringFromRequest:request useHttps:YES andKey:key];
+	
+	// then
+	XCTAssertNotNil(response);
+	XCTAssertEqualObjects(@"https://maps.googleapis.com/maps/api/directions/json?origin=London&destination=Lodz&sensor=false", response);
+}
+
 #pragma mark - Test stringFromRequest:useHttps:andKey: when arguments are valid
 - (void)testStringFromRequestWhenAllArgumentsAreValid
 {
