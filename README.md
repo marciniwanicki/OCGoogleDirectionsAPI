@@ -31,16 +31,17 @@ It's really simple. To get directions you need to do <b>4 easy steps</b>.
     #import <OCGoogleDirectionsAPI/OCGoogleDirectionsAPI.h>
     ````
  
-2. Secondly you must provide your Google API Key. The method `application:didFinishLaunchingWithOptions:` in AppDelegate seams to be a good place for this code.
+2. Secondly you can provide your Google API Key. The method `application:didFinishLaunchingWithOptions:` in AppDelegate seams to be a good place for this code.
+However the API Key is now optional. Please check [API Key section](https://developers.google.com/maps/documentation/directions/#api_key) to decide if you need the key or not.
 
    ```objc
-   [OCDirectionsAPIClient provideAPIKey:@"<YOUR KEY>"];
+   [OCDirectionsAPIClient provideAPIKey:@"<YOUR API KEY>"];
    ```
 
 3. Prepare a `OCDirectionsRequest` object to specify route(s) you want to retrieve from the service.
 
    ```objc
-   OCDirectionsRequest *request = [OCDirectionsRequest requestWithOriginString:@"<ORIGIN>" andDestinationString:@"<DESTINATION>" sensor:NO];
+   OCDirectionsRequest *request = [OCDirectionsRequest requestWithOriginString:@"<ORIGIN>" andDestinationString:@"<DESTINATION>"];
    ```
 
 4. Create an instance of `OCDirectionsAPIClient` and call `directions:response:` method to retrieve required data (`OCDirectionsResponse`) asynchronously.
@@ -60,6 +61,16 @@ It's really simple. To get directions you need to do <b>4 easy steps</b>.
         // some code 
    }];
    ```
+   
+Some init methods of `OCDirectionsAPIClient`:
+   
+   ```objc
+	- (instancetype)initWithKey:(NSString *)key;
+
+	- (instancetype)initWithNoKeyUseHttps:(BOOL)useHttps;
+
+	- (instancetype)initWithKey:(NSString *)key useHttps:(BOOL)https;
+   ```
 
 <b>Sequence diagram</b>
 
@@ -74,11 +85,19 @@ That's all! It's quite easy, isn't it? If you like to know a bit more about requ
 To create an isntance of `OCDirectionsRequest` you can use one of the following factory methods.
 
 ```objc
++ (instancetype)requestWithOriginLocation:(CLLocation *)origin andDestinationLocation:(CLLocation *)destination;
+
 + (instancetype)requestWithOriginLocation:(CLLocation *)origin andDestinationLocation:(CLLocation *)destination sensor:(BOOL)sensor;
+
++ (instancetype)requestWithOriginString:(NSString *)origin andDestinationLocation:(CLLocation *)destination;
 
 + (instancetype)requestWithOriginString:(NSString *)origin andDestinationLocation:(CLLocation *)destination sensor:(BOOL)sensor;
 
++ (instancetype)requestWithOriginLocation:(CLLocation *)origin andDestinationString:(NSString *)destination;
+
 + (instancetype)requestWithOriginLocation:(CLLocation *)origin andDestinationString:(NSString *)destination sensor:(BOOL)sensor;
+
++ (instancetype)requestWithOriginString:(NSString *)origin andDestinationString:(NSString *)destination;
 
 + (instancetype)requestWithOriginString:(NSString *)origin andDestinationString:(NSString *)destination sensor:(BOOL)sensor;
 ```
