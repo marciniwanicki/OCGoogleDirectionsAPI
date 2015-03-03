@@ -26,7 +26,7 @@ typedef void (^OCDirectionsRequestCallback)(OCDirectionsResponse *response, NSEr
 
 - (instancetype)initWithNoKeyUseHttps:(BOOL)useHttps;
 
-- (instancetype)initWithKey:(NSString *)key useHttps:(BOOL)https NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithKey:(NSString *)key useHttps:(BOOL)https;
 
 + (void)provideAPIKey:(NSString *)key;
 
