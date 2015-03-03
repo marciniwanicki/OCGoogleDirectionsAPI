@@ -12,8 +12,6 @@
 #import "OCDirectionsRequestURLCreator.h"
 #import "OCDirectionsRequestURLCreatorJSON.h"
 
-extern NSString *const kOCDirectionsAPIClientAPIKeyNotProvided;
-
 typedef void (^OCDirectionsRequestCallback)(OCDirectionsResponse *response, NSError *error);
 
 @interface OCDirectionsAPIClient : NSObject

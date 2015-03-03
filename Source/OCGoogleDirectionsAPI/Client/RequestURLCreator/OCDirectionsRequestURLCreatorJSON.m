@@ -33,7 +33,6 @@ static NSString *const kOCGoogleDirectionsRequestAttributeSeparator = @"|";
 - (NSString *)stringFromRequest:(OCDirectionsRequest *)request useHttps:(BOOL)useHttps andKey:(NSString *)key
 {
 	OCAssertParameterNotNil(request, @"Request is nil.");
-    OCAssertParameterNotNil(key, @"Key is nil.");
 	
     NSMutableString *string = [self baseStringWithHttps:useHttps];
     
@@ -222,9 +221,9 @@ static NSString *const kOCGoogleDirectionsRequestAttributeSeparator = @"|";
 - (void)appendKey:(NSString *)key toString:(NSMutableString *)string
 {
 	/**
-	 API key is not requred. Empty string when key is not provided.
+	 API key is not requred. 
 	 */
-	if (key.length) {
+	if (key) {
 		[string appendString:kOCGoogleDirectionsRequestAttributeKey];
 		[string appendString:key];
 	}
