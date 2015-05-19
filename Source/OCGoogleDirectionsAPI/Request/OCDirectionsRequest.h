@@ -63,6 +63,12 @@
 @property (nonatomic, copy) NSString *region;
 
 /**
+ You can also set the Directions service to return results is specific language.
+	If language is not supplied, the service will attempt to use the native language of the domain from which the request is sent.
+ */
+@property (nonatomic, copy) NSString *language;
+
+/**
  Directions service may return several routes if you pass alternatives.
  */
 @property (nonatomic) BOOL alternatives;

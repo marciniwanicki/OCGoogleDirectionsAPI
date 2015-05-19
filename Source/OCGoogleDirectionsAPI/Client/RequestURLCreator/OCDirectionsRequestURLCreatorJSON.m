@@ -22,6 +22,7 @@ static NSString *const kOCGoogleDirectionsRequestAttributeWaypointsOptimize = @"
 static NSString *const kOCGoogleDirectionsRequestAttributeRestrictions = @"&avoid=";
 static NSString *const kOCGoogleDirectionsRequestAttributeUnits = @"&units=";
 static NSString *const kOCGoogleDirectionsRequestAttributeRegion = @"&region=";
+static NSString *const kOCGoogleDirectionsRequestAttributeLanguage = @"&language=";
 static NSString *const kOCGoogleDirectionsRequestAttributeKey = @"&key=";
 static NSString *const kOCGoogleDirectionsRequestAttributeAlternatives = @"&alternatives=";
 
@@ -43,6 +44,7 @@ static NSString *const kOCGoogleDirectionsRequestAttributeSeparator = @"|";
     [self appendWaypoints:request toString:string];
     [self appendRestrictions:request toString:string];
     [self appendRegion:request toString:string];
+	[self appendLanguage:request toString:string];
     [self appendAlternatives:request toString:string];
     [self appendKey:key toString:string];
     
@@ -204,6 +206,16 @@ static NSString *const kOCGoogleDirectionsRequestAttributeSeparator = @"|";
     
     [string appendString:kOCGoogleDirectionsRequestAttributeRegion];
     [string appendString:request.region];
+}
+
+- (void)appendLanguage:(OCDirectionsRequest *)request toString:(NSMutableString *)string
+{
+	if (request.language == nil) {
+		return;
+	}
+	
+	[string appendString:kOCGoogleDirectionsRequestAttributeLanguage];
+	[string appendString:request.language];
 }
 
 - (void)appendAlternatives:(OCDirectionsRequest *)request toString:(NSMutableString *)string
