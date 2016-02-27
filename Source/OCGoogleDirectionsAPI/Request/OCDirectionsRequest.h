@@ -74,6 +74,11 @@
 @property (nonatomic) BOOL alternatives;
 
 /**
+ Departure time is required to receive estimated duration with traffic.
+ */
+@property (nonatomic) NSDate *departureTime;
+
+/**
  Indicates whether sensor flag has been used or not.
  */
 @property (nonatomic, getter=isSensorFlagUsed, readonly) BOOL sensorFlagUsed;

@@ -43,6 +43,7 @@ static NSString *const kCGGoogleDirectionsResponseAttributeViaWaypoint = @"via_w
 {
     [self loadDistance];
     [self loadDuration];
+	[self loadDurationInTraffic];
     [self loadEndAddress];
     [self loadEndLocation];
     [self loadStartAddress];
@@ -65,6 +66,14 @@ static NSString *const kCGGoogleDirectionsResponseAttributeViaWaypoint = @"via_w
     OCDirectionsDuration *duration = [OCDirectionsDuration durationFromDictionary:durationDictionary];
     
     _duration = duration;
+}
+
+- (void)loadDurationInTraffic
+{
+	NSDictionary *durationDictionary = [_dictionary objectForKey:kCGGoogleDirectionsResponseAttributeDurationInTraffic];
+	OCDirectionsDurationInTraffic *durationInTraffic = [OCDirectionsDurationInTraffic durationFromDictionary:durationDictionary];
+	
+	_durationInTraffic = durationInTraffic;
 }
 
 - (void)loadEndAddress
