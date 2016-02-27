@@ -25,6 +25,7 @@ static NSString *const kOCGoogleDirectionsRequestAttributeRegion = @"&region=";
 static NSString *const kOCGoogleDirectionsRequestAttributeLanguage = @"&language=";
 static NSString *const kOCGoogleDirectionsRequestAttributeKey = @"&key=";
 static NSString *const kOCGoogleDirectionsRequestAttributeAlternatives = @"&alternatives=";
+static NSString *const kOCGoogleDirectionsRequestAttributeDepartureTime = @"&departure_time=";
 
 static NSString *const kOCGoogleDirectionsRequestAttributeSeparator = @"|";
 
@@ -46,6 +47,7 @@ static NSString *const kOCGoogleDirectionsRequestAttributeSeparator = @"|";
     [self appendRegion:request toString:string];
 	[self appendLanguage:request toString:string];
     [self appendAlternatives:request toString:string];
+	[self appendDepartureTime:request toString:string];
     [self appendKey:key toString:string];
     
     NSString *stringEncoded = [string stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -230,6 +232,18 @@ static NSString *const kOCGoogleDirectionsRequestAttributeSeparator = @"|";
     [string appendString:alternativesString];
 }
 
+- (void)appendDepartureTime:(OCDirectionsRequest *)request toString:(NSMutableString *)string
+{
+	if (request.departureTime == NO) {
+		return;
+	}
+	
+	[string appendString:kOCGoogleDirectionsRequestAttributeDepartureTime];
+	
+	NSString *departureString = [self stringFromDate:request.departureTime];
+	[string appendString:departureString];
+}
+
 - (void)appendKey:(NSString *)key toString:(NSMutableString *)string
 {
 	/**
@@ -254,6 +268,11 @@ static NSString *const kOCGoogleDirectionsRequestAttributeSeparator = @"|";
     return string;
 }
 
+- (NSString *)stringFromDate:(NSDate *)date
+{
+	NSString *string = @(round([date timeIntervalSince1970])).stringValue;
+	return string;
+}
 
 - (NSString *)stringFormUnit:(OCDirectionsRequestUnit)unit
 {

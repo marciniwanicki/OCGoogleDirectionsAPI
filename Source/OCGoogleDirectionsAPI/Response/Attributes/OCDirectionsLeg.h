@@ -10,6 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "OCDirectionsDistance.h"
 #import "OCDirectionsDuration.h"
+#import "OCDirectionsDurationInTraffic.h"
 
 @interface OCDirectionsLeg : NSObject
 
@@ -17,6 +18,7 @@
 
 @property (nonatomic, strong, readonly) OCDirectionsDistance *distance;
 @property (nonatomic, strong, readonly) OCDirectionsDuration *duration;
+@property (nonatomic, strong, readonly) OCDirectionsDurationInTraffic *durationInTraffic;
 @property (nonatomic, copy, readonly) NSString *endAddress;
 @property (nonatomic, assign, readonly) CLLocationCoordinate2D endLocation;
 @property (nonatomic, copy, readonly) NSString *startAddress;
