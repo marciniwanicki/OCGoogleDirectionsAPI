@@ -20,27 +20,26 @@ static NSString *const kCGGoogleDirectionsResponseAttributTravelMode = @"travel_
 
 @implementation OCDirectionsStep
 
-+ (instancetype)stepFromDictionary:(NSDictionary *)dictionary
-{
++ (instancetype)stepFromDictionary:(NSDictionary *)dictionary {
     OCDirectionsStep *step = [[OCDirectionsStep alloc] initWithDictionary:dictionary];
     return step;
 }
 
 #pragma mark - Private init
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary
-{
+
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
     if (self) {
         _dictionary = dictionary;
-        
+
         [self loadAllProperties];
     }
     return self;
 }
 
 #pragma mark - Load properties from dictionary
-- (void)loadAllProperties
-{
+
+- (void)loadAllProperties {
     [self loadDistance];
     [self loadDuration];
     [self loadEndLocation];
@@ -51,65 +50,57 @@ static NSString *const kCGGoogleDirectionsResponseAttributTravelMode = @"travel_
     [self loadTravelMode];
 }
 
-- (void)loadDistance
-{
+- (void)loadDistance {
     NSDictionary *distanceDictionary = [_dictionary objectForKey:kCGGoogleDirectionsResponseAttributeDistance];
     OCDirectionsDistance *distance = [OCDirectionsDistance distanceFromDictionary:distanceDictionary];
-    
+
     _distance = distance;
 }
 
-- (void)loadDuration
-{
+- (void)loadDuration {
     NSDictionary *durationDictionary = [_dictionary objectForKey:kCGGoogleDirectionsResponseAttributeDuration];
     OCDirectionsDuration *duration = [OCDirectionsDuration durationFromDictionary:durationDictionary];
-    
+
     _duration = duration;
 }
 
-- (void)loadEndLocation
-{
+- (void)loadEndLocation {
     NSDictionary *endLocationDictionary = [_dictionary objectForKey:kCGGoogleDirectionsResponseAttributeEndLocation];
     CLLocationCoordinate2D endLocation = [CLLocation coordinateFromDictionary:endLocationDictionary];
-    
+
     _endLocation = endLocation;
 }
 
-- (void)loadHtmlInstructions
-{
+- (void)loadHtmlInstructions {
     NSString *htmlInstructions = [_dictionary objectForKey:kCGGoogleDirectionsResponseAttributeHtmlInstructions];
-    
+
     _htmlInstructions = htmlInstructions;
 }
 
-- (void)loadManeuver
-{
+- (void)loadManeuver {
     NSString *maneuver = [_dictionary objectForKey:kCGGoogleDirectionsResponseAttributManeuver];
-    
+
     _maneuver = maneuver;
 }
 
-- (void)loadPolyline
-{
+- (void)loadPolyline {
     NSDictionary *polylineDictionary = [_dictionary objectForKey:kCGGoogleDirectionsResponseAttributPolyline];
     OCDirectionsPolyline *polyline = [OCDirectionsPolyline polylineFromDictionary:polylineDictionary];
-    
+
     _polyline = polyline;
 }
 
-- (void)loadStartLocation
-{
+- (void)loadStartLocation {
     NSDictionary *startLocationDictionary = [_dictionary objectForKey:kCGGoogleDirectionsResponseAttributeStartLocation];
     CLLocationCoordinate2D startLocation = [CLLocation coordinateFromDictionary:startLocationDictionary];
-    
+
     _startLocation = startLocation;
 }
 
-- (void)loadTravelMode
-{
+- (void)loadTravelMode {
     NSString *travelModeString = [_dictionary objectForKey:kCGGoogleDirectionsResponseAttributTravelMode];
     OCDirectionsRequestTravelMode travelMode = [OCDirectionsCommonTypes travelModeFromString:travelModeString];
-    
+
     _travelMode = travelMode;
 }
 

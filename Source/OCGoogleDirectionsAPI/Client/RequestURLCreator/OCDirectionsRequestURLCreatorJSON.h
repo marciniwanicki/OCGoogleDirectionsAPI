@@ -9,6 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "OCDirectionsRequestURLCreator.h"
 
-@interface OCDirectionsRequestURLCreatorJSON : NSObject<OCDirectionsRequestURLCreator>
+@interface OCDirectionsRequestURLCreatorJSON : NSObject <OCDirectionsRequestURLCreator>
 
 @end

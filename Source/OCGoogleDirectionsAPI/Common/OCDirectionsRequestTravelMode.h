@@ -10,20 +10,20 @@ typedef NS_ENUM(NSUInteger, OCDirectionsRequestTravelMode) {
     /**
      (default) indicates standard driving directions using the road
      */
-    OCDirectionsRequestTravelModeDriving,
-    
+            OCDirectionsRequestTravelModeDriving,
+
     /**
      requests walking directions via pedestrian paths & sidewalks (where available).
      */
-    OCDirectionsRequestTravelModeWalking,
-    
+            OCDirectionsRequestTravelModeWalking,
+
     /**
      requests bicycling directions via bicycle paths & preferred streets (where available).
      */
-    OCDirectionsRequestTravelModeBicycling,
-    
+            OCDirectionsRequestTravelModeBicycling,
+
     /**
      requests directions via public transit routes (where available).
      */
-    OCDirectionsRequestTravelModeTransit
+            OCDirectionsRequestTravelModeTransit
 };

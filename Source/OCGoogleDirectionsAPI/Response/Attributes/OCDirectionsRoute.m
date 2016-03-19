@@ -19,87 +19,79 @@ static NSString *const kCGGoogleDirectionsResponseAttributeRouteWarnings = @"war
 
 @implementation OCDirectionsRoute
 
-+ (instancetype)routeFromDictionary:(NSDictionary *)dictionary
-{
++ (instancetype)routeFromDictionary:(NSDictionary *)dictionary {
     OCDirectionsRoute *route = [[OCDirectionsRoute alloc] initWithDictionary:dictionary];
     return route;
 }
 
 #pragma mark - Private init
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary
-{
+
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
     if (self) {
         _dictionary = dictionary;
-        
+
         [self loadAllProperties];
     }
     return self;
 }
 
 #pragma mark - Load properties from dictionary
-- (void)loadAllProperties
-{
+
+- (void)loadAllProperties {
     [self loadLegs];
     [self loadCopyrights];
     [self loadWarnings];
     [self loadWaypointOrder];
     [self loadOverviewPolyline];
     [self loadBounds];
-	[self loadSummary];
+    [self loadSummary];
 }
 
-- (void)loadLegs
-{
+- (void)loadLegs {
     NSArray *legsArray = [_dictionary objectForKey:kCGGoogleDirectionsResponseAttributeRouteLegs];
     NSMutableArray *legs = [[NSMutableArray alloc] initWithCapacity:legsArray.count];
     for (NSDictionary *legDictionary in legsArray) {
         OCDirectionsLeg *leg = [OCDirectionsLeg legFromDictionary:legDictionary];
         [legs addObject:leg];
     }
-    
+
     _legs = legs;
 }
 
-- (void)loadCopyrights
-{
+- (void)loadCopyrights {
     NSString *copyrights = [_dictionary objectForKey:kCGGoogleDirectionsResponseAttributeRouteCopyrights];
-    
+
     _copyrights = copyrights;
 }
 
-- (void)loadWarnings
-{
+- (void)loadWarnings {
     NSArray *warningsArray = [_dictionary objectForKey:kCGGoogleDirectionsResponseAttributeRouteWarnings];
-    
+
     _warnings = warningsArray;
 }
 
-- (void)loadWaypointOrder
-{
+- (void)loadWaypointOrder {
     NSArray *waypointOrder = [_dictionary objectForKey:kCGGoogleDirectionsResponseAttributeRouteWaypointOrder];
-    
+
     _waypointOrder = waypointOrder;
 }
 
-- (void)loadOverviewPolyline
-{
+- (void)loadOverviewPolyline {
     NSDictionary *overviewPolyline = [_dictionary objectForKey:kCGGoogleDirectionsResponseAttributeRouteOverviewPolyline];
     OCDirectionsPolyline *polyline = [OCDirectionsPolyline polylineFromDictionary:overviewPolyline];
-    
+
     _overviewPolyline = polyline;
 }
 
-- (void)loadBounds
-{
+- (void)loadBounds {
     NSDictionary *boundsDictionary = [_dictionary objectForKey:kCGGoogleDirectionsResponseAttributeRouteBounds];
     OCDirectionsBounds *bounds = [OCDirectionsBounds boundsFromDictionary:boundsDictionary];
-    
+
     _bounds = bounds;
 }
 
-- (void)loadSummary
-{
+- (void)loadSummary {
     NSString *summary = [_dictionary objectForKey:kCGGoogleDirectionsResponseAttributeRouteSummary];
     _summary = summary;
 }

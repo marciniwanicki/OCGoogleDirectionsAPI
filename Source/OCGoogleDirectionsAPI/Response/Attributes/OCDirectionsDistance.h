@@ -12,10 +12,10 @@ extern NSString *const kCGGoogleDirectionsResponseAttributeDistance;
 
 @interface OCDirectionsDistance : NSObject
 
-@property (nonatomic, retain, readonly) NSDictionary *dictionary;
+@property(nonatomic, retain, readonly) NSDictionary *dictionary;
 
-@property (nonatomic, copy, readonly) NSString *text;
-@property (nonatomic, copy, readonly) NSNumber *value;
+@property(nonatomic, copy, readonly) NSString *text;
+@property(nonatomic, copy, readonly) NSNumber *value;
 
 + (instancetype)distanceFromDictionary:(NSDictionary *)dictionary;
 

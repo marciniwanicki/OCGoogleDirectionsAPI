@@ -13,16 +13,16 @@
 
 @interface OCDirectionsLeg : NSObject
 
-@property (nonatomic, strong, readonly) NSDictionary *dictionary;
+@property(nonatomic, strong, readonly) NSDictionary *dictionary;
 
-@property (nonatomic, strong, readonly) OCDirectionsDistance *distance;
-@property (nonatomic, strong, readonly) OCDirectionsDuration *duration;
-@property (nonatomic, copy, readonly) NSString *endAddress;
-@property (nonatomic, assign, readonly) CLLocationCoordinate2D endLocation;
-@property (nonatomic, copy, readonly) NSString *startAddress;
-@property (nonatomic, assign, readonly) CLLocationCoordinate2D startLocation;
-@property (nonatomic, strong, readonly) NSArray *steps;
-@property (nonatomic, strong, readonly) NSArray *viaWaypoint;
+@property(nonatomic, strong, readonly) OCDirectionsDistance *distance;
+@property(nonatomic, strong, readonly) OCDirectionsDuration *duration;
+@property(nonatomic, copy, readonly) NSString *endAddress;
+@property(nonatomic, assign, readonly) CLLocationCoordinate2D endLocation;
+@property(nonatomic, copy, readonly) NSString *startAddress;
+@property(nonatomic, assign, readonly) CLLocationCoordinate2D startLocation;
+@property(nonatomic, strong, readonly) NSArray *steps;
+@property(nonatomic, strong, readonly) NSArray *viaWaypoint;
 
 + (instancetype)legFromDictionary:(NSDictionary *)dictionary;
 

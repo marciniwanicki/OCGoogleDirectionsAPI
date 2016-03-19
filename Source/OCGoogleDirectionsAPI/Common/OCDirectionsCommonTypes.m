@@ -15,32 +15,29 @@
 
 @implementation OCDirectionsCommonTypes (TravelMode)
 
-+ (NSString *)stringFormTravelMode:(OCDirectionsRequestTravelMode)travelMode
-{
++ (NSString *)stringFormTravelMode:(OCDirectionsRequestTravelMode)travelMode {
     NSArray *keys = [[[self class] travelModeDictionary] allKeysForObject:@(travelMode)];
     return [keys firstObject];
 }
 
-+ (OCDirectionsRequestTravelMode)travelModeFromString:(NSString *)travelModeString
-{
++ (OCDirectionsRequestTravelMode)travelModeFromString:(NSString *)travelModeString {
     NSNumber *number = [[[self class] travelModeDictionary] objectForKey:travelModeString];
-    OCDirectionsRequestTravelMode travelMode = (OCDirectionsRequestTravelMode)number.unsignedIntegerValue;
-    
+    OCDirectionsRequestTravelMode travelMode = (OCDirectionsRequestTravelMode) number.unsignedIntegerValue;
+
     return travelMode;
 }
 
-+ (NSDictionary *)travelModeDictionary
-{
++ (NSDictionary *)travelModeDictionary {
     static NSDictionary *dictionary;
-    
+
     if (dictionary == nil) {
-        dictionary = @{@"driving"       : @(OCDirectionsRequestTravelModeDriving),
-                       @"walking"       : @(OCDirectionsRequestTravelModeWalking),
-                       @"bicycling"     : @(OCDirectionsRequestTravelModeBicycling),
-                       @"transit"       : @(OCDirectionsRequestTravelModeTransit)
-                       };
+        dictionary = @{@"driving" : @(OCDirectionsRequestTravelModeDriving),
+                @"walking" : @(OCDirectionsRequestTravelModeWalking),
+                @"bicycling" : @(OCDirectionsRequestTravelModeBicycling),
+                @"transit" : @(OCDirectionsRequestTravelModeTransit)
+        };
     }
-    
+
     return dictionary;
 }
 
@@ -48,39 +45,37 @@
 
 @implementation OCDirectionsCommonTypes (VehicalType)
 
-+ (OCDirectionsResponseVehicleType)vehicleTypeFromString:(NSString *)vehicleTypeString
-{
++ (OCDirectionsResponseVehicleType)vehicleTypeFromString:(NSString *)vehicleTypeString {
     NSNumber *number = [[[self class] vehicleTypesDictionary] objectForKey:vehicleTypeString];
-    OCDirectionsResponseVehicleType vehicleType = (OCDirectionsResponseVehicleType)number.unsignedIntegerValue;
-    
+    OCDirectionsResponseVehicleType vehicleType = (OCDirectionsResponseVehicleType) number.unsignedIntegerValue;
+
     return vehicleType;
 }
 
-+ (NSDictionary *)vehicleTypesDictionary
-{
++ (NSDictionary *)vehicleTypesDictionary {
     static NSDictionary *dictionary;
-    
+
     if (dictionary == nil) {
-        dictionary = @{@"RAIL"              : @(OCDirectionsResponseVehicleTypeRail),
-                       @"METRO_RAIL"        : @(OCDirectionsResponseVehicleTypeMetroRail),
-                       @"SUBWAY"            : @(OCDirectionsResponseVehicleTypeSubway),
-                       @"TRAM"              : @(OCDirectionsResponseVehicleTypeTram),
-                       @"MONORAIL"          : @(OCDirectionsResponseVehicleTypeMonorail),
-                       @"HEAVY_RAIL"        : @(OCDirectionsResponseVehicleTypeHeavyRail),
-                       @"COMMUTER_TRAIN"    : @(OCDirectionsResponseVehicleTypeCommuterTrain),
-                       @"HIGH_SPEED_TRAIN"  : @(OCDirectionsResponseVehicleTypeHighSpeedTrain),
-                       @"BUS"               : @(OCDirectionsResponseVehicleTypeBus),
-                       @"INTERCITY_BUS"     : @(OCDirectionsResponseVehicleTypeIntercityBus),
-                       @"TROLLEYBUS"        : @(OCDirectionsResponseVehicleTypeTrolleybus),
-                       @"SHARE_TAXI"        : @(OCDirectionsResponseVehicleTypeShareTaxi),
-                       @"FERRY"             : @(OCDirectionsResponseVehicleTypeFerry),
-                       @"CABLE_CAR"         : @(OCDirectionsResponseVehicleTypeCableCar),
-                       @"GONDOLA_LIFT"      : @(OCDirectionsResponseVehicleTypeGondolaLift),
-                       @"FUNICULAR"         : @(OCDirectionsResponseVehicleTypeFunicular),
-                       @"OTHER"             : @(OCDirectionsResponseVehicleTypeOther)
-                       };
+        dictionary = @{@"RAIL" : @(OCDirectionsResponseVehicleTypeRail),
+                @"METRO_RAIL" : @(OCDirectionsResponseVehicleTypeMetroRail),
+                @"SUBWAY" : @(OCDirectionsResponseVehicleTypeSubway),
+                @"TRAM" : @(OCDirectionsResponseVehicleTypeTram),
+                @"MONORAIL" : @(OCDirectionsResponseVehicleTypeMonorail),
+                @"HEAVY_RAIL" : @(OCDirectionsResponseVehicleTypeHeavyRail),
+                @"COMMUTER_TRAIN" : @(OCDirectionsResponseVehicleTypeCommuterTrain),
+                @"HIGH_SPEED_TRAIN" : @(OCDirectionsResponseVehicleTypeHighSpeedTrain),
+                @"BUS" : @(OCDirectionsResponseVehicleTypeBus),
+                @"INTERCITY_BUS" : @(OCDirectionsResponseVehicleTypeIntercityBus),
+                @"TROLLEYBUS" : @(OCDirectionsResponseVehicleTypeTrolleybus),
+                @"SHARE_TAXI" : @(OCDirectionsResponseVehicleTypeShareTaxi),
+                @"FERRY" : @(OCDirectionsResponseVehicleTypeFerry),
+                @"CABLE_CAR" : @(OCDirectionsResponseVehicleTypeCableCar),
+                @"GONDOLA_LIFT" : @(OCDirectionsResponseVehicleTypeGondolaLift),
+                @"FUNICULAR" : @(OCDirectionsResponseVehicleTypeFunicular),
+                @"OTHER" : @(OCDirectionsResponseVehicleTypeOther)
+        };
     }
-    
+
     return dictionary;
 }
 
