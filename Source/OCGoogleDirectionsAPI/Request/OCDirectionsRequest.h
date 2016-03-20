@@ -31,6 +31,7 @@
 @property(nonatomic, readonly) BOOL sensor;
 
 #pragma mark - Optional
+
 @property(nonatomic) OCDirectionsRequestTravelMode travelMode;
 
 /**

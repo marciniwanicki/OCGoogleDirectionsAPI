@@ -75,7 +75,7 @@ static NSString *const kOCGoogleDirectionsRequestAttributeSeparator = @"|";
     return baseString;
 }
 
-#pragma mark - Appenders
+#pragma mark -
 
 - (void)appendOrigin:(OCDirectionsRequest *)request toString:(NSMutableString *)string {
     [string appendString:kOCGoogleDirectionsRequestAttributeOrigin];
@@ -222,7 +222,7 @@ static NSString *const kOCGoogleDirectionsRequestAttributeSeparator = @"|";
 
 - (void)appendKey:(NSString *)key toString:(NSMutableString *)string {
     /**
-     API key is not requred.
+     API key is not required.
      */
     if (key) {
         [string appendString:kOCGoogleDirectionsRequestAttributeKey];

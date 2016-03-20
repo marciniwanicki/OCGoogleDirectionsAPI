@@ -18,16 +18,16 @@ extern NSString *const kCGGoogleDirectionsResponseAttributeStartLocation;
 
 @interface OCDirectionsStep : NSObject
 
-@property(nonatomic, strong, readonly) NSDictionary *dictionary;
+@property(nonatomic, readonly) NSDictionary *dictionary;
 
-@property(nonatomic, strong, readonly) OCDirectionsDistance *distance;
-@property(nonatomic, strong, readonly) OCDirectionsDuration *duration;
-@property(nonatomic, assign, readonly) CLLocationCoordinate2D endLocation;
+@property(nonatomic, readonly) OCDirectionsDistance *distance;
+@property(nonatomic, readonly) OCDirectionsDuration *duration;
+@property(nonatomic, readonly) CLLocationCoordinate2D endLocation;
 @property(nonatomic, copy, readonly) NSString *htmlInstructions;
 @property(nonatomic, copy, readonly) NSString *maneuver;
-@property(nonatomic, strong, readonly) OCDirectionsPolyline *polyline;
-@property(nonatomic, assign, readonly) CLLocationCoordinate2D startLocation;
-@property(nonatomic, assign, readonly) OCDirectionsRequestTravelMode travelMode;
+@property(nonatomic, readonly) OCDirectionsPolyline *polyline;
+@property(nonatomic, readonly) CLLocationCoordinate2D startLocation;
+@property(nonatomic, readonly) OCDirectionsRequestTravelMode travelMode;
 
 + (instancetype)stepFromDictionary:(NSDictionary *)dictionary;
 
