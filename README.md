@@ -18,7 +18,7 @@ The OCGoogleDirectionsAPI library allows your iOS apps to deal with this powerfu
 #### Podfile
 ```ruby
 platform :ios, '7.0'
-pod "OCGoogleDirectionsAPI", "~> 0.1.4"
+pod "OCGoogleDirectionsAPI", "~> 0.1.5"
 ```
 
 ## How to get started
