@@ -233,6 +233,62 @@ static NSString *const kTestKey = @"0123456789abcdef";
     XCTAssertEqualObjects(@"https://maps.googleapis.com/maps/api/directions/json?origin=London&destination=Lodz&sensor=false&mode=transit&key=0123456789abcdef", response);
 }
 
+- (void)testStringWhenUnitsIsSet {
+    // given
+    OCDirectionsRequest *request = [self prepareRequest];
+    request.unit = OCDirectionsRequestUnitMetric;
+
+    NSString *key = [self prepareTestKey];
+
+    // when
+    NSString *response = [self.urlCreator stringFromRequest:request useHttps:YES andKey:key];
+
+    // then
+    XCTAssertEqualObjects(@"https://maps.googleapis.com/maps/api/directions/json?origin=London&destination=Lodz&sensor=false&units=metric&key=0123456789abcdef", response);
+}
+
+- (void)testStringWhenArrivalTimeIsSet {
+    // given
+    OCDirectionsRequest *request = [self prepareRequest];
+    request.arrivalTime = [NSDate dateWithTimeIntervalSince1970:2524668300000];
+
+    NSString *key = [self prepareTestKey];
+
+    // when
+    NSString *response = [self.urlCreator stringFromRequest:request useHttps:YES andKey:key];
+
+    // then
+    XCTAssertEqualObjects(@"https://maps.googleapis.com/maps/api/directions/json?origin=London&destination=Lodz&sensor=false&arrival_time=2524668300000&key=0123456789abcdef", response);
+}
+
+- (void)testStringWhenDepartureTimeIsSet {
+    // given
+    OCDirectionsRequest *request = [self prepareRequest];
+    request.departureTime = [NSDate dateWithTimeIntervalSince1970:2524668300000];
+
+    NSString *key = [self prepareTestKey];
+
+    // when
+    NSString *response = [self.urlCreator stringFromRequest:request useHttps:YES andKey:key];
+
+    // then
+    XCTAssertEqualObjects(@"https://maps.googleapis.com/maps/api/directions/json?origin=London&destination=Lodz&sensor=false&departure_time=2524668300000&key=0123456789abcdef", response);
+}
+
+- (void)testStringWhenDepartureTimeIsNow {
+    // given
+    OCDirectionsRequest *request = [self prepareRequest];
+    request.departureTime = kOCDirectionsRequestDepartureTimeNow;
+
+    NSString *key = [self prepareTestKey];
+
+    // when
+    NSString *response = [self.urlCreator stringFromRequest:request useHttps:YES andKey:key];
+
+    // then
+    XCTAssertEqualObjects(@"https://maps.googleapis.com/maps/api/directions/json?origin=London&destination=Lodz&sensor=false&departure_time=now&key=0123456789abcdef", response);
+}
+
 #pragma mark - Helpers
 
 - (NSString *)prepareTestKey {

@@ -10,6 +10,8 @@
 #import <CoreLocation/CoreLocation.h>
 #import "OCDirectionsCommonTypes.h"
 
+#define kOCDirectionsRequestDepartureTimeNow [OCDirectionsRequest departureTimeNow]
+
 @interface OCDirectionsRequest : NSObject
 
 #pragma mark - Required
@@ -64,6 +66,21 @@
 @property (nonatomic, copy) NSString *region;
 
 /**
+ * Specifies the desired time of arrival for transit directions.
+ * You can specify either departure_time or arrival_time, but not both.
+ */
+@property (nonatomic) NSDate *arrivalTime;
+
+/**
+ * Specifies the desired time of departure. According to the doc you can specify a value of now,
+ * which sets the departure time to the current time (correct to the nearest second). However due to
+ * client/server time differences [NSDate new] might work incorrectly, please use kOCDirectionsRequestDepartureTimeNow
+ * for that kind of requests.
+ */
+@property (nonatomic) NSDate *departureTime;
+
+
+/**
  You can also set the Directions service to return results is specific language.
 	If language is not supplied, the service will attempt to use the native language of the domain from which the request is sent.
  */
@@ -112,5 +129,7 @@
                                  sensor:(BOOL)sensor __deprecated_msg("Sensor parameter is no longer required. Use + (instancetype)requestWithOriginString:(NSString *)origin andDestinationString:(NSString *)destination");
 
 - (BOOL)isValid;
+
++ (NSDate *)departureTimeNow;
 
 @end

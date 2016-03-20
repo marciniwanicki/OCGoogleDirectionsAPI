@@ -236,4 +236,8 @@
     return YES;
 }
 
++ (NSDate *)departureTimeNow {
+    return [NSDate dateWithTimeIntervalSince1970:0];
+}
+
 @end
