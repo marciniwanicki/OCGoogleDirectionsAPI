@@ -112,6 +112,12 @@
 @property (nonatomic) OCDirectionsRequestTransitMode transitMode;
 
 /**
+ * Specifies preferences for transit routes. Using this parameter, you can bias the options returned,
+ * rather than accepting the default best route chosen by the API.
+ */
+@property (nonatomic) OCDirectionsRequestTransitRoutingPreference transitRoutingPreference;
+
+/**
  * Indicates whether sensor flag has been used or not.
  */
 @property (nonatomic, getter=isSensorFlagUsed, readonly) BOOL sensorFlagUsed;

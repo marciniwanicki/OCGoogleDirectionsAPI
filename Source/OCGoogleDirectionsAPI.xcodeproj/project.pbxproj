@@ -117,6 +117,7 @@
 		27C6ECCB18C67A910035B80F /* libOCGoogleDirectionsAPI.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOCGoogleDirectionsAPI.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C6ECCC18C67A910035B80F /* OCGoogleDirectionsAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OCGoogleDirectionsAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		524E82C69FF2B59CF5097950 /* OCDirectionsRequestTrafficModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDirectionsRequestTrafficModel.h; sourceTree = "<group>"; };
+		524E8A60179A39E791889072 /* OCDirectionsRequestTransitRoutingPreference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDirectionsRequestTransitRoutingPreference.h; sourceTree = "<group>"; };
 		524E8AD319197A088907F852 /* OCDirectionsRequestTransitMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDirectionsRequestTransitMode.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -296,6 +297,7 @@
 				27C6E91418C65A580035B80F /* OCDirectionsResponseVehicleType.h */,
 				524E8AD319197A088907F852 /* OCDirectionsRequestTransitMode.h */,
 				524E82C69FF2B59CF5097950 /* OCDirectionsRequestTrafficModel.h */,
+				524E8A60179A39E791889072 /* OCDirectionsRequestTransitRoutingPreference.h */,
 			);
 			path = Common;
 			sourceTree = "<group>";

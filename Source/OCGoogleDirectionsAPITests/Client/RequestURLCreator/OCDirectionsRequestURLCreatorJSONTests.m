@@ -357,7 +357,21 @@ static NSString *const kTestKey = @"0123456789abcdef";
     NSString *response = [self.urlCreator stringFromRequest:request useHttps:YES andKey:key];
 
     // then
-    XCTAssertEqualObjects(@"https://maps.googleapis.com/maps/api/directions/json?origin=London&destination=Lodz&sensor=false&transit_mode=subway%7Ctram&key=0123456789abcdef", response);
+    XCTAssertEqualObjects(@"https://maps.googleapis.com/maps/api/directions/json?origin=London&destination=Lodz&sensor=false&transit_mode=subway|tram&key=0123456789abcdef", response);
+}
+
+- (void)testStringWhenTransitRoutingPreferenceIsLessWalking {
+    // given
+    OCDirectionsRequest *request = [self prepareRequest];
+    request.transitRoutingPreference = OCDirectionsRequestTransitRoutingPreferenceLessWalking;
+
+    NSString *key = [self prepareTestKey];
+
+    // when
+    NSString *response = [self.urlCreator stringFromRequest:request useHttps:YES andKey:key];
+
+    // then
+    XCTAssertEqualObjects(@"https://maps.googleapis.com/maps/api/directions/json?origin=London&destination=Lodz&sensor=false&transit_routing_preference=less_walking&key=0123456789abcdef", response);
 }
 
 #pragma mark - Helpers

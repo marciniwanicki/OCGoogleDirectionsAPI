@@ -123,3 +123,21 @@
 
 @end
 
+@implementation OCDirectionsCommonTypes (TransitRoutingPreference)
+
++ (NSString *)stringFromTransitRoutingPreference:(OCDirectionsRequestTransitRoutingPreference)transitRoutingPreference {
+    return [self transitRoutingPreferenceDictionary][@(transitRoutingPreference)];
+}
+
++ (NSDictionary *)transitRoutingPreferenceDictionary {
+    static NSDictionary *transitRoutingPreference;
+    if (transitRoutingPreference == nil) {
+        transitRoutingPreference = @{
+                @(OCDirectionsRequestTransitRoutingPreferenceLessWalking) : @"less_walking",
+                @(OCDirectionsRequestTransitRoutingPreferenceFewerTransfers) : @"fewer_transfers",
+        };
+    }
+    return transitRoutingPreference;
+}
+
+@end

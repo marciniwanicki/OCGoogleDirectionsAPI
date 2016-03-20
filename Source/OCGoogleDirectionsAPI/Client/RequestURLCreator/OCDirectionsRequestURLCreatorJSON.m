@@ -29,6 +29,7 @@ static NSString *const kOCGoogleDirectionsRequestAttributeKey = @"&key=";
 static NSString *const kOCGoogleDirectionsRequestAttributeAlternatives = @"&alternatives=";
 static NSString *const kOCGoogleDirectionsRequestAttributeTrafficModel = @"&traffic_model=";
 static NSString *const kOCGoogleDirectionsRequestAttributeTransitMode = @"&transit_mode=";
+static NSString *const kOCGoogleDirectionsRequestAttributeTransitRoutingPreference = @"&transit_routing_preference=";
 
 static NSString *const kOCGoogleDirectionsRequestAttributeSeparator = @"|";
 
@@ -57,6 +58,7 @@ static NSString *const kOCGoogleDirectionsRequestAttributeValueDepartureTimeNow 
     [self appendAlternatives:request toString:string];
     [self appendTrafficModel:request toString:string];
     [self appendTransitMode:request toString:string];
+    [self appendTransitRoutingPreference:request toString:string];
     [self appendKey:key toString:string];
 
     return string;
@@ -92,7 +94,7 @@ static NSString *const kOCGoogleDirectionsRequestAttributeValueDepartureTimeNow 
 
     if (request.originLocation) {
         NSString *originString = [self stringFormCLLocation:request.originLocation];
-        [string appendString:[self encodeParameter:originString]];
+        [string appendString:originString];
     } else {
         [string appendString:[self encodeParameter:request.originString]];
     }
@@ -103,7 +105,7 @@ static NSString *const kOCGoogleDirectionsRequestAttributeValueDepartureTimeNow 
 
     if (request.destinationLocation) {
         NSString *destinationString = [self stringFormCLLocation:request.destinationLocation];
-        [string appendString:[self encodeParameter:destinationString]];
+        [string appendString:destinationString];
     } else {
         [string appendString:[self encodeParameter:request.destinationString]];
     }
@@ -120,7 +122,7 @@ static NSString *const kOCGoogleDirectionsRequestAttributeValueDepartureTimeNow 
     [string appendString:kOCGoogleDirectionsRequestAttributeSensor];
 
     NSString *sensorString = [self stringFromBOOL:request.sensor];
-    [string appendString:[self encodeParameter:sensorString]];
+    [string appendString:sensorString];
 }
 
 - (void)appendTravelMode:(OCDirectionsRequest *)request toString:(NSMutableString *)string {
@@ -131,7 +133,7 @@ static NSString *const kOCGoogleDirectionsRequestAttributeValueDepartureTimeNow 
     [string appendString:kOCGoogleDirectionsRequestAttributeTravelMode];
 
     NSString *travelModeString = [OCDirectionsCommonTypes stringFormTravelMode:request.travelMode];
-    [string appendString:[self encodeParameter:travelModeString]];
+    [string appendString:travelModeString];
 }
 
 - (void)appendWaypoints:(OCDirectionsRequest *)request toString:(NSMutableString *)string {
@@ -198,7 +200,7 @@ static NSString *const kOCGoogleDirectionsRequestAttributeValueDepartureTimeNow 
     [string appendString:kOCGoogleDirectionsRequestAttributeUnits];
 
     NSString *unitString = [self stringFormUnit:request.unit];
-    [string appendString:[self encodeParameter:unitString]];
+    [string appendString:unitString];
 }
 
 - (void)appendRegion:(OCDirectionsRequest *)request toString:(NSMutableString *)string {
@@ -218,7 +220,7 @@ static NSString *const kOCGoogleDirectionsRequestAttributeValueDepartureTimeNow 
     NSString *arrivalTimeValue = @(request.arrivalTime.timeIntervalSince1970).stringValue;
 
     [string appendString:kOCGoogleDirectionsRequestAttributeArrivalTime];
-    [string appendString:[self encodeParameter:arrivalTimeValue]];
+    [string appendString:arrivalTimeValue];
 }
 
 - (void)appendDepartureTime:(OCDirectionsRequest *)request toString:(NSMutableString *)string {
@@ -231,7 +233,7 @@ static NSString *const kOCGoogleDirectionsRequestAttributeValueDepartureTimeNow 
             : @(request.departureTime.timeIntervalSince1970).stringValue;
 
     [string appendString:kOCGoogleDirectionsRequestAttributeDepartureTime];
-    [string appendString:[self encodeParameter:departureTimeString]];
+    [string appendString:departureTimeString];
 }
 
 - (void)appendLanguage:(OCDirectionsRequest *)request toString:(NSMutableString *)string {
@@ -251,7 +253,7 @@ static NSString *const kOCGoogleDirectionsRequestAttributeValueDepartureTimeNow 
     [string appendString:kOCGoogleDirectionsRequestAttributeAlternatives];
 
     NSString *alternativesString = [self stringFromBOOL:request.alternatives];
-    [string appendString:[self encodeParameter:alternativesString]];
+    [string appendString:alternativesString];
 }
 
 - (void)appendTrafficModel:(OCDirectionsRequest *)request toString:(NSMutableString *)string {
@@ -287,7 +289,17 @@ static NSString *const kOCGoogleDirectionsRequestAttributeValueDepartureTimeNow 
     }
 
     [string appendString:kOCGoogleDirectionsRequestAttributeTransitMode];
-    [string appendString:[self encodeParameter:transitModeString]];
+    [string appendString:transitModeString];
+}
+
+- (void)appendTransitRoutingPreference:(OCDirectionsRequest *)request toString:(NSMutableString *)string {
+    if (request.transitRoutingPreference == OCDirectionsRequestTransitRoutingPreferenceDefault) {
+        return;
+    }
+
+    NSString *transitRoutingPreferenceString = [OCDirectionsCommonTypes stringFromTransitRoutingPreference:request.transitRoutingPreference];
+    [string appendString:kOCGoogleDirectionsRequestAttributeTransitRoutingPreference];
+    [string appendString:transitRoutingPreferenceString];
 }
 
 - (void)appendKey:(NSString *)key toString:(NSMutableString *)string {
