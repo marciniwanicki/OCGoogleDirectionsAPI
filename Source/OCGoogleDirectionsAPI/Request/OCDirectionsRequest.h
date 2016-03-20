@@ -55,7 +55,7 @@
 /**
  * Directions may be calculated that adhere to certain restrictions.
  * Use an array of DirectionsRequestRestriction types ie.
- * @[DirectionsRequestAvoidTollsRestriction, DirectionsRequestAviodFerriesRestriction]
+ * @[DirectionsRequestAvoidTollsRestriction, DirectionsRequestAvoidFerriesRestriction]
  */
 @property (nonatomic) NSArray *restrictions;
 

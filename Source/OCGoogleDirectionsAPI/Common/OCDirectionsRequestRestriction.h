@@ -20,5 +20,5 @@ typedef NS_ENUM(NSUInteger, OCDirectionsRequestRestriction) {
     /**
      avoid ferries
      */
-            OCDirectionsRequestRestrictionAviodFerries
+            OCDirectionsRequestRestrictionAvoidFerries
 };
