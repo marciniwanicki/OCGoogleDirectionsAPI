@@ -12,6 +12,8 @@
 #import "OCDirectionsRequestRestriction.h"
 #import "OCDirectionsRequestUnit.h"
 #import "OCDirectionsResponseVehicleType.h"
+#import "OCDirectionsRequestTransitMode.h"
+#import "OCDirectionsRequestTrafficModel.h"
 
 @interface OCDirectionsCommonTypes : NSObject
 
@@ -33,5 +35,20 @@
 
 + (NSDictionary *)vehicleTypesDictionary;
 
+@end
+
+@interface OCDirectionsCommonTypes (TransitMode)
+
++ (NSString *)stringFromTransitModel:(OCDirectionsRequestTransitMode)transitMode;
+
++ (NSDictionary *)transitModeDictionary;
+
+@end
+
+@interface OCDirectionsCommonTypes (TrafficModel)
+
++ (NSString *)stringFromTrafficModel:(OCDirectionsRequestTrafficModel)trafficModel;
+
++ (NSDictionary *)trafficModelDictionary;
 
 @end

@@ -289,10 +289,25 @@ static NSString *const kTestKey = @"0123456789abcdef";
     XCTAssertEqualObjects(@"https://maps.googleapis.com/maps/api/directions/json?origin=London&destination=Lodz&sensor=false&departure_time=now&key=0123456789abcdef", response);
 }
 
+- (void)testStringWhenTrafficModelIsOptimistic {
+    // given
+    OCDirectionsRequest *request = [self prepareRequest];
+    request.trafficModel = OCDirectionsRequestTrafficModelOptimistic;
+
+    NSString *key = [self prepareTestKey];
+
+    // when
+    NSString *response = [self.urlCreator stringFromRequest:request useHttps:YES andKey:key];
+
+    // then
+    XCTAssertEqualObjects(@"https://maps.googleapis.com/maps/api/directions/json?origin=London&destination=Lodz&sensor=false&traffic_model=optimistic&key=0123456789abcdef", response);
+
+}
+
 - (void)testStringWhenTransitModeIsNotSpecified {
     // given
     OCDirectionsRequest *request = [self prepareRequest];
-    request.transitMode = OCDirectionsRequestTransitModeNotSpecified;
+    request.transitMode = OCDirectionsRequestTransitModeDefault;
 
     NSString *key = [self prepareTestKey];
 

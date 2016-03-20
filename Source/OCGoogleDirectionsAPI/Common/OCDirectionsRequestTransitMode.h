@@ -8,9 +8,9 @@
 
 typedef NS_OPTIONS(NSUInteger, OCDirectionsRequestTransitMode) {
     /**
-     * default
+     * not specified
      */
-            OCDirectionsRequestTransitModeNotSpecified = 0,
+            OCDirectionsRequestTransitModeDefault = 0,
 
     /**
      * indicates that the calculated route should prefer travel by bus.

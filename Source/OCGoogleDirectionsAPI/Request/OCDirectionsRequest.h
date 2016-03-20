@@ -102,6 +102,11 @@
 @property (nonatomic) BOOL alternatives;
 
 /**
+ * Specifies the assumptions to use when calculating time in traffic.
+ */
+@property (nonatomic) OCDirectionsRequestTrafficModel trafficModel;
+
+/**
  * Specifies one or more preferred modes of transit.
  */
 @property (nonatomic) OCDirectionsRequestTransitMode transitMode;

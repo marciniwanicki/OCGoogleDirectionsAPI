@@ -16,14 +16,13 @@
 @implementation OCDirectionsCommonTypes (TravelMode)
 
 + (NSString *)stringFormTravelMode:(OCDirectionsRequestTravelMode)travelMode {
-    NSArray *keys = [[[self class] travelModeDictionary] allKeysForObject:@(travelMode)];
+    NSArray *keys = [[self travelModeDictionary] allKeysForObject:@(travelMode)];
     return [keys firstObject];
 }
 
 + (OCDirectionsRequestTravelMode)travelModeFromString:(NSString *)travelModeString {
-    NSNumber *number = [[[self class] travelModeDictionary] objectForKey:travelModeString];
+    NSNumber *number = [self travelModeDictionary][travelModeString];
     OCDirectionsRequestTravelMode travelMode = (OCDirectionsRequestTravelMode) number.unsignedIntegerValue;
-
     return travelMode;
 }
 
@@ -31,7 +30,8 @@
     static NSDictionary *dictionary;
 
     if (dictionary == nil) {
-        dictionary = @{@"driving" : @(OCDirectionsRequestTravelModeDriving),
+        dictionary = @{
+                @"driving" : @(OCDirectionsRequestTravelModeDriving),
                 @"walking" : @(OCDirectionsRequestTravelModeWalking),
                 @"bicycling" : @(OCDirectionsRequestTravelModeBicycling),
                 @"transit" : @(OCDirectionsRequestTravelModeTransit)
@@ -46,9 +46,8 @@
 @implementation OCDirectionsCommonTypes (VehicalType)
 
 + (OCDirectionsResponseVehicleType)vehicleTypeFromString:(NSString *)vehicleTypeString {
-    NSNumber *number = [[[self class] vehicleTypesDictionary] objectForKey:vehicleTypeString];
+    NSNumber *number = [self vehicleTypesDictionary][vehicleTypeString];
     OCDirectionsResponseVehicleType vehicleType = (OCDirectionsResponseVehicleType) number.unsignedIntegerValue;
-
     return vehicleType;
 }
 
@@ -56,7 +55,8 @@
     static NSDictionary *dictionary;
 
     if (dictionary == nil) {
-        dictionary = @{@"RAIL" : @(OCDirectionsResponseVehicleTypeRail),
+        dictionary = @{
+                @"RAIL" : @(OCDirectionsResponseVehicleTypeRail),
                 @"METRO_RAIL" : @(OCDirectionsResponseVehicleTypeMetroRail),
                 @"SUBWAY" : @(OCDirectionsResponseVehicleTypeSubway),
                 @"TRAM" : @(OCDirectionsResponseVehicleTypeTram),
@@ -80,3 +80,46 @@
 }
 
 @end
+
+@implementation OCDirectionsCommonTypes (TransitMode)
+
++ (NSString *)stringFromTransitModel:(OCDirectionsRequestTransitMode)transitMode {
+    return [self transitModeDictionary][@(transitMode)];
+}
+
++ (NSDictionary *)transitModeDictionary {
+    static NSDictionary *transitModeDictionary;
+    if (transitModeDictionary == nil) {
+        transitModeDictionary = @{
+                @(OCDirectionsRequestTransitModeBus) : @"bus",
+                @(OCDirectionsRequestTransitModeSubway) : @"subway",
+                @(OCDirectionsRequestTransitModeTrain) : @"train",
+                @(OCDirectionsRequestTransitModeTram) : @"tram",
+                @(OCDirectionsRequestTransitModeRail) : @"rail"
+        };
+    }
+    return transitModeDictionary;
+}
+
+@end
+
+@implementation OCDirectionsCommonTypes (TrafficModel)
+
++ (NSString *)stringFromTrafficModel:(OCDirectionsRequestTrafficModel)trafficModel {
+    return [self trafficModelDictionary][@(trafficModel)];
+}
+
++ (NSDictionary *)trafficModelDictionary {
+    static NSDictionary *trafficModelDictionary;
+    if (trafficModelDictionary == nil) {
+        trafficModelDictionary = @{
+                @(OCDirectionsRequestTrafficModelBestGuess) : @"best_guess",
+                @(OCDirectionsRequestTrafficModelPessimistic) : @"pessimistic",
+                @(OCDirectionsRequestTrafficModelOptimistic) : @"optimistic"
+        };
+    }
+    return trafficModelDictionary;
+}
+
+@end
+

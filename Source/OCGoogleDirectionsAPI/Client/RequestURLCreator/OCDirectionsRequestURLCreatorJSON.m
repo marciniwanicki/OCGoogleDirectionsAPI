@@ -27,6 +27,7 @@ static NSString *const kOCGoogleDirectionsRequestAttributeDepartureTime = @"&dep
 static NSString *const kOCGoogleDirectionsRequestAttributeLanguage = @"&language=";
 static NSString *const kOCGoogleDirectionsRequestAttributeKey = @"&key=";
 static NSString *const kOCGoogleDirectionsRequestAttributeAlternatives = @"&alternatives=";
+static NSString *const kOCGoogleDirectionsRequestAttributeTrafficModel = @"&traffic_model=";
 static NSString *const kOCGoogleDirectionsRequestAttributeTransitMode = @"&transit_mode=";
 
 static NSString *const kOCGoogleDirectionsRequestAttributeSeparator = @"|";
@@ -54,6 +55,7 @@ static NSString *const kOCGoogleDirectionsRequestAttributeValueDepartureTimeNow 
     [self appendArrivalTime:request toString:string];
     [self appendDepartureTime:request toString:string];
     [self appendAlternatives:request toString:string];
+    [self appendTrafficModel:request toString:string];
     [self appendTransitMode:request toString:string];
     [self appendKey:key toString:string];
 
@@ -224,12 +226,12 @@ static NSString *const kOCGoogleDirectionsRequestAttributeValueDepartureTimeNow 
         return;
     }
 
-    NSString *departureTimeValue = [request.departureTime isEqualToDate:kOCDirectionsRequestDepartureTimeNow]
+    NSString *departureTimeString = [request.departureTime isEqualToDate:kOCDirectionsRequestDepartureTimeNow]
             ? kOCGoogleDirectionsRequestAttributeValueDepartureTimeNow
             : @(request.departureTime.timeIntervalSince1970).stringValue;
 
     [string appendString:kOCGoogleDirectionsRequestAttributeDepartureTime];
-    [string appendString:[self encodeParameter:departureTimeValue]];
+    [string appendString:[self encodeParameter:departureTimeString]];
 }
 
 - (void)appendLanguage:(OCDirectionsRequest *)request toString:(NSMutableString *)string {
@@ -252,12 +254,23 @@ static NSString *const kOCGoogleDirectionsRequestAttributeValueDepartureTimeNow 
     [string appendString:[self encodeParameter:alternativesString]];
 }
 
-- (void)appendTransitMode:(OCDirectionsRequest *)request toString:(NSMutableString *)string {
-    if (request.transitMode == OCDirectionsRequestTransitModeNotSpecified) {
+- (void)appendTrafficModel:(OCDirectionsRequest *)request toString:(NSMutableString *)string {
+    if (request.trafficModel == OCDirectionsRequestTrafficModelDefault) {
         return;
     }
 
-    NSMutableString *transitModeValue = [NSMutableString string];
+    NSString *trafficModelString = [OCDirectionsCommonTypes stringFromTrafficModel:request.trafficModel];
+
+    [string appendString:kOCGoogleDirectionsRequestAttributeTrafficModel];
+    [string appendString:trafficModelString];
+}
+
+- (void)appendTransitMode:(OCDirectionsRequest *)request toString:(NSMutableString *)string {
+    if (request.transitMode == OCDirectionsRequestTransitModeDefault) {
+        return;
+    }
+
+    NSMutableString *transitModeString = [NSMutableString string];
     for (OCDirectionsRequestTransitMode transitMode = OCDirectionsRequestTransitModeBus;
          transitMode < (OCDirectionsRequestTransitModeRail << 1);
          transitMode <<= 1) {
@@ -266,15 +279,15 @@ static NSString *const kOCGoogleDirectionsRequestAttributeValueDepartureTimeNow 
             continue;
         }
 
-        if (transitModeValue.length > 0) {
-            [transitModeValue appendString:kOCGoogleDirectionsRequestAttributeSeparator];
+        if (transitModeString.length > 0) {
+            [transitModeString appendString:kOCGoogleDirectionsRequestAttributeSeparator];
         }
 
-        [transitModeValue appendString:[self transitModeDictionary][@(transitMode)]];
+        [transitModeString appendString:[OCDirectionsCommonTypes stringFromTransitModel:transitMode]];
     }
 
     [string appendString:kOCGoogleDirectionsRequestAttributeTransitMode];
-    [string appendString:[self encodeParameter:transitModeValue]];
+    [string appendString:[self encodeParameter:transitModeString]];
 }
 
 - (void)appendKey:(NSString *)key toString:(NSMutableString *)string {
@@ -310,20 +323,6 @@ static NSString *const kOCGoogleDirectionsRequestAttributeValueDepartureTimeNow 
             return @"metric";
     }
     return @"";
-}
-
-- (NSDictionary *)transitModeDictionary {
-    static NSDictionary *transitModeDictionary;
-    if (transitModeDictionary == nil) {
-        transitModeDictionary = @{
-                @(OCDirectionsRequestTransitModeBus) : @"bus",
-                @(OCDirectionsRequestTransitModeSubway) : @"subway",
-                @(OCDirectionsRequestTransitModeTrain) : @"train",
-                @(OCDirectionsRequestTransitModeTram) : @"tram",
-                @(OCDirectionsRequestTransitModeRail) : @"rail"
-        };
-    }
-    return transitModeDictionary;
 }
 
 - (NSString *)encodeParameter:(NSString *)parameter {
