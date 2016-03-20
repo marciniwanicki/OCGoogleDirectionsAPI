@@ -15,7 +15,7 @@ static NSString *const kTestKey = @"0123456789abcdef";
 
 @interface OCDirectionsRequestURLCreatorJSONTests : XCTestCase
 
-@property(nonatomic, strong) OCDirectionsRequestURLCreatorJSON *urlCreator;
+@property (nonatomic, strong) OCDirectionsRequestURLCreatorJSON *urlCreator;
 
 @end
 

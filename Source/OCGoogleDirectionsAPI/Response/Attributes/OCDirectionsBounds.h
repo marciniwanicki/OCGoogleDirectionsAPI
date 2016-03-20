@@ -11,10 +11,10 @@
 
 @interface OCDirectionsBounds : NSObject
 
-@property(nonatomic, readonly) NSDictionary *dictionary;
+@property (nonatomic, readonly) NSDictionary *dictionary;
 
-@property(nonatomic, readonly) CLLocationCoordinate2D southwest;
-@property(nonatomic, readonly) CLLocationCoordinate2D northeast;
+@property (nonatomic, readonly) CLLocationCoordinate2D southwest;
+@property (nonatomic, readonly) CLLocationCoordinate2D northeast;
 
 + (instancetype)boundsFromDictionary:(NSDictionary *)dictionary;
 

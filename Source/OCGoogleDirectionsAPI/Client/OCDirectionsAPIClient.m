@@ -10,8 +10,8 @@
 
 @interface OCDirectionsAPIClient ()
 
-@property(nonatomic, copy) NSString *key;
-@property(nonatomic) BOOL useHttps;
+@property (nonatomic, copy) NSString *key;
+@property (nonatomic) BOOL useHttps;
 
 @end
 

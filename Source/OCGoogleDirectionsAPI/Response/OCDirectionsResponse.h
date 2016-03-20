@@ -23,22 +23,22 @@ typedef NS_ENUM(NSUInteger, OCDirectionsResponseStatus) {
 
 @interface OCDirectionsResponse : NSObject
 
-@property(nonatomic, readonly) NSDictionary *dictionary;
+@property (nonatomic, readonly) NSDictionary *dictionary;
 
 /**
  "status" contains metadata on the request. See Status Codes above.
  */
-@property(nonatomic, readonly) OCDirectionsResponseStatus status;
+@property (nonatomic, readonly) OCDirectionsResponseStatus status;
 
 /**
  "routes" contains an array of routes from the origin to the destination.
  */
-@property(nonatomic, readonly) NSArray *routes;
+@property (nonatomic, readonly) NSArray *routes;
 
 /**
  "errorMessage" (optional) field contains more detailed information about the reasons behind the given status code.
  */
-@property(nonatomic, copy, readonly) NSString *errorMessage;
+@property (nonatomic, copy, readonly) NSString *errorMessage;
 
 + (instancetype)responseFromDictionary:(NSDictionary *)dictionary;
 

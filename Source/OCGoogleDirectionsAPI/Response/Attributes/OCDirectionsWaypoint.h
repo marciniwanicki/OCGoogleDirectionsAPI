@@ -11,22 +11,22 @@
 
 @interface OCDirectionsWaypoint : NSObject
 
-@property(nonatomic, readonly) NSDictionary *dictionary;
+@property (nonatomic, readonly) NSDictionary *dictionary;
 
 /**
  Not documented yet.
  */
-@property(nonatomic, readonly) CLLocationCoordinate2D location;
+@property (nonatomic, readonly) CLLocationCoordinate2D location;
 
 /**
  Not documented yet.
  */
-@property(nonatomic, readonly) NSNumber *stepIndex;
+@property (nonatomic, readonly) NSNumber *stepIndex;
 
 /**
  Not documented yet.
  */
-@property(nonatomic, readonly) NSNumber *stepInterpolation;
+@property (nonatomic, readonly) NSNumber *stepInterpolation;
 
 + (instancetype)waypointFromDictionary:(NSDictionary *)dictionary;
 

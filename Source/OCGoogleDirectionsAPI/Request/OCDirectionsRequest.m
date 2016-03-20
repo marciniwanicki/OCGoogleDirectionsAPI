@@ -11,14 +11,14 @@
 
 @interface OCDirectionsRequest ()
 
-@property(nonatomic) CLLocation *originLocation;
-@property(nonatomic, copy) NSString *originString;
+@property (nonatomic) CLLocation *originLocation;
+@property (nonatomic, copy) NSString *originString;
 
-@property(nonatomic) CLLocation *destinationLocation;
-@property(nonatomic, copy) NSString *destinationString;
+@property (nonatomic) CLLocation *destinationLocation;
+@property (nonatomic, copy) NSString *destinationString;
 
-@property(nonatomic) BOOL sensor;
-@property(nonatomic, getter=isSensorFlagUsed) BOOL sensorFlagUsed;
+@property (nonatomic) BOOL sensor;
+@property (nonatomic, getter=isSensorFlagUsed) BOOL sensorFlagUsed;
 
 @end
 
