@@ -104,6 +104,7 @@
 		27C6ECC318C6608E0035B80F /* OCGoogleDirectionsAPI-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OCGoogleDirectionsAPI-Info.plist"; sourceTree = "<group>"; };
 		27C6ECCB18C67A910035B80F /* libOCGoogleDirectionsAPI.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOCGoogleDirectionsAPI.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C6ECCC18C67A910035B80F /* OCGoogleDirectionsAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OCGoogleDirectionsAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		516C94BC1C9F31550095322F /* OCGoogleDirectionsAPI.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = OCGoogleDirectionsAPI.xcconfig; sourceTree = "<group>"; };
 		524E8125ADC56AD2FA29F498 /* OCDirectionsFare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDirectionsFare.m; sourceTree = "<group>"; };
 		524E82C69FF2B59CF5097950 /* OCDirectionsRequestTrafficModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDirectionsRequestTrafficModel.h; sourceTree = "<group>"; };
 		524E8A60179A39E791889072 /* OCDirectionsRequestTransitRoutingPreference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDirectionsRequestTransitRoutingPreference.h; sourceTree = "<group>"; };
@@ -182,6 +183,7 @@
 		27C6E87B18C654650035B80F = {
 			isa = PBXGroup;
 			children = (
+				516C94BC1C9F31550095322F /* OCGoogleDirectionsAPI.xcconfig */,
 				27C6E8B718C6578B0035B80F /* OCGoogleDirectionsAPI */,
 				27C6E8CB18C6578B0035B80F /* OCGoogleDirectionsAPITests */,
 				27C6E8B418C6578B0035B80F /* Frameworks */,
@@ -499,6 +501,7 @@
 /* Begin XCBuildConfiguration section */
 		27C6E88018C654650035B80F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 516C94BC1C9F31550095322F /* OCGoogleDirectionsAPI.xcconfig */;
 			buildSettings = {
 				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = "OCGoogleDirectionsAPI/OCGoogleDirectionsAPI-Info.plist";
@@ -510,6 +513,7 @@
 		};
 		27C6E88118C654650035B80F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 516C94BC1C9F31550095322F /* OCGoogleDirectionsAPI.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = "OCGoogleDirectionsAPI/OCGoogleDirectionsAPI-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;

@@ -64,7 +64,7 @@ static NSString *_defaultKey;
                 }
 
                 NSError *jsonParsingError = nil;
-                NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&jsonParsingError];
+                NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonParsingError];
 
                 if (jsonParsingError) {
                     callback(nil, jsonParsingError);
