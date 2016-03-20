@@ -7,7 +7,7 @@ As Google wrote:
 <i>"The Google Directions API is a service that calculates directions between locations using an HTTP request. You can search for directions for several modes of transportation, include transit, driving, walking or cycling. Directions may specify origins, destinations and waypoints either as text strings (e.g. "Chicago, IL" or "Darwin, NT, Australia") or as latitude/longitude coordinates. The Directions API can return multi-part directions using a series of waypoints."</i>
 
 
-# 0.1.4
+# 0.1.5
 
 The OCGoogleDirectionsAPI library allows your iOS apps to deal with this powerful service easily. <b>IMPORTANT:</b> It uses `NSURLSession` only available in iOS 7.0+. It is <b>not compatible with iOS 6.x and lower</b>.
 
@@ -87,19 +87,11 @@ To create an isntance of `OCDirectionsRequest` you can use one of the following 
 ```objc
 + (instancetype)requestWithOriginLocation:(CLLocation *)origin andDestinationLocation:(CLLocation *)destination;
 
-+ (instancetype)requestWithOriginLocation:(CLLocation *)origin andDestinationLocation:(CLLocation *)destination sensor:(BOOL)sensor;
-
 + (instancetype)requestWithOriginString:(NSString *)origin andDestinationLocation:(CLLocation *)destination;
-
-+ (instancetype)requestWithOriginString:(NSString *)origin andDestinationLocation:(CLLocation *)destination sensor:(BOOL)sensor;
 
 + (instancetype)requestWithOriginLocation:(CLLocation *)origin andDestinationString:(NSString *)destination;
 
-+ (instancetype)requestWithOriginLocation:(CLLocation *)origin andDestinationString:(NSString *)destination sensor:(BOOL)sensor;
-
 + (instancetype)requestWithOriginString:(NSString *)origin andDestinationString:(NSString *)destination;
-
-+ (instancetype)requestWithOriginString:(NSString *)origin andDestinationString:(NSString *)destination sensor:(BOOL)sensor;
 ```
 
 ### Request attributes
@@ -127,7 +119,7 @@ Here you can find the list of supported languages: [https://developers.google.co
 There are 3 different restrictions:
 * `OCDirectionsRequestRestrictionAvoidTolls`
 * `OCDirectionsRequestRestrictionAvoidHighways`
-* `OCDirectionsRequestRestrictionAviodFerries`
+* `OCDirectionsRequestRestrictionAvoidFerries`
 
 
 You can ask to avoid one or even all of them by calling the `setRestrictions:` method.
@@ -174,6 +166,25 @@ CLLocation *secondLocation = [[CLLocation alloc] initWithLatitude:51.1314 longit
 [request setWaypointsOptimise:YES];
 ```
 
+### Traffic model
+
+```objc
+[request setTrafficModel:OCDirectionsRequestTrafficModelOptimistic];
+```
+
+### Transit mode
+
+```objc
+[request setTransitMode:OCDirectionsRequestTransitModeBus | OCDirectionsRequestTransitModeTrain];
+```
+
+### Transit routing preference
+
+```objc
+[request setTransitRoutingPreference:OCDirectionsRequestTransitRoutingPreferenceFewerTransfers];
+```
+
+
 
 ## Response
 
@@ -188,6 +199,7 @@ Classes:
 * [OCDirectionsDuration](#ocdirectionsduration)
 * [OCDirectionsStep](#ocdirectionsstep)
 * [OCDirectionsWaypoint](#ocdirectionswaypoint)
+* [OCDirectionsFare](#ocdirectionsfare)
 
 
 ### OCDirectionsResponse
@@ -199,6 +211,7 @@ Properties:
 * errorMessage `NSString*`
 * route `NSDirectionsRoute*`
 
+Be aware that `geocoded_waypoints` property is not supported in the current version (#8).
 
 ### OCDirectionsResponseStatus 
 
@@ -233,6 +246,7 @@ Properties:
 * dictionary `NSDictionary*`
 * distance `OCDirectionsDistance*`
 * duration `OCDirectionsDuration*`
+* durationInTraffic `OCDirectionsDuration*`
 * endAddress `NSString*`
 * endLocation `OCLocationCoordinate2D`
 * startAddress `NSString*`
@@ -262,9 +276,9 @@ Properties:
 * dictionary `NSDictionary*`
 * text `NSString*`
 * value `NSNumber*`
+ 
 
-
-### OCDirectionsDuration
+### OCDirectionsDuration 
 
 Properties:
 * dictionary `NSDictionary*`
@@ -295,11 +309,20 @@ Properties:
 * stepInterpolation `NSNumber*` 
 
 
+### OCDirectionsFare
+
+Properties:
+* dictionary `NSDictionary*`
+* currency `NSString*`
+* text `NSString*`
+* value `NSNumber*`
+
+
 ## Contact
 
-Did you find a bug? Do you have great ideas how to make the library better? or you just want to say hello:) ... please do not hesitate to contact me via mail marcin.iwanicki[at]live.com or twitter @marciniwanicki.
+Did you find a bug? Do you have great ideas how to make the library better? or you just want to say hello:) ... drop me a line on twitter @marciniwanicki.
 
-## To Do
+## TODO
 
 * Add samples.
 * Write unit tests.
