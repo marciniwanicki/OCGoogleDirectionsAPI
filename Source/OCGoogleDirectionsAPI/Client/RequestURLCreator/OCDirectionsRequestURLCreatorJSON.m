@@ -273,7 +273,7 @@ static NSString *const kOCGoogleDirectionsRequestAttributeValueDepartureTimeNow 
     }
 
     NSMutableString *transitModeString = [NSMutableString string];
-    for (OCDirectionsRequestTransitMode transitMode = OCDirectionsRequestTransitModeBus;
+    for (NSUInteger transitMode = OCDirectionsRequestTransitModeBus;
          transitMode < (OCDirectionsRequestTransitModeRail << 1);
          transitMode <<= 1) {
 

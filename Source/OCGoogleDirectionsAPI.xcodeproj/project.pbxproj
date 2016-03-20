@@ -9,20 +9,6 @@
 /* Begin PBXBuildFile section */
 		2793762A18E8C3890059C103 /* OCDirectionsRequestURLCreatorJSONTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2793762918E8C3890059C103 /* OCDirectionsRequestURLCreatorJSONTests.m */; };
 		27A8A2E718CF8B9900C24A6A /* OCDirectionsRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27A8A2E618CF8B9900C24A6A /* OCDirectionsRequestTests.m */; };
-		27A8A2E818CF8E8900C24A6A /* OCDirectionsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E91718C65A580035B80F /* OCDirectionsRequest.m */; };
-		27A8A2E918CF8ED000C24A6A /* OCDirectionsCommonTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E91018C65A580035B80F /* OCDirectionsCommonTypes.m */; };
-		27A8A2EA18CF8EDA00C24A6A /* OCDirectionsAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E90918C65A580035B80F /* OCDirectionsAPIClient.m */; };
-		27A8A2EB18CF8EE000C24A6A /* OCDirectionsRequestURLCreatorJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E90D18C65A580035B80F /* OCDirectionsRequestURLCreatorJSON.m */; };
-		27A8A2ED18CF8EE900C24A6A /* OCDirectionsBounds.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E91E18C65A580035B80F /* OCDirectionsBounds.m */; };
-		27A8A2EE18CF8EEC00C24A6A /* OCDirectionsDistance.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E92018C65A580035B80F /* OCDirectionsDistance.m */; };
-		27A8A2EF18CF8EEE00C24A6A /* OCDirectionsDuration.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E92218C65A580035B80F /* OCDirectionsDuration.m */; };
-		27A8A2F018CF8EF100C24A6A /* OCDirectionsLeg.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E92418C65A580035B80F /* OCDirectionsLeg.m */; };
-		27A8A2F118CF8EF400C24A6A /* OCDirectionsPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E92618C65A580035B80F /* OCDirectionsPolyline.m */; };
-		27A8A2F218CF8EF700C24A6A /* OCDirectionsRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E92818C65A580035B80F /* OCDirectionsRoute.m */; };
-		27A8A2F318CF8EFB00C24A6A /* OCDirectionsStep.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E92A18C65A580035B80F /* OCDirectionsStep.m */; };
-		27A8A2F418CF8EFE00C24A6A /* OCDirectionsWaypoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E92C18C65A580035B80F /* OCDirectionsWaypoint.m */; };
-		27A8A2F518CF8F0000C24A6A /* OCDirectionsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E92E18C65A580035B80F /* OCDirectionsResponse.m */; };
-		27A8A2F618CF8F0D00C24A6A /* CLLocation+CoortindateFromDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E93418C65A580035B80F /* CLLocation+CoortindateFromDictionary.m */; };
 		27C6E8B618C6578B0035B80F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C6E8B518C6578B0035B80F /* Foundation.framework */; };
 		27C6E8C518C6578B0035B80F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C6E8B518C6578B0035B80F /* Foundation.framework */; };
 		27C6EB8418C65A590035B80F /* OCDirectionsAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E90918C65A580035B80F /* OCDirectionsAPIClient.m */; };
@@ -41,6 +27,7 @@
 		27C6EBA018C65A590035B80F /* CLLocation+CoortindateFromDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E93418C65A580035B80F /* CLLocation+CoortindateFromDictionary.m */; };
 		27C6ECC118C65FDC0035B80F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27C6E8CE18C6578B0035B80F /* InfoPlist.strings */; };
 		27C6ECCD18C67ACC0035B80F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C6E8C318C6578B0035B80F /* XCTest.framework */; };
+		516C94BB1C9F2E8F0095322F /* libOCGoogleDirectionsAPI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C6ECCB18C67A910035B80F /* libOCGoogleDirectionsAPI.a */; };
 		524E8C2300316B8EBFB04BDB /* OCDirectionsFare.m in Sources */ = {isa = PBXBuildFile; fileRef = 524E8125ADC56AD2FA29F498 /* OCDirectionsFare.m */; };
 /* End PBXBuildFile section */
 
@@ -137,6 +124,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				516C94BB1C9F2E8F0095322F /* libOCGoogleDirectionsAPI.a in Frameworks */,
 				27C6ECCD18C67ACC0035B80F /* XCTest.framework in Frameworks */,
 				27C6E8C518C6578B0035B80F /* Foundation.framework in Frameworks */,
 			);
@@ -419,7 +407,7 @@
 		27C6E87C18C654650035B80F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0720;
 				TargetAttributes = {
 					27C6E8C118C6578B0035B80F = {
 						TestTargetID = 27C6E8DD18C658B70035B80F;
@@ -482,22 +470,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27A8A2EB18CF8EE000C24A6A /* OCDirectionsRequestURLCreatorJSON.m in Sources */,
 				27A8A2E718CF8B9900C24A6A /* OCDirectionsRequestTests.m in Sources */,
-				27A8A2EE18CF8EEC00C24A6A /* OCDirectionsDistance.m in Sources */,
-				27A8A2EF18CF8EEE00C24A6A /* OCDirectionsDuration.m in Sources */,
-				27A8A2F518CF8F0000C24A6A /* OCDirectionsResponse.m in Sources */,
-				27A8A2ED18CF8EE900C24A6A /* OCDirectionsBounds.m in Sources */,
-				27A8A2F318CF8EFB00C24A6A /* OCDirectionsStep.m in Sources */,
-				27A8A2EA18CF8EDA00C24A6A /* OCDirectionsAPIClient.m in Sources */,
-				27A8A2F118CF8EF400C24A6A /* OCDirectionsPolyline.m in Sources */,
-				27A8A2F618CF8F0D00C24A6A /* CLLocation+CoortindateFromDictionary.m in Sources */,
-				27A8A2E918CF8ED000C24A6A /* OCDirectionsCommonTypes.m in Sources */,
-				27A8A2F418CF8EFE00C24A6A /* OCDirectionsWaypoint.m in Sources */,
-				27A8A2F018CF8EF100C24A6A /* OCDirectionsLeg.m in Sources */,
-				27A8A2E818CF8E8900C24A6A /* OCDirectionsRequest.m in Sources */,
 				2793762A18E8C3890059C103 /* OCDirectionsRequestURLCreatorJSONTests.m in Sources */,
-				27A8A2F218CF8EF700C24A6A /* OCDirectionsRoute.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,6 +500,7 @@
 		27C6E88018C654650035B80F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = "OCGoogleDirectionsAPI/OCGoogleDirectionsAPI-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
@@ -579,6 +554,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -615,6 +591,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.github.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -639,11 +616,6 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -663,6 +635,7 @@
 				INFOPLIST_FILE = "OCGoogleDirectionsAPITests/OCGoogleDirectionsAPITests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "cx.idev.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -689,11 +662,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "OCGoogleDirectionsAPI/OCGoogleDirectionsAPI-Prefix.pch";
@@ -705,6 +673,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "OCGoogleDirectionsAPITests/OCGoogleDirectionsAPITests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "cx.idev.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				TEST_HOST = "$(BUNDLE_LOADER)";

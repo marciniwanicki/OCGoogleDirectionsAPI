@@ -99,7 +99,7 @@ static NSString *const kCGGoogleDirectionsResponseAttributeRouteWarnings = @"war
 }
 
 - (void)loadFare {
-    NSDictionary *fareDictionary = [_dictionary objectForKey:kCGGoogleDirectionsResponseAttributeFare]:
+    NSDictionary *fareDictionary = [_dictionary objectForKey:kCGGoogleDirectionsResponseAttributeFare];
     if (fareDictionary) {
         OCDirectionsFare *fare = [OCDirectionsFare fareFromDictionary:fareDictionary];
 
