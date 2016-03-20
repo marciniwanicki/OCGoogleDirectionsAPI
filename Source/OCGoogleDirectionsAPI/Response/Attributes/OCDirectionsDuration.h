@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 extern NSString *const kCGGoogleDirectionsResponseAttributeDuration;
+extern NSString *const kCGGoogleDirectionsResponseAttributeDurationInTraffic;
 
 @interface OCDirectionsDuration : NSObject
 

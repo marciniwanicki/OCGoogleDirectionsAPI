@@ -17,6 +17,7 @@
 
 @property (nonatomic, readonly) OCDirectionsDistance *distance;
 @property (nonatomic, readonly) OCDirectionsDuration *duration;
+@property (nonatomic, readonly) OCDirectionsDuration *durationInTraffic;
 @property (nonatomic, copy, readonly) NSString *endAddress;
 @property (nonatomic, readonly) CLLocationCoordinate2D endLocation;
 @property (nonatomic, copy, readonly) NSString *startAddress;

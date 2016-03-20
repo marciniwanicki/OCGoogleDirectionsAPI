@@ -43,7 +43,8 @@ static NSString *const kCGGoogleDirectionsResponseAttributeErrorMessage = @"erro
     static NSDictionary *dictionary;
 
     if (dictionary == nil) {
-        dictionary = @{@"OK" : @(OCDirectionsResponseStatusOK),
+        dictionary = @{
+                @"OK" : @(OCDirectionsResponseStatusOK),
                 @"NOT_FOUND" : @(OCDirectionsResponseStatusNotFound),
                 @"ZERO_RESULTS" : @(OCDirectionsResponseStatusZeroResults),
                 @"MAX_WAYPOINTS_EXCEEDED" : @(OCDirectionsResponseStatusMaxWaypointsExceeded),

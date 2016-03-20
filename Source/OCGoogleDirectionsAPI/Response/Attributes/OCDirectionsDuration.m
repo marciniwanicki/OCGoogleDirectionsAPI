@@ -9,6 +9,7 @@
 #import "OCDirectionsDuration.h"
 
 NSString *const kCGGoogleDirectionsResponseAttributeDuration = @"duration";
+NSString *const kCGGoogleDirectionsResponseAttributeDurationInTraffic = @"duration_in_traffic";
 
 static NSString *const kCGGoogleDirectionsResponseAttributeDurationText = @"text";
 static NSString *const kCGGoogleDirectionsResponseAttributeDurationValue = @"value";
