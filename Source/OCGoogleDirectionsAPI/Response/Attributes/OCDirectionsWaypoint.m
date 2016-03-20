@@ -15,51 +15,47 @@ static NSString *const kCGGoogleDirectionsResponseAttributeStepInterpolation = @
 
 @implementation OCDirectionsWaypoint
 
-+ (instancetype)waypointFromDictionary:(NSDictionary *)dictionary
-{
++ (instancetype)waypointFromDictionary:(NSDictionary *)dictionary {
     OCDirectionsWaypoint *waypoint = [[OCDirectionsWaypoint alloc] initWithDictionary:dictionary];
     return waypoint;
 }
 
 #pragma mark - Private init
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary
-{
+
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
     if (self) {
         _dictionary = dictionary;
-        
+
         [self loadAllProperties];
     }
     return self;
 }
 
 #pragma mark - Load properties from dictionary
-- (void)loadAllProperties
-{
+
+- (void)loadAllProperties {
     [self loadLocation];
     [self loadStepIndex];
     [self loadStepInterpolation];
 }
 
-- (void)loadLocation
-{
+- (void)loadLocation {
     NSDictionary *locationDictionary = [_dictionary objectForKey:kCGGoogleDirectionsResponseAttributeLocation];
     CLLocationCoordinate2D location = [CLLocation coordinateFromDictionary:locationDictionary];
-    
+
     _location = location;
 }
 
-- (void)loadStepIndex
-{
+- (void)loadStepIndex {
     NSNumber *stepIndex = [_dictionary objectForKey:kCGGoogleDirectionsResponseAttributeStepIndex];
-    
+
     _stepIndex = stepIndex;
 }
 
-- (void)loadStepInterpolation
-{
+- (void)loadStepInterpolation {
     NSNumber *stepInterpolation = [_dictionary objectForKey:kCGGoogleDirectionsResponseAttributeStepInterpolation];
-    
+
     _stepInterpolation = stepInterpolation;
 }
 

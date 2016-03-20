@@ -9,13 +9,14 @@
 #import <Foundation/Foundation.h>
 
 extern NSString *const kCGGoogleDirectionsResponseAttributeDuration;
+extern NSString *const kCGGoogleDirectionsResponseAttributeDurationInTraffic;
 
 @interface OCDirectionsDuration : NSObject
 
-@property (nonatomic, retain, readonly) NSDictionary *dictionary;
+@property (nonatomic, readonly) NSDictionary *dictionary;
 
 @property (nonatomic, copy, readonly) NSString *text;
-@property (nonatomic, copy, readonly) NSNumber *value;
+@property (nonatomic, readonly) NSNumber *value;
 
 + (instancetype)durationFromDictionary:(NSDictionary *)dictionary;
 

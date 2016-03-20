@@ -10,7 +10,7 @@
 
 @interface OCDirectionsPolyline : NSObject
 
-@property (nonatomic, retain, readonly) NSDictionary *dictionary;
+@property (nonatomic, readonly) NSDictionary *dictionary;
 
 @property (nonatomic, copy, readonly) NSString *points;
 

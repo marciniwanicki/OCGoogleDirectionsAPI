@@ -12,34 +12,32 @@ static NSString *const kCGGoogleDirectionsResponseAttributePolylinePoints = @"po
 
 @implementation OCDirectionsPolyline
 
-+ (instancetype)polylineFromDictionary:(NSDictionary *)dictionary
-{
++ (instancetype)polylineFromDictionary:(NSDictionary *)dictionary {
     OCDirectionsPolyline *polyline = [[OCDirectionsPolyline alloc] initWithDictionary:dictionary];
     return polyline;
 }
 
 #pragma mark - Private init
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary
-{
+
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
     if (self) {
         _dictionary = dictionary;
-        
+
         [self loadAllProperties];
     }
     return self;
 }
 
 #pragma mark - Load properties from dictionary
-- (void)loadAllProperties
-{
+
+- (void)loadAllProperties {
     [self loadPoints];
 }
 
-- (void)loadPoints
-{
+- (void)loadPoints {
     NSString *points = [_dictionary objectForKey:kCGGoogleDirectionsResponseAttributePolylinePoints];
-    
+
     _points = points;
 }
 

@@ -15,42 +15,39 @@ static NSString *const kCGGoogleDirectionsResponseAttributeDistanceValue = @"val
 
 @implementation OCDirectionsDistance
 
-+ (instancetype)distanceFromDictionary:(NSDictionary *)dictionary
-{
++ (instancetype)distanceFromDictionary:(NSDictionary *)dictionary {
     OCDirectionsDistance *distance = [[OCDirectionsDistance alloc] initWithDictionary:dictionary];
     return distance;
 }
 
 #pragma mark - Private init
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary
-{
+
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
     if (self) {
         _dictionary = dictionary;
-        
+
         [self loadAllProperties];
     }
     return self;
 }
 
 #pragma mark - Load properties from dictionary
-- (void)loadAllProperties
-{
+
+- (void)loadAllProperties {
     [self loadText];
     [self loadValue];
 }
 
-- (void)loadText
-{
+- (void)loadText {
     NSString *text = [_dictionary objectForKey:kCGGoogleDirectionsResponseAttributeDistanceText];
-    
+
     _text = text;
 }
 
-- (void)loadValue
-{
+- (void)loadValue {
     NSNumber *value = [_dictionary objectForKey:kCGGoogleDirectionsResponseAttributeDistanceValue];
-    
+
     _value = value;
 }
 

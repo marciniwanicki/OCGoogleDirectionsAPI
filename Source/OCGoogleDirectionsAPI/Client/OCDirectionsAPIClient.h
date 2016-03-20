@@ -16,7 +16,7 @@ typedef void (^OCDirectionsRequestCallback)(OCDirectionsResponse *response, NSEr
 
 @interface OCDirectionsAPIClient : NSObject
 
-@property (nonatomic, retain) id<OCDirectionsRequestURLCreator> requestURLCreator;
+@property (nonatomic) id <OCDirectionsRequestURLCreator> requestURLCreator;
 
 - (instancetype)init;
 

@@ -11,89 +11,89 @@ typedef NS_ENUM(NSUInteger, OCDirectionsResponseVehicleType) {
     //     Not available.
     //     */
     //    OCDirectionsResponseVehicleTypeNotAvailable,
-    
+
     /**
      Rail.
      */
-    OCDirectionsResponseVehicleTypeRail,
-    
+            OCDirectionsResponseVehicleTypeRail,
+
     /**
      Light rail transit.
      */
-    OCDirectionsResponseVehicleTypeMetroRail,
-    
+            OCDirectionsResponseVehicleTypeMetroRail,
+
     /**
      Underground light rail.
      */
-    OCDirectionsResponseVehicleTypeSubway,
-    
+            OCDirectionsResponseVehicleTypeSubway,
+
     /**
      Above ground light rail.
      */
-    OCDirectionsResponseVehicleTypeTram,
-    
+            OCDirectionsResponseVehicleTypeTram,
+
     /**
      Monorail.
      */
-    OCDirectionsResponseVehicleTypeMonorail,
-    
+            OCDirectionsResponseVehicleTypeMonorail,
+
     /**
      Heavy rail.
      */
-    OCDirectionsResponseVehicleTypeHeavyRail,
-    
+            OCDirectionsResponseVehicleTypeHeavyRail,
+
     /**
      Commuter rail.
      */
-    OCDirectionsResponseVehicleTypeCommuterTrain,
-    
+            OCDirectionsResponseVehicleTypeCommuterTrain,
+
     /**
      High speed train.
      */
-    OCDirectionsResponseVehicleTypeHighSpeedTrain,
-    
+            OCDirectionsResponseVehicleTypeHighSpeedTrain,
+
     /**
      Bus.
      */
-    OCDirectionsResponseVehicleTypeBus,
-    
+            OCDirectionsResponseVehicleTypeBus,
+
     /**
      Intercity bus.
      */
-    OCDirectionsResponseVehicleTypeIntercityBus,
-    
+            OCDirectionsResponseVehicleTypeIntercityBus,
+
     /**
      Trolleybus.
      */
-    OCDirectionsResponseVehicleTypeTrolleybus,
-    
+            OCDirectionsResponseVehicleTypeTrolleybus,
+
     /**
      Share taxi is a kind of bus with the ability to drop off and pick up passengers anywhere on its route.
      */
-    OCDirectionsResponseVehicleTypeShareTaxi,
-    
+            OCDirectionsResponseVehicleTypeShareTaxi,
+
     /**
      Ferry.
      */
-    OCDirectionsResponseVehicleTypeFerry,
-    
+            OCDirectionsResponseVehicleTypeFerry,
+
     /**
      A vehicle that operates on a cable, usually on the ground. Aerial cable cars may be of the type OCDirectionsResponseVehicleTypeGondolaLift.
      */
-    OCDirectionsResponseVehicleTypeCableCar,
-    
+            OCDirectionsResponseVehicleTypeCableCar,
+
     /**
      An aerial cable car.
      */
-    OCDirectionsResponseVehicleTypeGondolaLift,
-    
+            OCDirectionsResponseVehicleTypeGondolaLift,
+
     /**
      A vehicle that is pulled up a steep incline by a cable. A Funicular typically consists of two cars, with each car acting as a counterweight for the other.
      */
-    OCDirectionsResponseVehicleTypeFunicular,
-    
+            OCDirectionsResponseVehicleTypeFunicular,
+
     /**
      All other vehicles will return this type.
      */
-    OCDirectionsResponseVehicleTypeOther,
+            OCDirectionsResponseVehicleTypeOther,
 };

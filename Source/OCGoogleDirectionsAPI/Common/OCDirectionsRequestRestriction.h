@@ -10,15 +10,15 @@ typedef NS_ENUM(NSUInteger, OCDirectionsRequestRestriction) {
     /**
      avoid tools
      */
-    OCDirectionsRequestRestrictionAvoidTolls,
-    
+            OCDirectionsRequestRestrictionAvoidTolls,
+
     /**
      avoid highways
      */
-    OCDirectionsRequestRestrictionAvoidHighways,
-    
+            OCDirectionsRequestRestrictionAvoidHighways,
+
     /**
      avoid ferries
      */
-    OCDirectionsRequestRestrictionAviodFerries
+            OCDirectionsRequestRestrictionAvoidFerries
 };
