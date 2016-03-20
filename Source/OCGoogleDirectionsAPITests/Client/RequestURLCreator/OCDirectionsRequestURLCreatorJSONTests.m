@@ -289,6 +289,62 @@ static NSString *const kTestKey = @"0123456789abcdef";
     XCTAssertEqualObjects(@"https://maps.googleapis.com/maps/api/directions/json?origin=London&destination=Lodz&sensor=false&departure_time=now&key=0123456789abcdef", response);
 }
 
+- (void)testStringWhenTransitModeIsNotSpecified {
+    // given
+    OCDirectionsRequest *request = [self prepareRequest];
+    request.transitMode = OCDirectionsRequestTransitModeNotSpecified;
+
+    NSString *key = [self prepareTestKey];
+
+    // when
+    NSString *response = [self.urlCreator stringFromRequest:request useHttps:YES andKey:key];
+
+    // then
+    XCTAssertEqualObjects(@"https://maps.googleapis.com/maps/api/directions/json?origin=London&destination=Lodz&sensor=false&key=0123456789abcdef", response);
+}
+
+- (void)testStringWhenTransitModeIsBus {
+    // given
+    OCDirectionsRequest *request = [self prepareRequest];
+    request.transitMode = OCDirectionsRequestTransitModeBus;
+
+    NSString *key = [self prepareTestKey];
+
+    // when
+    NSString *response = [self.urlCreator stringFromRequest:request useHttps:YES andKey:key];
+
+    // then
+    XCTAssertEqualObjects(@"https://maps.googleapis.com/maps/api/directions/json?origin=London&destination=Lodz&sensor=false&transit_mode=bus&key=0123456789abcdef", response);
+}
+
+- (void)testStringWhenTransitModeIsRail {
+    // given
+    OCDirectionsRequest *request = [self prepareRequest];
+    request.transitMode = OCDirectionsRequestTransitModeRail;
+
+    NSString *key = [self prepareTestKey];
+
+    // when
+    NSString *response = [self.urlCreator stringFromRequest:request useHttps:YES andKey:key];
+
+    // then
+    XCTAssertEqualObjects(@"https://maps.googleapis.com/maps/api/directions/json?origin=London&destination=Lodz&sensor=false&transit_mode=rail&key=0123456789abcdef", response);
+}
+
+- (void)testStringWhenTransitModeIsSubwayAndTram {
+    // given
+    OCDirectionsRequest *request = [self prepareRequest];
+    request.transitMode = OCDirectionsRequestTransitModeSubway | OCDirectionsRequestTransitModeTram;
+
+    NSString *key = [self prepareTestKey];
+
+    // when
+    NSString *response = [self.urlCreator stringFromRequest:request useHttps:YES andKey:key];
+
+    // then
+    XCTAssertEqualObjects(@"https://maps.googleapis.com/maps/api/directions/json?origin=London&destination=Lodz&sensor=false&transit_mode=subway%7Ctram&key=0123456789abcdef", response);
+}
+
 #pragma mark - Helpers
 
 - (NSString *)prepareTestKey {
