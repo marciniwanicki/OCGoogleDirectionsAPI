@@ -41,6 +41,7 @@
 		27C6EBA018C65A590035B80F /* CLLocation+CoortindateFromDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 27C6E93418C65A580035B80F /* CLLocation+CoortindateFromDictionary.m */; };
 		27C6ECC118C65FDC0035B80F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27C6E8CE18C6578B0035B80F /* InfoPlist.strings */; };
 		27C6ECCD18C67ACC0035B80F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C6E8C318C6578B0035B80F /* XCTest.framework */; };
+		524E8C2300316B8EBFB04BDB /* OCDirectionsFare.m in Sources */ = {isa = PBXBuildFile; fileRef = 524E8125ADC56AD2FA29F498 /* OCDirectionsFare.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,9 +117,11 @@
 		27C6ECC318C6608E0035B80F /* OCGoogleDirectionsAPI-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "OCGoogleDirectionsAPI-Info.plist"; sourceTree = "<group>"; };
 		27C6ECCB18C67A910035B80F /* libOCGoogleDirectionsAPI.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOCGoogleDirectionsAPI.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C6ECCC18C67A910035B80F /* OCGoogleDirectionsAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OCGoogleDirectionsAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		524E8125ADC56AD2FA29F498 /* OCDirectionsFare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCDirectionsFare.m; sourceTree = "<group>"; };
 		524E82C69FF2B59CF5097950 /* OCDirectionsRequestTrafficModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDirectionsRequestTrafficModel.h; sourceTree = "<group>"; };
 		524E8A60179A39E791889072 /* OCDirectionsRequestTransitRoutingPreference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDirectionsRequestTransitRoutingPreference.h; sourceTree = "<group>"; };
 		524E8AD319197A088907F852 /* OCDirectionsRequestTransitMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDirectionsRequestTransitMode.h; sourceTree = "<group>"; };
+		524E8EF40C63F7BA5F9C6A91 /* OCDirectionsFare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDirectionsFare.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -340,6 +343,8 @@
 				27C6E92A18C65A580035B80F /* OCDirectionsStep.m */,
 				27C6E92B18C65A580035B80F /* OCDirectionsWaypoint.h */,
 				27C6E92C18C65A580035B80F /* OCDirectionsWaypoint.m */,
+				524E8125ADC56AD2FA29F498 /* OCDirectionsFare.m */,
+				524E8EF40C63F7BA5F9C6A91 /* OCDirectionsFare.h */,
 			);
 			path = Attributes;
 			sourceTree = "<group>";
@@ -469,6 +474,7 @@
 				27C6EB9818C65A590035B80F /* OCDirectionsRoute.m in Sources */,
 				27C6EB8E18C65A590035B80F /* OCDirectionsBounds.m in Sources */,
 				27C6EB9A18C65A590035B80F /* OCDirectionsStep.m in Sources */,
+				524E8C2300316B8EBFB04BDB /* OCDirectionsFare.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

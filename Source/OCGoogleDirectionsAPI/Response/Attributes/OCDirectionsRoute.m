@@ -8,6 +8,7 @@
 
 #import "OCDirectionsRoute.h"
 #import "OCDirectionsLeg.h"
+#import "OCDirectionsFare.h"
 
 static NSString *const kCGGoogleDirectionsResponseAttributeRouteSummary = @"summary";
 static NSString *const kCGGoogleDirectionsResponseAttributeRouteLegs = @"legs";
@@ -46,6 +47,7 @@ static NSString *const kCGGoogleDirectionsResponseAttributeRouteWarnings = @"war
     [self loadOverviewPolyline];
     [self loadBounds];
     [self loadSummary];
+    [self loadFare];
 }
 
 - (void)loadLegs {
@@ -94,6 +96,15 @@ static NSString *const kCGGoogleDirectionsResponseAttributeRouteWarnings = @"war
 - (void)loadSummary {
     NSString *summary = [_dictionary objectForKey:kCGGoogleDirectionsResponseAttributeRouteSummary];
     _summary = summary;
+}
+
+- (void)loadFare {
+    NSDictionary *fareDictionary = [_dictionary objectForKey:kCGGoogleDirectionsResponseAttributeFare]:
+    if (fareDictionary) {
+        OCDirectionsFare *fare = [OCDirectionsFare fareFromDictionary:fareDictionary];
+
+        _fare = fare;
+    }
 }
 
 @end
