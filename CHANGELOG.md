@@ -2,8 +2,10 @@
 
 ## 0.1.5
 
-- 
-
+- Added scripts to build and run tests (Bin/run-build.sh, Bin/run-tests.sh)
+- Added fare and duration_in_traffic to response
+- Added transit_mode, transit_routing_preference, traffic_model, arrival_time,
+departure_time to request
 
 ## 0.1.2
 
