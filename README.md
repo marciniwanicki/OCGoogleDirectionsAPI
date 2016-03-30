@@ -1,5 +1,5 @@
 # OCGoogleDirectionsAPI
-[![Build Status](https://travis-ci.org/marciniwanicki/OCGoogleDirectionsAPI.png?branch=master)](https://travis-ci.org/marciniwanicki/OCGoogleDirectionsAPI) 
+[![Build Status](https://travis-ci.org/marciniwanicki/OCGoogleDirectionsAPI.png?branch=master)](https://travis-ci.org/marciniwanicki/OCGoogleDirectionsAPI)
 
 A lightweight wrapper for The Google Directions API. See the [Google Maps API Web Services documentation](https://developers.google.com/maps/documentation/directions/).
 
@@ -7,7 +7,7 @@ As Google wrote:
 <i>"The Google Directions API is a service that calculates directions between locations using an HTTP request. You can search for directions for several modes of transportation, include transit, driving, walking or cycling. Directions may specify origins, destinations and waypoints either as text strings (e.g. "Chicago, IL" or "Darwin, NT, Australia") or as latitude/longitude coordinates. The Directions API can return multi-part directions using a series of waypoints."</i>
 
 
-# 0.1.5
+# 0.1.6
 
 The OCGoogleDirectionsAPI library allows your iOS apps to deal with this powerful service easily. <b>IMPORTANT:</b> It uses `NSURLSession` only available in iOS 7.0+. It is <b>not compatible with iOS 6.x and lower</b>.
 
@@ -18,7 +18,7 @@ The OCGoogleDirectionsAPI library allows your iOS apps to deal with this powerfu
 #### Podfile
 ```ruby
 platform :ios, '7.0'
-pod "OCGoogleDirectionsAPI", "~> 0.1.5"
+pod "OCGoogleDirectionsAPI", "~> 0.1.6"
 ```
 
 ## How to get started
@@ -30,7 +30,7 @@ It's really simple. To get directions you need to do <b>4 easy steps</b>.
     ```objc
     #import <OCGoogleDirectionsAPI/OCGoogleDirectionsAPI.h>
     ````
- 
+
 2. Secondly you can provide your Google API Key. The method `application:didFinishLaunchingWithOptions:` in AppDelegate seams to be a good place for this code.
 However the API Key is now optional. Please check [API Key section](https://developers.google.com/maps/documentation/directions/#api_key) to decide if you need the key or not.
 
@@ -49,7 +49,7 @@ However the API Key is now optional. Please check [API Key section](https://deve
    ```objc
    OCDirectionsAPIClient *client = [OCDirectionsAPIClient new];
    [client directions:request response:^(OCDirectionsResponse *response, NSError *error) {
- 
+
         // e.g.
         if (error) {
             return;
@@ -57,13 +57,13 @@ However the API Key is now optional. Please check [API Key section](https://deve
         if (response.status != OCDirectionsResponseStatusOK) {
             return
         }
-        
-        // some code 
+
+        // some code
    }];
    ```
-   
+
 Some init methods of `OCDirectionsAPIClient`:
-   
+
    ```objc
 	- (instancetype)initWithKey:(NSString *)key;
 
@@ -213,7 +213,7 @@ Properties:
 
 Be aware that `geocoded_waypoints` property is not supported in the current version (#8).
 
-### OCDirectionsResponseStatus 
+### OCDirectionsResponseStatus
 
 Enum:
 * `OCDirectionsResponseStatusNotInitialized`
@@ -276,14 +276,14 @@ Properties:
 * dictionary `NSDictionary*`
 * text `NSString*`
 * value `NSNumber*`
- 
 
-### OCDirectionsDuration 
+
+### OCDirectionsDuration
 
 Properties:
 * dictionary `NSDictionary*`
 * text `NSString*`
-* value `NSNumber*` 
+* value `NSNumber*`
 
 
 ### OCDirectionsStep
@@ -305,8 +305,8 @@ Properties:
 Properties:
 * dictionary `NSDictionary*`
 * location `CLLocationCoordinate2D`
-* stepIndex `NSNumber*` 
-* stepInterpolation `NSNumber*` 
+* stepIndex `NSNumber*`
+* stepInterpolation `NSNumber*`
 
 
 ### OCDirectionsFare
