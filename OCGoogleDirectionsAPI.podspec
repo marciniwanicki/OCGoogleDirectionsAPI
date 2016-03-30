@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.homepage         = "https://github.com/marciniwanicki/OCGoogleDirectionsAPI"
   s.license          = 'MIT'
   s.author           = { "Marcin Iwanicki" => "marcin.iwanicki@appliwings.com" }
-  s.source           = { :git => "https://github.com/marciniwanicki/OCGoogleDirectionsAPI.git", :tag => "#{spec.version}" }
+  s.source           = { :git => "https://github.com/marciniwanicki/OCGoogleDirectionsAPI.git", :tag => "#{s.version}" }
 
   s.ios.deployment_target = '7.0'
   s.requires_arc = true
