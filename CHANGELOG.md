@@ -1,5 +1,9 @@
 # OCGoogleDirectionsAPI CHANGELOG
 
+## 0.1.6
+
+- Fix #9 by encoding request attribute separator.
+
 ## 0.1.5
 
 - Added scripts to build and run tests (Bin/run-build.sh, Bin/run-tests.sh)
