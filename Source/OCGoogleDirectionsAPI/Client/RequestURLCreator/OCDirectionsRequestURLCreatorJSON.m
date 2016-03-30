@@ -149,7 +149,7 @@ static NSString *const kOCGoogleDirectionsRequestAttributeValueDepartureTimeNow 
 
     if (request.waypointsOptimise) {
         [string appendString:kOCGoogleDirectionsRequestAttributeWaypointsOptimize];
-        [string appendString:kOCGoogleDirectionsRequestAttributeSeparator];
+        [string appendString:[self encodeParameter:kOCGoogleDirectionsRequestAttributeSeparator]];
     }
 
     NSUInteger count = [request.waypoints count];
@@ -165,7 +165,7 @@ static NSString *const kOCGoogleDirectionsRequestAttributeValueDepartureTimeNow 
         }
 
         if (++iter < count) {
-            [string appendString:kOCGoogleDirectionsRequestAttributeSeparator];
+            [string appendString:[self encodeParameter:kOCGoogleDirectionsRequestAttributeSeparator]];
         }
     }
 }
@@ -187,7 +187,7 @@ static NSString *const kOCGoogleDirectionsRequestAttributeValueDepartureTimeNow 
         [string appendString:[self encodeParameter:restriction]];
 
         if (++iter < count) {
-            [string appendString:kOCGoogleDirectionsRequestAttributeSeparator];
+            [string appendString:[self encodeParameter:kOCGoogleDirectionsRequestAttributeSeparator]];
         }
     }
 }
@@ -282,7 +282,7 @@ static NSString *const kOCGoogleDirectionsRequestAttributeValueDepartureTimeNow 
         }
 
         if (transitModeString.length > 0) {
-            [transitModeString appendString:kOCGoogleDirectionsRequestAttributeSeparator];
+            [transitModeString appendString:[self encodeParameter:kOCGoogleDirectionsRequestAttributeSeparator]];
         }
 
         [transitModeString appendString:[OCDirectionsCommonTypes stringFromTransitModel:transitMode]];
