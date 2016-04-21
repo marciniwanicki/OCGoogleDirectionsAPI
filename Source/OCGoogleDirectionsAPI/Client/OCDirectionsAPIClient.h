@@ -28,7 +28,7 @@ typedef void (^OCDirectionsRequestCallback)(OCDirectionsResponse *response, NSEr
 
 + (void)provideAPIKey:(NSString *)key;
 
-- (void)directions:(OCDirectionsRequest *)request response:(OCDirectionsRequestCallback)callback;
+- (NSURLSessionDataTask *)directions:(OCDirectionsRequest *)request response:(OCDirectionsRequestCallback)callback;
 
 - (NSURL *)urlFromRequest:(OCDirectionsRequest *)request;
 

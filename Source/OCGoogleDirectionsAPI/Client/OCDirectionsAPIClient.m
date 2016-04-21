@@ -49,33 +49,37 @@ static NSString *_defaultKey;
     _defaultKey = key;
 }
 
-- (void)directions:(OCDirectionsRequest *)request response:(OCDirectionsRequestCallback)callback {
-    NSURL *url = [self urlFromRequest:request];
-
-    NSURLSession *session = [NSURLSession sharedSession];
-    [[session dataTaskWithURL:url
-            completionHandler:^(NSData *data,
-                    NSURLResponse *response,
-                    NSError *error) {
-
-                if (error) {
-                    callback(nil, error);
-                    return;
-                }
-
-                NSError *jsonParsingError = nil;
-                NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonParsingError];
-
-                if (jsonParsingError) {
-                    callback(nil, jsonParsingError);
-                    return;
-                }
-
-                OCDirectionsResponse *directionsResponse = [OCDirectionsResponse responseFromDictionary:dictionary];
-                callback(directionsResponse, nil);
-                return;
-
-            }] resume];
+- (NSURLSessionDataTask *)directions:(OCDirectionsRequest *)request response:(OCDirectionsRequestCallback)callback {
+	NSURL *url = [self urlFromRequest:request];
+	
+	NSURLSession *session = [NSURLSession sharedSession];
+	NSURLSessionDataTask * task = [session dataTaskWithURL:url
+										 completionHandler:^(NSData *data,
+															 NSURLResponse *response,
+															 NSError *error) {
+											 
+											 if (error) {
+												 callback(nil, error);
+												 return;
+											 }
+											 
+											 NSError *jsonParsingError = nil;
+											 NSDictionary *dictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonParsingError];
+											 
+											 if (jsonParsingError) {
+												 callback(nil, jsonParsingError);
+												 return;
+											 }
+											 
+											 OCDirectionsResponse *directionsResponse = [OCDirectionsResponse responseFromDictionary:dictionary];
+											 callback(directionsResponse, nil);
+											 return;
+											 
+										 }];
+	
+	[task resume];
+	
+	return task;
 }
 
 - (NSURL *)urlFromRequest:(OCDirectionsRequest *)request {
