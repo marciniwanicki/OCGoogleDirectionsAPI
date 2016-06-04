@@ -49,7 +49,12 @@ static NSString *_defaultKey;
     _defaultKey = key;
 }
 
-- (NSURLSessionDataTask *)directions:(OCDirectionsRequest *)request response:(OCDirectionsRequestCallback)callback {
+- (void)directions:(OCDirectionsRequest *)request response:(OCDirectionsRequestCallback)callback {
+	NSURLSessionDataTask *task = [self dataTaskWithRequest:request response:callback];
+	[task resume];
+}
+
+- (NSURLSessionDataTask *)dataTaskWithRequest:(OCDirectionsRequest *)request response:(OCDirectionsRequestCallback)callback {
 	NSURL *url = [self urlFromRequest:request];
 	
 	NSURLSession *session = [NSURLSession sharedSession];
@@ -76,9 +81,6 @@ static NSString *_defaultKey;
 											 return;
 											 
 										 }];
-	
-	[task resume];
-	
 	return task;
 }
 
