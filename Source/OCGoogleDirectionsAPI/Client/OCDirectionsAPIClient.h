@@ -28,7 +28,17 @@ typedef void (^OCDirectionsRequestCallback)(OCDirectionsResponse *response, NSEr
 
 + (void)provideAPIKey:(NSString *)key;
 
+/*
+ Creates a `NSURLSessionDataTask` and resumes immediately.
+ **/
 - (void)directions:(OCDirectionsRequest *)request response:(OCDirectionsRequestCallback)callback;
+
+/*
+ Creates a `NSURLSessionDataTask` for a given `OCDirectionsRequest`.
+ @return The `NSURLSessionDataTask` object initialised from the shared `NSURLSession`.
+ It is your responsibliy to resume this task.
+ */
+- (NSURLSessionDataTask *)dataTaskWithRequest:(OCDirectionsRequest *)request response:(OCDirectionsRequestCallback)callback;
 
 - (NSURL *)urlFromRequest:(OCDirectionsRequest *)request;
 
