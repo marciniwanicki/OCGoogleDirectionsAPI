@@ -1,5 +1,9 @@
 # OCGoogleDirectionsAPI CHANGELOG
 
+## 0.1.7
+
+- Resolved #10 by adding factory method to return initialised instance of NSURLSessionDataTask (thanks @markst)
+
 ## 0.1.6
 
 - Fix #9 by encoding request attribute separator.
