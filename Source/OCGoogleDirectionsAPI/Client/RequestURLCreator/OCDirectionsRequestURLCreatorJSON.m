@@ -154,7 +154,7 @@ static NSString *const kOCGoogleDirectionsRequestAttributeValueDepartureTimeNow 
 
     NSUInteger count = [request.waypoints count];
     NSUInteger iter = 0;
-    for (id<NSObject> waypoint in request.waypoints) {
+    for (id <NSObject> waypoint in request.waypoints) {
         if ([waypoint isKindOfClass:[NSString class]]) {
             NSString *waypointString = (NSString *) waypoint;
             [string appendString:[self encodeParameter:waypointString]];
