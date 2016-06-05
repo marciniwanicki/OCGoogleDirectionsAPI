@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "OCGoogleDirectionsAPI"
-  s.version          = "0.1.6"
+  s.version          = "0.1.7"
   s.summary          = "A lightweight wrapper for The Google Directions API."
   s.homepage         = "https://github.com/marciniwanicki/OCGoogleDirectionsAPI"
   s.license          = 'MIT'

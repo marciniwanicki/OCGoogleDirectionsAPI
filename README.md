@@ -7,7 +7,7 @@ As Google wrote:
 <i>"The Google Directions API is a service that calculates directions between locations using an HTTP request. You can search for directions for several modes of transportation, include transit, driving, walking or cycling. Directions may specify origins, destinations and waypoints either as text strings (e.g. "Chicago, IL" or "Darwin, NT, Australia") or as latitude/longitude coordinates. The Directions API can return multi-part directions using a series of waypoints."</i>
 
 
-# 0.1.6
+# 0.1.7
 
 The OCGoogleDirectionsAPI library allows your iOS apps to deal with this powerful service easily. <b>IMPORTANT:</b> It uses `NSURLSession` only available in iOS 7.0+. It is <b>not compatible with iOS 6.x and lower</b>.
 
@@ -18,7 +18,7 @@ The OCGoogleDirectionsAPI library allows your iOS apps to deal with this powerfu
 #### Podfile
 ```ruby
 platform :ios, '7.0'
-pod "OCGoogleDirectionsAPI", "~> 0.1.6"
+pod "OCGoogleDirectionsAPI", "~> 0.1.7"
 ```
 
 ## How to get started
@@ -61,6 +61,8 @@ However the API Key is now optional. Please check [API Key section](https://deve
         // some code
    }];
    ```
+Alternatively you can use `- (NSURLSessionDataTask *)dataTaskWithRequest:response:` factory method to have full control over `NSURLSessionDataTask` object. It might be especially useful when you need to cancel download operation. After creating instance of `NSURLSessionDataTask` you need to remember to call `resume` method to start retrieving data. 
+
 
 Some init methods of `OCDirectionsAPIClient`:
 
