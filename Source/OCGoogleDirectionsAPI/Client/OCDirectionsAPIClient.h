@@ -36,8 +36,8 @@ typedef void (^OCDirectionsRequestCallback)(OCDirectionsResponse *response, NSEr
 /*
  Creates a `NSURLSessionDataTask` for a given `OCDirectionsRequest`.
  @return The `NSURLSessionDataTask` object initialised from the shared `NSURLSession`.
- It is your responsibliy to resume this task.
- */
+ It is your responsibility to resume this task.
+ **/
 - (NSURLSessionDataTask *)dataTaskWithRequest:(OCDirectionsRequest *)request response:(OCDirectionsRequestCallback)callback;
 
 - (NSURL *)urlFromRequest:(OCDirectionsRequest *)request;
