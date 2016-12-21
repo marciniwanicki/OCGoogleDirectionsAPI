@@ -122,6 +122,11 @@
  */
 @property (nonatomic, getter=isSensorFlagUsed, readonly) BOOL sensorFlagUsed;
 
+/**
+ * You may add other API key-value pairs to this optional dictionary.
+ */
+@property (nonatomic, copy) NSDictionary *otherAPIKeyValues;
+
 @end
 
 @interface OCDirectionsRequest (Creation)
