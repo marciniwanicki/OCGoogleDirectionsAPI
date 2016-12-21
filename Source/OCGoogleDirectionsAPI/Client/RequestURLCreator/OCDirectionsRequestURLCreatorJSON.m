@@ -59,6 +59,7 @@ static NSString *const kOCGoogleDirectionsRequestAttributeValueDepartureTimeNow 
     [self appendTrafficModel:request toString:string];
     [self appendTransitMode:request toString:string];
     [self appendTransitRoutingPreference:request toString:string];
+	[self appendOtherAPIKeyValues:request toString:string];
     [self appendKey:key toString:string];
 
     return string;
@@ -300,6 +301,23 @@ static NSString *const kOCGoogleDirectionsRequestAttributeValueDepartureTimeNow 
     NSString *transitRoutingPreferenceString = [OCDirectionsCommonTypes stringFromTransitRoutingPreference:request.transitRoutingPreference];
     [string appendString:kOCGoogleDirectionsRequestAttributeTransitRoutingPreference];
     [string appendString:transitRoutingPreferenceString];
+}
+
+- (void)appendOtherAPIKeyValues:(OCDirectionsRequest *)request toString:(NSMutableString *)string {
+	if (request.otherAPIKeyValues == nil) {
+		return;
+	}
+	
+	NSMutableString *otherAPIKeyValuesQueryString = [[NSMutableString alloc] init];
+	
+	for (id key in request.otherAPIKeyValues) {
+		NSString *keyString = [key description];
+		NSString *valueString = [[request.otherAPIKeyValues objectForKey:key] description];
+		
+		[otherAPIKeyValuesQueryString appendFormat:@"&%@=%@", [self encodeParameter:keyString], [self encodeParameter:valueString]];
+	}
+	
+	[string appendString:otherAPIKeyValuesQueryString];
 }
 
 - (void)appendKey:(NSString *)key toString:(NSMutableString *)string {
