@@ -118,9 +118,16 @@
 @property (nonatomic) OCDirectionsRequestTransitRoutingPreference transitRoutingPreference;
 
 /**
+ * Specify that routes should have a particular heading
+ * New feature added on Nov 2021 - https://developers.google.com/maps/documentation/directions/get-directions#specify-that-routes-should-have-a-particular-heading
+ */
+@property (nonatomic) CLLocationDirection heading;
+
+/**
  * Indicates whether sensor flag has been used or not.
  */
 @property (nonatomic, getter=isSensorFlagUsed, readonly) BOOL sensorFlagUsed;
+
 
 @end
 

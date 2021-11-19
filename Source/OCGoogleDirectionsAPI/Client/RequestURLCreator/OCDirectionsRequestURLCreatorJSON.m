@@ -30,6 +30,7 @@ static NSString *const kOCGoogleDirectionsRequestAttributeAlternatives = @"&alte
 static NSString *const kOCGoogleDirectionsRequestAttributeTrafficModel = @"&traffic_model=";
 static NSString *const kOCGoogleDirectionsRequestAttributeTransitMode = @"&transit_mode=";
 static NSString *const kOCGoogleDirectionsRequestAttributeTransitRoutingPreference = @"&transit_routing_preference=";
+static NSString *const kOCGoogleDirectionsRequestAttributeHeading = @"&heading=";
 
 static NSString *const kOCGoogleDirectionsRequestAttributeSeparator = @"|";
 
@@ -59,8 +60,12 @@ static NSString *const kOCGoogleDirectionsRequestAttributeValueDepartureTimeNow 
     [self appendTrafficModel:request toString:string];
     [self appendTransitMode:request toString:string];
     [self appendTransitRoutingPreference:request toString:string];
+    [self appendHeading:request toString:string];
+
     [self appendKey:key toString:string];
 
+    NSLog(@"hello %@", string);
+    
     return string;
 }
 
@@ -302,6 +307,15 @@ static NSString *const kOCGoogleDirectionsRequestAttributeValueDepartureTimeNow 
     [string appendString:transitRoutingPreferenceString];
 }
 
+- (void)appendHeading:(OCDirectionsRequest *)request toString:(NSMutableString *)string {
+    [string appendString:kOCGoogleDirectionsRequestAttributeHeading];
+
+    if (request.heading) {
+        [string appendString:[self stringFromCLLocationDirection:request.heading]];
+    }
+}
+
+
 - (void)appendKey:(NSString *)key toString:(NSMutableString *)string {
     /**
      API key is not required.
@@ -316,6 +330,11 @@ static NSString *const kOCGoogleDirectionsRequestAttributeValueDepartureTimeNow 
 
 - (NSString *)stringFormCLLocation:(CLLocation *)location {
     NSString *string = [NSString stringWithFormat:@"%f,%f", location.coordinate.latitude, location.coordinate.longitude];
+    return string;
+}
+
+- (NSString *)stringFromCLLocationDirection:(CLLocationDirection)heading {
+    NSString *string = [NSString stringWithFormat:@"%lf", heading];
     return string;
 }
 
